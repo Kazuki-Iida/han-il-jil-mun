@@ -12,4 +12,10 @@
 */
 
 Route::get('/questions', 'QuestionController@index');
-
+Route::get('/', 'QuestionController@index');
+Route::post('/questions', 'QuestionController@store');
+Route::get('/questions/create', 'QuestionController@create');
+Route::get('/questions/{question}', 'QuestionController@show');
+Route::post('/questions/{question}', 'QuestionController@update');
+Route::delete('/questions/{question}', 'QuestionController@delete');
+//Route::get('/questions/{question}/edit', 'QuestionController@edit');
