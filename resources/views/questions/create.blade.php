@@ -10,11 +10,13 @@
             @csrf
             <div class="title">
                 <h2>Title</h2>
-                <input type="text" name="question[title]" placeholder="タイトル"/>
+                <input type="text" name="question[title]" placeholder="タイトル" value="{{ old('question.title') }}"/>
+                <p class="title__error" style="color:red">{{ $errors->first('question.title') }}</p>
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="question[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
+                <textarea name="question[body]" placeholder="質問内容" value="{{ old('question.body') }}"></textarea>
+                <p class="title__error" style="color:red">{{ $errors->first('question.body') }}</p>
             </div>
             <div class="user_id">
                 <h2>User_id</h2>

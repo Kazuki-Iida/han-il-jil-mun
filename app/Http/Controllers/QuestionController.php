@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 use App\Question;
 
 class QuestionController extends Controller
@@ -22,7 +23,7 @@ class QuestionController extends Controller
         return view('questions/create');
     }
     
-    public function store(Question $question, Request $request) // 引数をRequest->PostRequestにする
+    public function store(Question $question, QuestionRequest $request) 
     {
         $input = $request['question'];
         $question->fill($input)->save();
