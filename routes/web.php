@@ -19,3 +19,7 @@ Route::get('/questions/{question}', 'QuestionController@show');
 Route::post('/questions/{question}', 'QuestionController@update');
 Route::delete('/questions/{question}', 'QuestionController@delete');
 //Route::get('/questions/{question}/edit', 'QuestionController@edit');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
