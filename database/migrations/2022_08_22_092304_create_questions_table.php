@@ -16,10 +16,10 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
-            $table->string('body', 500);
+            $table->string('body', 1000);
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('category_id');
-            $table->unsignedInteger('trport_count');
+            $table->unsignedInteger('report_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -22,7 +22,7 @@ class QuestionController extends Controller
         return view('questions/create');
     }
     
-    public function store(Question $question, PostRequest $request) // 引数をRequest->PostRequestにする
+    public function store(Question $question, Request $request) // 引数をRequest->PostRequestにする
     {
         $input = $request['question'];
         $question->fill($input)->save();
