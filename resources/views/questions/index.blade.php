@@ -1,3 +1,5 @@
+@extends('layouts.app')　
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,6 +9,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        @if( Auth::check() )
+            {{Auth::user()->name}}
+        @endif
         <h1>日韓質問</h1>
         <div class='questions'>
             @foreach ($questions as $question)
@@ -21,3 +26,4 @@
         [<a href='/questions/create'>create</a>]
     </body>
 </html>
+@endsection
