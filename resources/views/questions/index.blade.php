@@ -9,7 +9,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        {{Auth::user()->name}}
+        @if( Auth::check() )
+            {{Auth::user()->name}}
+        @endif
         <h1>日韓質問</h1>
         <div class='questions'>
             @foreach ($questions as $question)
