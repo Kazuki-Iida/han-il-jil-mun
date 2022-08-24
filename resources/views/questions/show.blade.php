@@ -19,6 +19,7 @@
                 <h3>本文</h3>
                 <p>{{ $question->body }}</p>    
             </div>
+            <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
         </div>
         <div class="footer">
             <a href="/">戻る</a>

@@ -24,9 +24,11 @@
                 <h2>User_id</h2>
                 <input type="number" name="question[user_id]" />
             </div>
-            <div class="category_id">
-                <h2>category_id</h2>
-                <input type="number" name="question[category_id]" />
+            <div class="category">
+                <h2>Category</h2>
+                    @foreach($categories as $category)
+                        <input type="checkbox" name=“question[category_id]” value="{{ $category->id }}">{{ $category->name }}</br>
+                    @endforeach
             </div>
             <input type="submit" value="保存"/>
         </form>

@@ -4,7 +4,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>日韓質問</title>
+        <title>日韓質問|{{ $questions[1]->category->name }}</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
@@ -12,7 +12,7 @@
         @if( Auth::check() )
             {{Auth::user()->name}}
         @endif
-        <h1>日韓質問</h1>
+        <h1>{{ $questions[1]->category->name }}一覧</h1>
         <div class='questions'>
             @foreach ($questions as $question)
                 <div class='question'>
