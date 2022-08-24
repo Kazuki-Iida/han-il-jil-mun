@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
+use App\Category;
 
 class QuestionController extends Controller
 {
@@ -18,9 +19,9 @@ class QuestionController extends Controller
         return view('questions/show')->with(['question' => $question]);
     }
     
-    public function create()
+    public function create(Category $category)
     {
-        return view('questions/create');
+        return view('questions/create')->with(['categories' => $category->get()]);;
     }
     
     public function store(Question $question, QuestionRequest $request) 
