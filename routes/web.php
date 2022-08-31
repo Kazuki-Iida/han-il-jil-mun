@@ -21,7 +21,7 @@ Route::get('/questions', 'QuestionController@index');
 Route::get('/', 'QuestionController@index');
 Route::get('/questions/{question}', 'QuestionController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
-
+Route::get('/users/{user}', 'UserController@show');
 //Route::get('/questions/{question}/edit', 'QuestionController@edit');
 
 Auth::routes();
