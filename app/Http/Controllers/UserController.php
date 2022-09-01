@@ -7,10 +7,12 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show()
     {
+        $user = Auth::user();
         return view('users/show')->with(['user' => $user]);  
     }
+
     
     // public function edit(User $user)
     // {
@@ -21,4 +23,5 @@ class UserController extends Controller
     // {
     //     return view('users/show')->with(['user' => $user]);  
     // }
+    
 }
