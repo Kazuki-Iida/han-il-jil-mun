@@ -28,7 +28,10 @@ class AddProfileColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('profile');  //カラムの削除
+            $table->dropColumn('profile_image'); 
+            $table->dropColumn('interest_id'); 
         });
+
     }
 }
