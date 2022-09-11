@@ -15,6 +15,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/questions/create', 'QuestionController@create');
     Route::post('/questions/{question}', 'QuestionController@update');
     Route::delete('/questions/{question}', 'QuestionController@delete');
+    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
+    Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
 });
 
 Route::get('/questions', 'QuestionController@index');
@@ -22,6 +24,7 @@ Route::get('/', 'QuestionController@index');
 Route::get('/questions/{question}', 'QuestionController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/users/{user}', 'UserController@show');
+Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::resource('user', 'UserController');
 //Route::get('/questions/{question}/edit', 'QuestionController@edit');
 

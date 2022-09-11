@@ -23,7 +23,7 @@
                 <h3>興味・趣味</h3>
                 <p>{{ $user->interest_id }}</p>   
                 <h3>プロフィール画像</h3>
-                <img src="{{ asset('storage/profiles/'.$user->profile_image) }}" alt="プロフィール画像">
+                    <img src="{{ $user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">
             </div>
         </div>
         <div class="footer">
