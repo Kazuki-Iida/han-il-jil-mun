@@ -19,6 +19,7 @@
                     <h2 class='title'>
                         <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
                     </h2>
+                    <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">{{ $question->user->name }}</a>
                     <p class='body'>{{ $question->body }}</p>
                 </div>
                 <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
