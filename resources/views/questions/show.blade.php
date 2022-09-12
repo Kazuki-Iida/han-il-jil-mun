@@ -15,7 +15,7 @@
             {{ $question->title }}
         </h1>
         <div class="user">
-            <p><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">{{ $question->user->name }}</p>
+            <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">{{ $question->user->name }}</a>
         </div>
         <div class="content">
             <div class="content__question">
