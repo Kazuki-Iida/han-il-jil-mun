@@ -7,6 +7,7 @@ use App\Http\Requests\QuestionRequest;
 use App\Question;
 use App\Category;
 
+
 class QuestionController extends Controller
 {
     public function index(Question $question)

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // use Illuminate\Http\AnswerRequest;
 use App\Question;
+use App\Answer;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -18,12 +20,13 @@ class AnswerController extends Controller
         return view('answers/show')->with(['answer' => $answer]);
     }
     
-    public function create(Category $category)
+    public function create(Answer $answer)
     {
-        return view('answers/create')->with(['categories' => $category->get()]);;
+        $user = Auth::user();
+        return view('answers/create', ['user' => $user]);
     }
     
-    public function store(Answer $answer, AnswerRequest $request) 
+    public function store(Answer $answer,Request $request) 
     {
         $input = $request['answer'];
         $answer->fill($input)->save();

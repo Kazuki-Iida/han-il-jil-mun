@@ -21,6 +21,9 @@
             </div>
             <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
         </div>
+        <div class="to-answer">
+            <a href="/answers/{{ $question->id }}/create">回答する</a>
+        </div>
         <div class="footer">
             <a href="/">戻る</a>
         </div>

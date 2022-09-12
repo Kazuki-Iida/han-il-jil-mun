@@ -16,6 +16,11 @@ class Answer extends Model
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    public function questions()   
+    {
+        return $this->hasMany('App\Question');  
+    }
+    
     protected $fillable = [
         'body',
         'user_id',
