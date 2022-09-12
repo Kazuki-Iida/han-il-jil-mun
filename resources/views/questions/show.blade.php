@@ -15,7 +15,7 @@
             {{ $question->title }}
         </h1>
         <div class="user">
-            {{ $question->user->name }}
+            <p><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">{{ $question->user->name }}</p>
         </div>
         <div class="content">
             <div class="content__question">
@@ -26,6 +26,16 @@
         </div>
         <div class="to-answer">
             <a href="/answers/{{ $question->id }}/create">回答する</a>
+        </div>
+        <div class="answers">
+            @foreach ($answers as $answer)
+                <div class='answer'>
+                    <h2 class='answerer'>
+                        {{ $answer->user->name }}
+                    </h2>
+                    <p class='body'>{{ $answer->body }}</p>
+                </div>
+            @endforeach
         </div>
         <div class="footer">
             <a href="/">戻る</a>

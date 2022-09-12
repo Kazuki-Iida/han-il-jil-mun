@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    public function index(Answer $answer)
-    {
-        return $answer->get();
-    }
-    
     public function getPaginateByLimit(int $limit_count = 10)
     {
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function getByQuestion(int $limit_count = 10)
+    {
+        return $this->answers()->with('question')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function question()   

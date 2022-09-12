@@ -20,17 +20,19 @@ class AnswerController extends Controller
         return view('answers/show')->with(['answer' => $answer]);
     }
     
-    public function create(Answer $answer)
+    public function create(Answer $answer, Question $question)
     {
         $user = Auth::user();
-        return view('answers/create', ['user' => $user]);
+        return view('answers/create')->with(['question' => $question]);
     }
     
-    public function store(Answer $answer,Request $request) 
+    public function store(Answer $answer, Question $question, Request $request) 
     {
+        $answer->user_id = Auth::id();
+        $answer->question_id = $question->id;
         $input = $request['answer'];
         $answer->fill($input)->save();
-        return redirect('/answers/' . $answer->id);
+        return redirect('/questions/' . $answer->question_id);
     }
 
 }
