@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
 use App\Category;
-
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -27,6 +28,7 @@ class QuestionController extends Controller
     
     public function store(Question $question, QuestionRequest $request) 
     {
+        $question->user_id = Auth::id();
         $input = $request['question'];
         $question->fill($input)->save();
         return redirect('/questions/' . $question->id);

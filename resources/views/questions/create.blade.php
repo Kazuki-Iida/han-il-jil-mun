@@ -20,10 +20,10 @@
                 <textarea name="question[body]" placeholder="質問内容" value="{{ old('question.body') }}"></textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('question.body') }}</p>
             </div>
-            <div class="user_id">
-                <h2>User_id</h2>
-                <input type="number" name="question[user_id]" />
-            </div>
+            <!--<div class="user_id">-->
+            <!--    <h2>User_id</h2>-->
+            <!--    <input type="number" name="question[user_id]" />-->
+            <!--</div>-->
             <div class="category">
                 <h2>Category</h2>
                     @foreach($categories as $category)

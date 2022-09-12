@@ -17,9 +17,14 @@ class Question extends Model
         return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
-    public function answer()
+    public function answers()
     {
-        return $this->belongsTo('App\Answer');
+        return $this->hasMany('App\Answer');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
     
     public function category()

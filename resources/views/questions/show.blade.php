@@ -14,6 +14,9 @@
         <h1 class="title">
             {{ $question->title }}
         </h1>
+        <div class="user">
+            {{ $question->user->name }}
+        </div>
         <div class="content">
             <div class="content__question">
                 <h3>本文</h3>
