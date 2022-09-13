@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     
-        public function interests()
+    public function interests()
     {
         return $this->belongsToMany('App\Interest');
     }
@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile', 'profile_image', 'interest_id',
+        'name', 'email', 'password', 'profile', 'profile_image',
     ];
 
     /**

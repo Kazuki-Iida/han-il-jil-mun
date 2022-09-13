@@ -24,6 +24,12 @@
                     <img src="{{ $user->profile_image }}" id="img" class="img-fuild rounded-circle" width="80" height="80">
                     <input type="file" id="image" name="user[profile_image]" onchange="previewImage(this);">
                 </div>
+                <div class="category">
+                <h2>Interests</h2>
+                    @foreach($interests as $interest)
+                        <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}">{{ $interest->name }}</br>
+                    @endforeach
+                </div>
                 <input type="submit" value="保存">
         </div>
     </body>

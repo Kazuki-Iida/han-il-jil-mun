@@ -21,9 +21,11 @@
                 <h3>プロフィール</h3>
                 <p>{{ $user->profile }}</p>    
                 <h3>興味・趣味</h3>
-                <p>{{ $user->interest_id }}</p>   
+                @foreach($user->interests as $interest)
+                    <p>{{ $interest->name }}</br></p>
+                @endforeach  
                 <h3>プロフィール画像</h3>
-                    <img src="{{ $user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">
+                <img src="{{ $user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">
             </div>
         </div>
         <div class="footer">
