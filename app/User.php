@@ -9,7 +9,11 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    
+        public function interests()
+    {
+        return $this->belongsToMany('App\Interest');
+    }
     /**
      * The attributes that are mass assignable.
      *
