@@ -29,7 +29,7 @@ class UserController extends Controller
     }
 
     
-    public function edit($user) {
+    public function edit() {
         $user = Auth::user();
         $interests = Interest::with('users')->get();
         return view('users.edit', ['user' => $user])->with(['interests' => $interests]);
