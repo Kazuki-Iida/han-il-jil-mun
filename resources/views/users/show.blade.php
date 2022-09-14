@@ -15,6 +15,39 @@
             {{ $user->name }}
         </h1>
         <div class="content">
+            <div class="following-wrapper">
+                <div class="profile-button-wrapper">
+                    @if ($user->id === Auth::user()->id)
+                        <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary">プロフィールを編集する</a>
+                    @else
+                        @if ($is_following)
+                            <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-danger">フォロー解除</button>
+                            </form>
+                        @else
+                            <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary">フォローする</button>
+                            </form>
+                        @endif
+                        @if ($is_followed)
+                            <span>フォローされています</span>
+                        @endif
+                    @endif
+                </div>
+            </div>
+            <div class="following-count">
+                <div class="follow-copunt">
+                    <p>フォロー数</p>
+                    <span>{{ $follow_count }}</span>
+                </div>
+                <div class="followed-count">
+                    <p>フォロワー数</p>
+                    <span>{{ $follower_count }}</span>
+                </div>
+            </div>
             <div class="content__user">
                 <h3>名前</h3>
                 <p>{{ $user->name }}</p>    
