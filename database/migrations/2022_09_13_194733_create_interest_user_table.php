@@ -18,6 +18,11 @@ class CreateInterestUserTable extends Migration
             $table->unsignedInteger('interest_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            
+            $table->unique([
+                'interest_id',
+                'user_id'
+            ]);
         });
     }
 

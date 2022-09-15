@@ -8,6 +8,7 @@ use App\Question;
 use App\Answer;
 use App\Category;
 use App\User;
+use App\Country;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -22,9 +23,9 @@ class QuestionController extends Controller
         return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
     }
     
-    public function create(Category $category)
+    public function create(Category $category, Country $country)
     {
-        return view('questions/create')->with(['categories' => $category->get()]);;
+        return view('questions/create')->with(['categories' => $category->get(), 'countries' => $country->get()]);;
     }
     
     public function store(Question $question, QuestionRequest $request) 

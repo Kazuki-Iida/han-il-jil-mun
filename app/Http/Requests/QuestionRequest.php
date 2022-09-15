@@ -26,6 +26,7 @@ class QuestionRequest extends FormRequest
         return [
             'question.title' => 'required|string|max:50',
             'question.body' => 'required|string|max:1000',
+            'question.country_id' => 'required',
         ];
     }
     
@@ -38,6 +39,7 @@ class QuestionRequest extends FormRequest
             'question.body.required' => '質問内容を入力してください',
             'question.body.string' => '質問内容は文字列で入力してください',
             'question.body.max' => '質問内容は1000文字以内で入力してください',
+            'question.country_id.required' => 'どの国に関する質問か選んでください',
         ];
     }
 }

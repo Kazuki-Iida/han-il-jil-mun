@@ -23,6 +23,7 @@
                 <p>{{ $question->body }}</p>    
             </div>
             <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
+            <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>
         </div>
         <div class="to-answer">
             <a href="/answers/{{ $question->id }}/create">回答する</a>

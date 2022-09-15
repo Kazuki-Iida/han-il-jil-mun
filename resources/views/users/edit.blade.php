@@ -18,7 +18,7 @@
                 </div>
                 <div class='user__profile'>
                     <h2>プロフィール</h2>
-                    <input type='text' name='user[profile]' value="{{ $user->profile }}">
+                    <textarea name='user[profile]' value="{{ $user->profile }}">{{ $user->profile }}</textarea>
                 </div>
                 <div class='user__profile_image'>
                     <img src="{{ $user->profile_image }}" id="img" class="img-fuild rounded-circle" width="80" height="80">

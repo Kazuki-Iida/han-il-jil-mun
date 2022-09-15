@@ -32,10 +32,16 @@ class Question extends Model
         return $this->belongsTo('App\Category');
     }
     
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+    
     protected $fillable = [
         'title',
         'body',
         'user_id',
         'category_id',
+        'country_id',
     ];
 }

@@ -18,17 +18,20 @@
             <div class="body">
                 <h2>Body</h2>
                 <textarea name="question[body]" placeholder="質問内容" value="{{ old('question.body') }}"></textarea>
-                <p class="title__error" style="color:red">{{ $errors->first('question.body') }}</p>
+                <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
             </div>
-            <!--<div class="user_id">-->
-            <!--    <h2>User_id</h2>-->
-            <!--    <input type="number" name="question[user_id]" />-->
-            <!--</div>-->
             <div class="category">
                 <h2>Category</h2>
                     @foreach($categories as $category)
                         <input type="checkbox" name=“question[category_id]” value="{{ $category->id }}">{{ $category->name }}</br>
                     @endforeach
+            </div>
+            <div class="country">
+                <h2>Country</h2>
+                    @foreach($countries as $country)
+                        <input type="radio" name="question[country_id]" value="{{ $country->id }}">{{ $country->name }}</br>
+                    @endforeach
+                    <p class="country_id__error" style="color:red">{{ $errors->first('question.country_id') }}</p>
             </div>
             <input type="submit" value="保存"/>
         </form>

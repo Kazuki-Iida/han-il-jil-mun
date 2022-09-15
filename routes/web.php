@@ -32,6 +32,7 @@ Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::resource('user', 'UserController');
+Route::get('/countries/{country}', 'CountryController@index');
 //Route::get('/questions/{question}/edit', 'QuestionController@edit');
 
 Auth::routes();

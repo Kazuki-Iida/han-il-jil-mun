@@ -32,6 +32,7 @@ class UserController extends Controller
     public function edit() {
         $user = Auth::user();
         $interests = Interest::with('users')->get();
+        
         return view('users.edit', ['user' => $user])->with(['interests' => $interests]);
     }
     
@@ -55,7 +56,7 @@ class UserController extends Controller
             $user_request['profile_image'] = Storage::disk('s3')->url($upload_info);
         }
 
-            // dd($interest_request);
+        $user->interests()->detach('user_id', $user->id);
         $user->fill($user_request)->save();
         $user->interests()->attach($interest_request); 
     
