@@ -56,9 +56,9 @@ class UserController extends Controller
             $user_request['profile_image'] = Storage::disk('s3')->url($upload_info);
         }
 
-        $user->interests()->detach('user_id', $user->id);
         $user->fill($user_request)->save();
-        $user->interests()->attach($interest_request); 
+        $user = User::find(1);
+        $user->interests()->sync($interest_request);
     
         return redirect()->route('users.show', ["user" => $user->id]);
     }
