@@ -38,6 +38,9 @@
                         {{ $answer->user->name }}
                     </h2>
                     <p class='body'>{{ $answer->body }}</p>
+                    @foreach($answer->answer_images as $answer_image)
+                        <img src="{{ $answer_image->image }}" alt="answer images" class="img-fuild" width="150" height="100">
+                    @endforeach  
                 </div>
             @endforeach
         </div>

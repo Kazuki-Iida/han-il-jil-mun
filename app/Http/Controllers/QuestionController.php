@@ -37,13 +37,6 @@ class QuestionController extends Controller
         $input = $request['question'];
         $images = $request->file('images_array');
         
-        // if (isset($question_images)) {
-        //     foreach ($question_images as $question_image) {
-        //         $upload_info = Storage::disk('s3')->putFile('question_image', $question_image, 'public');
-        //         $question_image = Storage::disk('s3')->url($upload_info);
-        //     }
-        // }
-        
         $question->fill($input)->save();
         
         foreach ( $images as $image) {
@@ -52,8 +45,6 @@ class QuestionController extends Controller
             $question_image->question_id = $question->id;
             $question_image->image = Storage::disk('s3')->url($upload_info);
             $question_image->save();
-            // $path = $disk->putFile('question_image', $image, 'public');
-            // $url[] = $disk->url($path);
         }
         return redirect('/questions/' . $question->id);
     }

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Http\AnswerRequest;
+use App\Http\Requests\AnswerRequest;
 use App\Question;
 use App\Answer;
+use App\AnswerImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AnswerController extends Controller
 {
@@ -26,12 +28,21 @@ class AnswerController extends Controller
         return view('answers/create')->with(['question' => $question]);
     }
     
-    public function store(Answer $answer, Question $question, Request $request) 
+    public function store(Answer $answer, Question $question, AnswerRequest $request) 
     {
         $answer->user_id = Auth::id();
         $answer->question_id = $question->id;
         $input = $request['answer'];
+        $images = $request->file('images_array');
         $answer->fill($input)->save();
+        
+        foreach ( $images as $image) {
+            $upload_info = Storage::disk('s3')->putFile('answer_image', $image, 'public');
+            $answer_image = New AnswerImage;
+            $answer_image->answer_id = $answer->id;
+            $answer_image->image = Storage::disk('s3')->url($upload_info);
+            $answer_image->save();
+        }
         return redirect('/questions/' . $answer->question_id);
     }
 

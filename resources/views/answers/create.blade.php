@@ -8,12 +8,16 @@
     </head>
     <body>
         <h1>回答投稿</h1>
-        <form action="/answers/{{ $question->id }}" method="POST">
+        <form action="/answers/{{ $question->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="body">
                 <h2>Body</h2>
                 <textarea name="answer[body]" placeholder="回答内容" value="{{ old('answer.body') }}"></textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('answer.body') }}</p>
+            </div>
+            <div class="images">
+                <h2>Images(4枚まで可)</h2>
+                <input type="file" id="image" name="images_array[]" multiple="multiple">
             </div>
             <input type="submit" value="保存"/>
         </form>

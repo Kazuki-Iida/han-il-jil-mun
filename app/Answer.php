@@ -11,6 +11,11 @@ class Answer extends Model
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    public function answer_images()
+    {
+        return $this->hasMany('App\AnswerImage');
+    }
+    
     public function question()   
     {
         return $this->belongsTo('App\Question');  
