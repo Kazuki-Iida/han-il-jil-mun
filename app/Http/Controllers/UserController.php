@@ -50,14 +50,13 @@ class UserController extends Controller
         $user = User::where('id', $user)->first();
         $user_request = $request["user"];
         $interest_request = $request->interests_array;
-        // dd($request);
-        \Log::debug($request);
 
         if (isset($user_request['profile_image'])) {
             $profile_image = $request->file('profile_image');
             $upload_info = Storage::disk('s3')->putFile('profile_image', $user_request["profile_image"], 'public');
             $user_request['profile_image'] = Storage::disk('s3')->url($upload_info);
         }
+        
 
         $user->fill($user_request)->save();
         $user = User::find(1);

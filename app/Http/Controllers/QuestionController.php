@@ -9,7 +9,10 @@ use App\Answer;
 use App\Category;
 use App\User;
 use App\Country;
+use App\QuestionImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class QuestionController extends Controller
 {
@@ -32,6 +35,25 @@ class QuestionController extends Controller
     {
         $question->user_id = Auth::id();
         $input = $request['question'];
+        
+        $images = $request->file('images_array');
+        foreach ( $images as $image) {
+            $upload_info = Storage::disk('s3')->putFile('question_image', $image, 'public');
+            $question_image = New QuestionImage;
+            $question_image->question_id = $question->id;
+            $question_image->image = Storage::disk('s3')->url($upload_info);
+            $question_image->save();
+            // $path = $disk->putFile('question_image', $image, 'public');
+            // $url[] = $disk->url($path);
+        }
+        
+        // if (isset($question_images)) {
+        //     foreach ($question_images as $question_image) {
+        //         $upload_info = Storage::disk('s3')->putFile('question_image', $question_image, 'public');
+        //         $question_image = Storage::disk('s3')->url($upload_info);
+        //     }
+        // }
+        
         $question->fill($input)->save();
         return redirect('/questions/' . $question->id);
     }

@@ -48,5 +48,6 @@ class Question extends Model
         'user_id',
         'category_id',
         'country_id',
+        'images_array',
     ];
 }

@@ -20,7 +20,10 @@
         <div class="content">
             <div class="content__question">
                 <h3>本文</h3>
-                <p>{{ $question->body }}</p>    
+                <p>{{ $question->body }}</p>
+                @foreach($question->question_images as $image)
+                    <img src="{{ $image }}" alt="question images" class="img-fuild" width="150" height="100">
+                @endforeach  
             </div>
             <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
             <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>

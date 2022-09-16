@@ -21,6 +21,7 @@
                     <textarea name='user[profile]' value="{{ $user->profile }}">{{ $user->profile }}</textarea>
                 </div>
                 <div class='user__profile_image'>
+                    <h2>プロフィール画像</h2>
                     <img src="{{ $user->profile_image }}" id="img" class="img-fuild rounded-circle" width="80" height="80">
                     <input type="file" id="image" name="user[profile_image]" onchange="previewImage(this);">
                 </div>
