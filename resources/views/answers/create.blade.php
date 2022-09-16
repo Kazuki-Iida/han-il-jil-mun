@@ -18,6 +18,7 @@
             <div class="images">
                 <h2>Images(4枚まで可)</h2>
                 <input type="file" id="image" name="images_array[]" multiple="multiple">
+                <p class="images__error" style="color:red">{{ $errors->first('images_array') }}</p>
             </div>
             <input type="submit" value="保存"/>
         </form>
