@@ -27,7 +27,11 @@
                 <div class="category">
                 <h2>Interests</h2>
                     @foreach($interests as $interest)
-                        <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}">{{ $interest->name }}</br>
+                        @if(in_array($interest->id, $checked))
+                            <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}" checked>{{ $interest->name }}</br>
+                        @else
+                            <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}">{{ $interest->name }}</br>
+                        @endif
                     @endforeach
                 </div>
                 <input type="submit" value="保存">
