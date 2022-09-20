@@ -16,10 +16,29 @@ use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
-    public function index(Question $question)
+    public function index(Request $request)
     {
-        return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
+        $questions = Question::paginate(10);
+        $search = $request->input('search');
+        $query = Question::query();
+        if ($search){
+            $spaceConversion = mb_convert_kana($search, 's');
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($wordArraySearched as $value) {
+                $query->where('body', 'like', '%'.$value.'%');
+            }
+            $questions = $query->paginate(10);
+        }
+        return view('questions/index')
+        ->with([
+            'questions' => $questions,
+            'search' => $search,
+            ]);
     }
+        
+        
+        // return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
+    // }
     
     public function show(Question $question, Answer $answer)
     {

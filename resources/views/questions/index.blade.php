@@ -9,10 +9,19 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        @if( Auth::check() )
-            {{Auth::user()->name}}
-        @endif
         <h1>日韓質問</h1>
+        <form action="/questions" method="GET">
+            <input type="search" placeholder="キーワードを入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+            <div>
+                <button type="submit">検索</button>
+                <button>
+                    <a href="/question" class="text-white">
+                        クリア
+                    </a>
+                </button>
+            </div>
+        </form>
+        
         [<a href='/questions/create'>create</a>]
         <div class='questions'>
             @foreach ($questions as $question)
@@ -28,7 +37,7 @@
             @endforeach
         </div>
         <div class='paginate'>
-            {{ $questions->links() }}
+            {{ $questions->appends(request()->input())->links() }}
         </div>
     </body>
 </html>
