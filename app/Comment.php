@@ -5,36 +5,29 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Answer extends Model
+class Comment extends Model
 {
     use SoftDeletes;
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
-
-    
-    public function answer_images()
-    {
-        return $this->hasMany('App\AnswerImage');
+        return $this->orderBy('updated_at', 'ASC')->paginate($limit_count);
     }
     
-    public function question()   
+    public function comment_images()
     {
-        return $this->belongsTo('App\Question');  
+        return $this->hasMany('App\CommentImage');
+    }
+    
+    public function answer()   
+    {
+        return $this->belongsTo('App\Answer');  
     }
     
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
-    }
-    
     
     protected $fillable = [
         'body',

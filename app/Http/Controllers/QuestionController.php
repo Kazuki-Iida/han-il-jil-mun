@@ -10,6 +10,7 @@ use App\Category;
 use App\User;
 use App\Country;
 use App\QuestionImage;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,7 +41,7 @@ class QuestionController extends Controller
         // return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
     // }
     
-    public function show(Question $question, Answer $answer)
+    public function show(Question $question, Answer $answer, Comment $comment)
     {
         return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
     }
@@ -89,6 +90,16 @@ class QuestionController extends Controller
     
     public function delete(Question $question)
     {
+        if(isset($question->answers)){
+            foreach($question->answers as $answer){
+                if(isset($answer->comments)){
+                    foreach($answer->comments as $comment){
+                        $comment->delete();
+                    }
+                }
+                $answer->delete();
+            }
+        }
         $question->delete();
         return redirect('/');
     }

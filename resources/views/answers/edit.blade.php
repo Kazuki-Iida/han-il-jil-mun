@@ -13,7 +13,7 @@
             @method('PATCH')
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="answer[body]" placeholder="回答内容">{{ $answer->body }}</textarea>
+                <textarea name="answer[body]" placeholder="回答内容">{{ old('answer.body', $answer->body) }}</textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('answer.body') }}</p>
             </div>
              @if(isset($answer->answer_images))

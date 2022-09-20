@@ -7,6 +7,7 @@ use App\Http\Requests\AnswerRequest;
 use App\Question;
 use App\Answer;
 use App\AnswerImage;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,7 @@ class AnswerController extends Controller
         $answer->fill($input)->save();
         
         if(isset($images)){
-            foreach ( $images as $image) {
+            foreach ($images as $image) {
                 $upload_info = Storage::disk('s3')->putFile('answer_image', $image, 'public');
                 $answer_image = New AnswerImage;
                 $answer_image->answer_id = $answer->id;
@@ -48,26 +49,15 @@ class AnswerController extends Controller
         return redirect('/questions/' . $answer->question_id);
     }
     
-    public function edit(Answer $answer)
-    {
-        return view('answers.edit', ['answer' => $answer->id])->with(['answer' => $answer, 'question' => $answer->question]);
-    }
-    
-    public function update($answer, AnswerRequest $request) 
-    {
-        $answer = Answer::where('id', $answer)->first();
-        $answer_request = $request['answer'];
-
-        $answer->fill($answer_request)->save();
-        
-        return redirect('questions/' . $answer->question_id);
-    }
-    
     public function delete(Answer $answer)
     {
         $question_id = $answer->question_id;
+        if(isset($answer->comments)){
+            foreach($answer->comments as $comment){
+                $comment->delete();
+            }
+        }
         $answer->delete();
-        return redirect('questions/' . $question_id);
+        return redirect('/questions/' . $question_id);    
     }
-
 }
