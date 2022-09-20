@@ -36,12 +36,14 @@ class AnswerController extends Controller
         $images = $request->file('images_array');
         $answer->fill($input)->save();
         
-        foreach ( $images as $image) {
-            $upload_info = Storage::disk('s3')->putFile('answer_image', $image, 'public');
-            $answer_image = New AnswerImage;
-            $answer_image->answer_id = $answer->id;
-            $answer_image->image = Storage::disk('s3')->url($upload_info);
-            $answer_image->save();
+        if(isset($images)){
+            foreach ( $images as $image) {
+                $upload_info = Storage::disk('s3')->putFile('answer_image', $image, 'public');
+                $answer_image = New AnswerImage;
+                $answer_image->answer_id = $answer->id;
+                $answer_image->image = Storage::disk('s3')->url($upload_info);
+                $answer_image->save();
+            }
         }
         return redirect('/questions/' . $answer->question_id);
     }
@@ -58,7 +60,14 @@ class AnswerController extends Controller
 
         $answer->fill($answer_request)->save();
         
-        return redirect('/answers/' . $answer->id);
+        return redirect('questions/' . $answer->question_id);
+    }
+    
+    public function delete(Answer $answer)
+    {
+        $question_id = $answer->question_id;
+        $answer->delete();
+        return redirect('questions/' . $question_id);
     }
 
 }

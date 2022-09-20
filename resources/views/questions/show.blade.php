@@ -11,6 +11,17 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+        <script type="text/javascript"> 
+            function check(){
+            	if(window.confirm('削除してよろしいですか？')){
+            		return true;
+            	}
+                else{ 
+            		window.alert('キャンセルされました');
+            		return false;
+            	}
+            }
+        </script>
         <h1 class="title">
             {{ $question->title }}
         </h1>
@@ -40,6 +51,11 @@
                 <div class="to-question-edit-page">
                     <a href="/questions/{{ $question->id }}/edit">編集する</a>
                 </div>
+                <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="post" onSubmit="return check()">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">削除する</button> 
+                </form>
             @endif
         @endauth
         <div class="answers">
@@ -58,6 +74,11 @@
                         <div class="to-answer-edit-page">
                             <a href="/answers/{{ $answer->id }}/edit">編集する</a>
                         </div>
+                        <form action="/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post" onSubmit="return check()">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">削除する</button> 
+                        </form>
                     @endif
                 @endauth
             @endforeach

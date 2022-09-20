@@ -26,11 +26,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/answers/{question}', 'AnswerController@store');
     Route::get('answers/{answer}/edit', 'AnswerController@edit')->name('answers.edit');
     Route::patch('/answers/{answer}', 'AnswerController@update');
+    Route::delete('answers/{answer}', 'AnswerController@delete');
 });
 
 Route::get('/questions', 'QuestionController@index');
 Route::get('/', 'QuestionController@index');
-Route::get('/questions/{question}', 'QuestionController@show');
+Route::get('/questions/{question}', 'QuestionController@show')->name('question.show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
