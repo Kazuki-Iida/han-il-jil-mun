@@ -11,9 +11,10 @@
 |
 */
 Route::group(['middleware' => ['auth']], function(){
-    Route::post('/questions', 'QuestionController@store');
     Route::get('/questions/create', 'QuestionController@create');
-    Route::post('/questions/{question}', 'QuestionController@update');
+    Route::post('/questions', 'QuestionController@store');
+    Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
+    Route::patch('/questions/{question}', 'QuestionController@update');
     Route::delete('/questions/{question}', 'QuestionController@delete');
     
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
@@ -23,15 +24,19 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::get('answers/{question}/create', 'AnswerController@create');
     Route::post('/answers/{question}', 'AnswerController@store');
+    Route::get('answers/{answer}/edit', 'AnswerController@edit')->name('answers.edit');
+    Route::patch('/answers/{answer}', 'AnswerController@update');
+    Route::delete('answers/{answer}', 'AnswerController@delete');
 });
 
 Route::get('/questions', 'QuestionController@index');
 Route::get('/', 'QuestionController@index');
-Route::get('/questions/{question}', 'QuestionController@show');
+Route::get('/questions/{question}', 'QuestionController@show')->name('question.show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::resource('user', 'UserController');
+Route::get('/countries/{country}', 'CountryController@index');
 //Route::get('/questions/{question}/edit', 'QuestionController@edit');
 
 Auth::routes();

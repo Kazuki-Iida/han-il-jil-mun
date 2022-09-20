@@ -18,16 +18,21 @@
                 </div>
                 <div class='user__profile'>
                     <h2>プロフィール</h2>
-                    <input type='text' name='user[profile]' value="{{ $user->profile }}">
+                    <textarea name='user[profile]' value="{{ $user->profile }}">{{ $user->profile }}</textarea>
                 </div>
                 <div class='user__profile_image'>
+                    <h2>プロフィール画像</h2>
                     <img src="{{ $user->profile_image }}" id="img" class="img-fuild rounded-circle" width="80" height="80">
                     <input type="file" id="image" name="user[profile_image]" onchange="previewImage(this);">
                 </div>
                 <div class="category">
                 <h2>Interests</h2>
                     @foreach($interests as $interest)
-                        <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}">{{ $interest->name }}</br>
+                        @if(in_array($interest->id, $checked))
+                            <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}" checked>{{ $interest->name }}</br>
+                        @else
+                            <input type="checkbox" name="interests_array[]" value="{{ $interest->id }}">{{ $interest->name }}</br>
+                        @endif
                     @endforeach
                 </div>
                 <input type="submit" value="保存">

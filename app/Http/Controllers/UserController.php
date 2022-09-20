@@ -32,7 +32,11 @@ class UserController extends Controller
     public function edit() {
         $user = Auth::user();
         $interests = Interest::with('users')->get();
-        return view('users.edit', ['user' => $user])->with(['interests' => $interests]);
+        foreach($user->interests as $interest){
+            $checked[] = $interest->id;
+        }
+        
+        return view('users.edit', ['user' => $user])->with(['interests' => $interests, 'checked' => $checked]);
     }
     
     // public function update(User $user)
@@ -46,18 +50,17 @@ class UserController extends Controller
         $user = User::where('id', $user)->first();
         $user_request = $request["user"];
         $interest_request = $request->interests_array;
-        // dd($request);
-        \Log::debug($request);
 
         if (isset($user_request['profile_image'])) {
             $profile_image = $request->file('profile_image');
             $upload_info = Storage::disk('s3')->putFile('profile_image', $user_request["profile_image"], 'public');
             $user_request['profile_image'] = Storage::disk('s3')->url($upload_info);
         }
+        
 
-            // dd($interest_request);
         $user->fill($user_request)->save();
-        $user->interests()->attach($interest_request); 
+        $user = User::find(1);
+        $user->interests()->sync($interest_request);
     
         return redirect()->route('users.show', ["user" => $user->id]);
     }

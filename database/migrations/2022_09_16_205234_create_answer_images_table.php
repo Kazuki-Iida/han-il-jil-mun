@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInterestUserTable extends Migration
+class CreateAnswerImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateInterestUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('interest_user', function (Blueprint $table) {
+        Schema::create('answer_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('interest_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('answer_id');
+            $table->string('image');
             $table->timestamps();
-            
-            $table->unique([
-                'interest_id',
-                'user_id'
-            ]);
         });
     }
 
@@ -33,6 +28,6 @@ class CreateInterestUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interest_user');
+        Schema::dropIfExists('answer_images');
     }
 }
