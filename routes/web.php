@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::get('answers/{question}/create', 'AnswerController@create');
     Route::post('/answers/{question}', 'AnswerController@store');
+    Route::get('answers/{answer}/edit', 'AnswerController@edit')->name('answers.edit');
+    Route::patch('/answers/{answer}', 'AnswerController@update');
 });
 
 Route::get('/questions', 'QuestionController@index');

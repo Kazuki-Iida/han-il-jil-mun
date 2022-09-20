@@ -36,6 +36,7 @@ class QuestionController extends Controller
         $question->user_id = Auth::id();
         $input = $request['question'];
         $images = $request->file('images_array');
+        
         $question->fill($input)->save();
         if(isset($images)){
             foreach ( $images as $image) {

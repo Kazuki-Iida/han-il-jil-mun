@@ -28,7 +28,7 @@
             <div class="category">
                 <h2>Category</h2>
                     @foreach($categories as $category)
-                        <input type="checkbox" name="question[][category_id]" value="{{ $category->id }}">{{ $category->name }}</br>
+                        <input type="checkbox" name="question[category_id]" value="{{ $category->id }}">{{ $category->name }}</br>
                     @endforeach
             </div>
             <div class="country">

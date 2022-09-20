@@ -45,5 +45,20 @@ class AnswerController extends Controller
         }
         return redirect('/questions/' . $answer->question_id);
     }
+    
+    public function edit(Answer $answer)
+    {
+        return view('answers.edit', ['answer' => $answer->id])->with(['answer' => $answer, 'question' => $answer->question]);
+    }
+    
+    public function update($answer, AnswerRequest $request) 
+    {
+        $answer = Answer::where('id', $answer)->first();
+        $answer_request = $request['answer'];
+
+        $answer->fill($answer_request)->save();
+        
+        return redirect('/answers/' . $answer->id);
+    }
 
 }
