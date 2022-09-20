@@ -7,34 +7,38 @@
         <title>日韓質問｜質問を投稿する</title>
     </head>
     <body>
-        <h1>質問投稿</h1>
-        <form action="/questions" method="POST" enctype="multipart/form-data">
+        <h1>質問編集</h1>
+        <form action="/questions/{{ $question->id }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="title">
                 <h2>Title</h2>
-                <input type="text" name="question[title]" placeholder="タイトル" value="{{ old('question.title') }}"/>
+                <input type="text" name="question[title]" placeholder="タイトル" value="{{ $question->title }}"/>
                 <p class="title__error" style="color:red">{{ $errors->first('question.title') }}</p>
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="question[body]" placeholder="質問内容" value="{{ old('question.body') }}"></textarea>
+                <textarea name="question[body]" placeholder="質問内容" value="{{ $question->body }}"></textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
-            </div>
-            <div class="images">
-                <h2>Images(4枚まで可)</h2>
-                <input type="file" id="image" name="images_array[]" multiple="multiple">
-                <p class="images__error" style="color:red">{{ $errors->first('images_array') }}</p>
             </div>
             <div class="category">
                 <h2>Category</h2>
                     @foreach($categories as $category)
-                        <input type="checkbox" name="question[][category_id]" value="{{ $category->id }}">{{ $category->name }}</br>
+                        @if($category->id == $category_checked)
+                            <input type="checkbox" name="question[category_id]" value="{{ $category->id }}" checked>{{ $category->name }}</br>
+                        @else
+                            <input type="checkbox" name="question[category_id]" value="{{ $category->id }}">{{ $category->name }}</br>
+                        @endif
                     @endforeach
             </div>
             <div class="country">
                 <h2>Country</h2>
                     @foreach($countries as $country)
-                        <input type="radio" name="question[country_id]" value="{{ $country->id }}">{{ $country->name }}</br>
+                        @if($country->id == $country_checked)
+                            <input type="radio" name="question[country_id]" value="{{ $country->id }}" checked>{{ $country->name }}</br>
+                        @else
+                            <input type="radio" name="question[country_id]" value="{{ $country->id }}">{{ $country->name }}</br>
+                        @endif
                     @endforeach
                     <p class="country_id__error" style="color:red">{{ $errors->first('question.country_id') }}</p>
             </div>

@@ -11,9 +11,10 @@
 |
 */
 Route::group(['middleware' => ['auth']], function(){
-    Route::post('/questions', 'QuestionController@store');
     Route::get('/questions/create', 'QuestionController@create');
-    Route::post('/questions/{question}', 'QuestionController@update');
+    Route::post('/questions', 'QuestionController@store');
+    Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
+    Route::patch('/questions/{question}', 'QuestionController@update');
     Route::delete('/questions/{question}', 'QuestionController@delete');
     
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');

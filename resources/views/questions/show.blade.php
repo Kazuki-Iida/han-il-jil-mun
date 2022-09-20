@@ -28,9 +28,16 @@
             <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
             <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>
         </div>
-        <div class="to-answer">
+        <div class="to-answer-page">
             <a href="/answers/{{ $question->id }}/create">回答する</a>
         </div>
+        @auth
+            @if($question->user->id == Auth::id())
+                <div class="to-edit-page">
+                    <a href="/questions/{{ $question->id }}/edit">編集する</a>
+                </div>
+            @endif
+        @endauth
         <div class="answers">
             @foreach ($answers as $answer)
                 <div class='answer'>

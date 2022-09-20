@@ -9,7 +9,7 @@ class Question extends Model
 {
     public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function getByQuestion(int $limit_count = 10)

@@ -13,6 +13,7 @@
             {{Auth::user()->name}}
         @endif
         <h1>日韓質問</h1>
+        [<a href='/questions/create'>create</a>]
         <div class='questions'>
             @foreach ($questions as $question)
                 <div class='question'>
@@ -26,7 +27,9 @@
                 <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>
             @endforeach
         </div>
-        [<a href='/questions/create'>create</a>]
+        <div class='paginate'>
+            {{ $questions->links() }}
+        </div>
     </body>
 </html>
 @endsection
