@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>回答編集</h1>
-        <form action="/answers/{{ $question->id }}" method="POST">
+        <form action="/answers/{{ $answer->id }}" method="POST">
             @csrf
             @method('PATCH')
             <div class="body">

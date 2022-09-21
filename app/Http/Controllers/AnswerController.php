@@ -49,6 +49,22 @@ class AnswerController extends Controller
         return redirect('/questions/' . $answer->question_id);
     }
     
+    public function edit($answer)
+    {
+        $answer = Answer::where('id', $answer)->first();
+        return view('answers.edit')->with(['answer' => $answer]);
+    }
+    
+    public function update($answer, AnswerRequest $request) 
+    {
+        $answer = Answer::where('id', $answer)->first();
+        $answer_request = $request['answer'];
+
+        $answer->fill($answer_request)->save();
+        
+        return redirect(route('questions.show' , ['question' => $answer->question->id]));
+    }
+    
     public function delete(Answer $answer)
     {
         $question_id = $answer->question_id;

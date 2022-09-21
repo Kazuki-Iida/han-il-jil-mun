@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>コメント編集</h1>
-        <form action="/comments/{{ $answer->id }}" method="POST">
+        <form action="/comments/{{ $comment->id }}" method="POST">
             @csrf
             @method('PATCH')
             <div class="body">

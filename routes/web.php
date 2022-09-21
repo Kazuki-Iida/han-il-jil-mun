@@ -30,14 +30,14 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::get('comments/{answer}/create', 'CommentController@create');
     Route::post('/comments/{answer}', 'CommentController@store');
-    Route::get('comments/commentr}/edit', 'CommentController@edit')->name('comments.edit');
+    Route::get('comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
     Route::patch('/comments/{comment}', 'CommentController@update');
     Route::delete('comments/{comment}', 'CommentController@delete');
 });
 
 Route::get('/questions', 'QuestionController@index');
 Route::get('/', 'QuestionController@index');
-Route::get('/questions/{question}', 'QuestionController@show')->name('question.show');
+Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('users/{user}', 'UserController@show')->name('users.show');

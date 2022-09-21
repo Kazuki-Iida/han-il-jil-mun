@@ -43,6 +43,22 @@ class CommentController extends Controller
         return redirect('/questions/' . $comment->answer->question_id);
     }
     
+    public function edit($comment)
+    {
+        $comment = Comment::where('id', $comment)->first();
+        return view('comments.edit')->with(['comment' => $comment]);
+    }
+    
+    public function update($comment, CommentRequest $request) 
+    {
+        $comment = Comment::where('id', $comment)->first();
+        $comment_request = $request['comment'];
+
+        $comment->fill($comment_request)->save();
+        
+        return redirect(route('questions.show' , ['question' => $comment->answer->question->id]));
+    }
+    
     public function delete(Comment $comment)
     {
         $question_id = $comment->answer->question_id;
