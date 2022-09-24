@@ -81,6 +81,32 @@
                         </form>
                     @endif
                 @endauth
+                <div class="to-comment-page">
+                    <a href="/comments/{{ $answer->id }}/create">コメントする</a>
+                </div>
+                @foreach ($answer->comments as $comment)
+                    <div class='comment'>
+                        <h2 class='commenter'>
+                            {{ $comment->user->name }}
+                        </h2>
+                        <p class='body'>{{ $comment->body }}</p>
+                        @foreach($comment->comment_images as $comment_image)
+                            <img src="{{ $comment_image->image }}" alt="comment images" class="img-fuild" width="150" height="100">
+                        @endforeach  
+                    </div>
+                    @auth
+                        @if($comment->user->id == Auth::id())
+                            <div class="to-comment-edit-page">
+                                <a href="/comments/{{ $comment->id }}/edit">編集する</a>
+                            </div>
+                            <form action="/comments/{{ $comment->id }}" id="form_{{ $comment->id }}" method="post" onSubmit="return check()">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">削除する</button> 
+                            </form>
+                        @endif
+                    @endauth
+                @endforeach
             @endforeach
         </div>
         <div class="footer">

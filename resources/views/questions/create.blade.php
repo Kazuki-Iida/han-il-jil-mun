@@ -17,7 +17,7 @@
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="question[body]" placeholder="質問内容" value="{{ old('question.body') }}"></textarea>
+                <textarea name="question[body]" placeholder="質問内容">{{ old('question.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('question.body') }}</p>
             </div>
             <div class="images">

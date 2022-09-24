@@ -15,7 +15,7 @@
             <div>
                 <button type="submit">検索</button>
                 <button>
-                    <a href="/question" class="text-white">
+                    <a href="/" class="text-white">
                         クリア
                     </a>
                 </button>

@@ -4,16 +4,16 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>日韓質問｜回答を投稿する</title>
+        <title>日韓質問｜コメントする</title>
     </head>
     <body>
-        <h1>回答投稿</h1>
-        <form action="/answers/{{ $question->id }}" method="POST" enctype="multipart/form-data">
+        <h1>コメント</h1>
+        <form action="/comments/{{ $answer->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="answer[body]" placeholder="回答内容">{{ old('answer.body') }}</textarea>
-                <p class="title__error" style="color:red">{{ $errors->first('answer.body') }}</p>
+                <textarea name="comment[body]" placeholder="コメント">{{ old('comment.body') }}</textarea>
+                <p class="title__error" style="color:red">{{ $errors->first('comment.body') }}</p>
             </div>
             <div class="images">
                 <h2>Images(4枚まで可)</h2>
