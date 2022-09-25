@@ -10973,6 +10973,42 @@ nav {
   padding-top: 10px;
 }
 
+.btn-outline-success {
+  color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-outline-success:focus,
+.btn-outline-success.focus {
+  box-shadow: 0 0 0 0.2rem rgba(170, 76, 211, 0.5);
+}
+
+.btn-outline-success.disabled,
+.btn-outline-success:disabled {
+  color: #aa4cd3;
+  background-color: transparent;
+}
+
+.btn-outline-success:not(:disabled):not(.disabled):active,
+.btn-outline-success:not(:disabled):not(.disabled).active,
+.show > .btn-outline-success.dropdown-toggle {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-outline-success:not(:disabled):not(.disabled):active:focus,
+.btn-outline-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(170, 76, 211, 0.5);
+}
+
 .body-inner-of-index .index-paginate .pagination {
   margin: 15px auto;
   text-align: center;

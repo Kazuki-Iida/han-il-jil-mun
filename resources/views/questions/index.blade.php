@@ -12,13 +12,6 @@
         <div class="body-inner-of-index container">
             <div class="questions-index row">
                 <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto">
-                    <form action="/questions" method="GET">
-                        <div class="input-group">
-                            <input type="search" placeholder="キーワードを入力" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
-                            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>検索</button>
-                            <button href="/" class="btn btn-outline-secondary">クリア</button>
-                        </div>
-                    </form>
                     [<a href='/questions/create'>create</a>]
                     <div class='questions'>
                         @foreach ($questions as $question)
@@ -44,7 +37,6 @@
                     </div>
                 </div>
                 <div class="side-column bg-white col-sm-11 col-md-4 mx-auto">
-                    <p>あああああああああ</p>
                 </div>
             </div>
         </div>
