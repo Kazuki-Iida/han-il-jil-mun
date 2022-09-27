@@ -94,8 +94,35 @@ class User extends Authenticatable
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
     
-    // public function answer()
-    // {
-    //     return $this->belongsTo('App\Answer');
-    // }
+    //多対多のリレーションを書く
+    public function question_nices()
+    {
+        return $this->belongsToMany('App\QuestionNice','nices','user_id','question_id')->withTimestamps();
+    }
+
+    //この投稿に対して既にniceしたかどうかを判別する
+    public function isNice($questiontId)
+    {
+      return $this->nices()->where('question_id',$questiontId)->exists();
+    }
+
+    //isNiceを使って、既にniceしたか確認したあと、いいねする（重複させない）
+    public function nice($questionId)
+    {
+      if($this->isNice($questionId)){
+        //もし既に「いいね」していたら何もしない
+      } else {
+        $this->nices()->attach($questionId);
+      }
+    }
+
+    //isLikeを使って、既にniceしたか確認して、もししていたら解除する
+    public function unnice($questionId)
+    {
+      if($this->isLike($questionId)){
+        //もし既に「いいね」していたら消す
+        $this->nices()->detach($questionId);
+      } else {
+      }
+    }
 }

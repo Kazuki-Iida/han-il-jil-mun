@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
     Route::patch('/comments/{comment}', 'CommentController@update');
     Route::delete('comments/{comment}', 'CommentController@delete');
+    
+    Route::post('/nice/{postId}','QuestionNiceController@store');
+    Route::post('/unnice/{postId}','QuestionNiceController@destroy');
 });
 
 Route::get('/questions', 'QuestionController@index');
