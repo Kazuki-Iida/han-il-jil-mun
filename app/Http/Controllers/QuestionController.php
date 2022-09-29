@@ -47,7 +47,8 @@ class QuestionController extends Controller
     
     public function show(Question $question, Answer $answer, Comment $comment)
     {
-        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
+        $i = 1;
+        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion(), 'i' => $i]);
     }
     
     public function create(Category $category, Country $country)

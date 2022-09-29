@@ -60,14 +60,22 @@
         @endauth
         <div class="answers">
             @foreach ($answers as $answer)
-                <div class='answer'>
+                <div class='answer' id="{{ $i }}">
                     <h2 class='answerer'>
                         {{ $answer->user->name }}
                     </h2>
                     <p class='body'>{{ $answer->body }}</p>
                     @foreach($answer->answer_images as $answer_image)
                         <img src="{{ $answer_image->image }}" alt="answer images" class="img-fuild" width="150" height="100">
-                    @endforeach  
+                    @endforeach
+                    <div class="answer-good">
+                        @if($answer->is_liked_by_auth_user())
+                            <a href="{{ route('answer.unlike', ['answer_id' => $answer->id, 'id' => $i]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
+                        @else
+                            <a href="{{ route('answer.like', ['answer_id' => $answer->id, 'id' => $i]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
+                        @endif
+                    </div>
+                    <p style="display:none">{{ $i++ }}</p>
                 </div>
                 @auth
                     @if($answer->user->id == Auth::id())
