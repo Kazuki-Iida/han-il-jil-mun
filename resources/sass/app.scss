@@ -14,7 +14,7 @@ a {
 }
 
 a:hover {
-  color: #000;
+  color: #aa4cd3;
   text-decoration: none;
 }
 
@@ -78,18 +78,27 @@ nav {
 }
 
 .body-inner-of-index {
-  
+  .question{
     .card-body {
       font-size: 1.0rem;
     }
+    .card-link {
+      text-decoration:underline;
+    }
+    .card-text:hover {
+      color:#000 !important;
+    }
+    .user-name {
+      font-size: 1.2rem;
+    }
+  }
+}
   
     .index-paginate {
         .pagination {
             margin:15px auto;
             text-align: center;
         }
-    }
-    
 }
 
 .header-end {
