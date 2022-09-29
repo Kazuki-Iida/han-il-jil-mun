@@ -11,6 +11,7 @@ use App\User;
 use App\Country;
 use App\QuestionImage;
 use App\Comment;
+use App\QuestionLike;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,21 +20,24 @@ class QuestionController extends Controller
 {
     public function index(Request $request)
     {
-        $questions = Question::paginate(10);
+        $questions = Question::orderBy('created_at', 'desc')->paginate(10);
         $search = $request->input('search');
         $query = Question::query();
+        $i = 1;
+        
         if ($search){
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($wordArraySearched as $value) {
                 $query->where('body', 'like', '%'.$value.'%');
             }
-            $questions = $query->paginate(10);
+            $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }
         return view('questions/index')
         ->with([
             'questions' => $questions,
             'search' => $search,
+            'i' => $i
             ]);
     }
         
@@ -103,4 +107,39 @@ class QuestionController extends Controller
         $question->delete();
         return redirect('/');
     }
+    
+    /**
+    * 引数のIDに紐づくリプライにLIKEする
+    *
+    * @param $id リプライID
+    * @return \Illuminate\Http\RedirectResponse
+    */
+    public function like($question_id,$id)
+    {
+        QuestionLike::create([
+            'question_id' => $question_id,
+            'user_id' => Auth::id(),
+        ]);
+        
+        session()->flash('success', 'You Liked the Reply.');
+        
+        return redirect()->to('/#' . $id);
+    }
+    
+    /**
+    * 引数のIDに紐づくリプライにUNLIKEする
+    *
+    * @param $id リプライID
+    * @return \Illuminate\Http\RedirectResponse
+    */
+    public function unlike($question_id,$id)
+    {
+        $like = QuestionLike::where('question_id', $question_id)->where('user_id', Auth::id())->first();
+        $like->delete();
+        
+        session()->flash('success', 'You Unliked the Reply.');
+        
+        return redirect()->to('/#' . $id);
+    }
+
 }

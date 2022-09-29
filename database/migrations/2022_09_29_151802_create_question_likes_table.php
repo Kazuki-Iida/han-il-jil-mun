@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionNicesTable extends Migration
+class CreateQuestionLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateQuestionNicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_nices', function (Blueprint $table) {
+        Schema::create('question_likes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('question_id');
-            $table->bigInteger('user_id');
+            $table->integer('question_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateQuestionNicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_nices');
+        Schema::dropIfExists('question_likes');
     }
 }

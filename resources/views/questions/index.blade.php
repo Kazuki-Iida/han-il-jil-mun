@@ -14,24 +14,34 @@
                 <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto">
                     [<a href='/questions/create'>create</a>]
                     <div class='questions'>
-                        @foreach ($questions as $question)
-                            <div class="question card">
-                                <div class='question-inner card-body'>
-                                    <div class="question-header row">
-                                        <h2 class="title card-titile col-7">
-                                            <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
-                                        </h2>
-                                        <div class="question-user col-5">
-                                            <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="40" height="40">{{ $question->user->name }}</a>
+                        <div class="card-wrapper mb-4 mr-2 ml-2">
+                            @foreach ($questions as $question)
+                                <div class="question card mt-3 border-success" id="{{ $i }}">
+                                    <div class='question-inner card-body'>
+                                        <div class="question-header row">
+                                            <h2 class="title card-titile col-7">
+                                                <a href="/questions/{{ $question->id }}">{{ Str::limit( $question->title, 40) }}</a>
+                                            </h2>
+                                            <div class="question-user col-5">
+                                                <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="40" height="40">{{ Str::limit( $question->user->name,40) }}</a>
+                                            </div>
                                         </div>
+                                        <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
+                                        <div>
+                                            @if($question->is_liked_by_auth_user())
+                                                <a href="{{ route('question.unlike', ['question_id' => $question->id, 'id' => $i]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $question->likes->count() }}</span></a>
+                                            @else
+                                                <a href="{{ route('question.like', ['question_id' => $question->id, 'id' => $i]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $question->likes->count() }}</span></a>
+                                            @endif
+                                            {{ $question->likes->count() }}
+                                        </div>
+                                        <p>カテゴリー：<a class="card-link" href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a></p>
+                                        <p>about:<a class="card-link" href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a></p>
                                     </div>
-                                    <p class='body card-text'>{{ $question->body }}</p>
-                                    <button onclick="nice({{$question->id}})">いいね</button>
-                                    <p>カテゴリー：<a class="card-link" href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a></p>
-                                    <p>about:<a class="card-link" href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a></p>
                                 </div>
-                            </div>
-                        @endforeach
+                                <p style="display:none">{{ $i++ }}</p>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="paginate index-paginate">
                         {{ $questions->appends(request()->input())->links() }}
@@ -41,23 +51,6 @@
                 </div>
             </div>
         </div>
-        <script type="application/javascript"> 
-            function nice(questionId) {
-                  $.ajax({
-                    headers: {
-                      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                    },
-                    url: `/nice/${questionId}`,
-                    type: "POST",
-                  })
-                    .done(function (data, status, xhr) {
-                      console.log(data);
-                    })
-                    .fail(function (xhr, status, error) {
-                      console.log();
-                    });
-                }
-        </script>
     </body>
 </html>
 @endsection
