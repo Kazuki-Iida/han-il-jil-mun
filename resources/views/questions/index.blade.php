@@ -15,12 +15,34 @@
                     <div class="dropdown"> 
                         <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $order_name }}
+                            @if($order == 'newdesc')
+                                新着順
+                            @else
+                                Goodの多いじゅん
+                            @endif
                         </button>
                         <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                             <form action="/questions" method="GET">
+                                <input type="hidden" name ="about" value="{{ $about }}">
                                 <button class="dropdown-item" name ="order" type="submit" value="gooddesc">Goodの多い順</a>
                                 <button class="dropdown-item" name ="order" type="submit" value="newdesc">新着順</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown"> 
+                        <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if($about == '1')
+                                日本について
+                            @else
+                                韓国について
+                            @endif
+                        </button>
+                        <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
+                            <form action="/questions" method="GET">
+                                <input type="hidden" name="order" value="{{ $order }}">
+                                <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
+                                <button class="dropdown-item" name ="about" type="submit" value=2>韓国について質問</a>
                             </form>
                         </div>
                     </div>
@@ -30,12 +52,12 @@
                             @foreach ($questions as $question)
                                 <div class="question row mt-0 border-success border-bottom" id="{{ $i }}">
                                     <div class="index-user-image col-2 pt-4 pl-3 pr-0">
-                                        <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="50" height="50"></a>
+                                        <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
                                     </div>
                                     <div class='question-inner card-body col-10 pl-0'>
                                         <div class="question-card-header row">
                                             <div class="question-user col-6">
-                                                <a class="user-name" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
+                                                <a class="user-name pl-2 pl-sm-0" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
                                             </div>
                                             <div class="created_at col-6 float-right">
                                                 <p>{{ $question->created_at->format('Y/m/d-G:m:s') }}</p>

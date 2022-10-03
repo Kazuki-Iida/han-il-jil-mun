@@ -22,8 +22,13 @@ class QuestionController extends Controller
     {
         $search = $request->input('search');
         $order = $request->input('order');
-        $query = Question::query();
-        
+        $about = $request->input('about');
+        // $query = Question::query();
+        if(!$about){
+            $about = 1;
+        }
+        $query = Question::query()->where('country_id', $about);
+                
         if($search){
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
@@ -32,18 +37,14 @@ class QuestionController extends Controller
             }
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }elseif($order == 'newdesc'){
-            $questions = Question::orderBy('created_at', 'desc')->paginate(10);
+            $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }elseif($order == 'gooddesc'){
-            $questions = Question::withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+            $questions = $query->withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->paginate(10);
         }else{
-            $questions = Question::orderBy('created_at', 'desc')->paginate(10);
+            $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }
+        
         $i = 1;
-        if($order == 'gooddesc'){
-            $order_name = 'Goodの多い順';
-        }else{
-            $order_name = '新着順';
-        }
         
         // if ($search){
         //     $spaceConversion = mb_convert_kana($search, 's');
@@ -58,7 +59,8 @@ class QuestionController extends Controller
             'questions' => $questions,
             'search' => $search,
             'i' => $i,
-            'order_name' => $order_name
+            'order' => $order,
+            'about' => $about
             ]);
     }
         
@@ -145,7 +147,7 @@ class QuestionController extends Controller
         
         session()->flash('success', 'You Liked the Reply.');
         
-        return redirect()->to('/#' . $id);
+        return redirect()->back();
     }
     
     /**
@@ -161,7 +163,7 @@ class QuestionController extends Controller
         
         session()->flash('success', 'You Unliked the Reply.');
         
-        return redirect()->to('/#' . $id);
+        return redirect()->back();
     }
 
 }
