@@ -20,24 +20,45 @@ class QuestionController extends Controller
 {
     public function index(Request $request)
     {
-        $questions = Question::orderBy('created_at', 'desc')->paginate(10);
         $search = $request->input('search');
+        $order = $request->input('order');
         $query = Question::query();
-        $i = 1;
         
-        if ($search){
+        if($search){
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($wordArraySearched as $value) {
                 $query->where('body', 'like', '%'.$value.'%');
             }
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
+        }elseif($order == 'newdesc'){
+            $questions = Question::orderBy('created_at', 'desc')->paginate(10);
+        }elseif($order == 'gooddesc'){
+            $questions = Question::withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+        }else{
+            $questions = Question::orderBy('created_at', 'desc')->paginate(10);
         }
+        $i = 1;
+        if($order == 'gooddesc'){
+            $order_name = 'Goodの多い順';
+        }else{
+            $order_name = '新着順';
+        }
+        
+        // if ($search){
+        //     $spaceConversion = mb_convert_kana($search, 's');
+        //     $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+        //     foreach($wordArraySearched as $value) {
+        //         $query->where('body', 'like', '%'.$value.'%');
+        //     }
+        //     $questions = $query->orderBy('created_at', 'desc')->paginate(10);
+        // }
         return view('questions/index')
         ->with([
             'questions' => $questions,
             'search' => $search,
-            'i' => $i
+            'i' => $i,
+            'order_name' => $order_name
             ]);
     }
         

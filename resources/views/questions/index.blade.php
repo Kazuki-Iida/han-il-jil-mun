@@ -11,7 +11,19 @@
     <body>
         <div class="body-inner-of-index container">
             <div class="questions-index row">
-                <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto">
+                <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto rounded">
+                    <div class="dropdown"> 
+                        <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ $order_name }}
+                        </button>
+                        <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
+                            <form action="/questions" method="GET">
+                                <button class="dropdown-item" name ="order" type="submit" value="gooddesc">Goodの多い順</a>
+                                <button class="dropdown-item" name ="order" type="submit" value="newdesc">新着順</a>
+                            </form>
+                        </div>
+                    </div>
                     [<a href='/questions/create'>create</a>]
                     <div class='questions'>
                         <div class="card-wrapper mb-4 mr-2 ml-2 border-top border-success">
@@ -21,8 +33,13 @@
                                         <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="50" height="50"></a>
                                     </div>
                                     <div class='question-inner card-body col-10 pl-0'>
-                                        <div class="question-user">
-                                            <a class="user-name" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
+                                        <div class="question-card-header row">
+                                            <div class="question-user col-6">
+                                                <a class="user-name" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
+                                            </div>
+                                            <div class="created_at col-6 float-right">
+                                                <p>{{ $question->created_at->format('Y/m/d-G:m:s') }}</p>
+                                            </div>
                                         </div>
                                         <div class="question-header">
                                             <h2 class="title card-titile">
@@ -52,7 +69,7 @@
                         {{ $questions->appends(request()->input())->links() }}
                     </div>
                 </div>
-                <div class="side-column bg-white col-sm-11 col-md-4 mx-auto">
+                <div class="side-column bg-white col-sm-11 col-md-4 mx-auto rounded">
                 </div>
             </div>
         </div>
