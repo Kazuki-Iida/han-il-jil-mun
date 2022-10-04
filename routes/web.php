@@ -33,6 +33,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
     Route::patch('/comments/{comment}', 'CommentController@update');
     Route::delete('comments/{comment}', 'CommentController@delete');
+    
+    
+    Route::get('question/like/{question_id}/{id}', 'QuestionController@like')->name('question.like');
+    Route::get('question/unlike/{question_id}{id}', 'QuestionController@unlike')->name('question.unlike');
+    
+    Route::get('answer/like/{answer_id}/{id}', 'AnswerController@like')->name('answer.like');
+    Route::get('answer/unlike/{answer_id}{id}', 'AnswerController@unlike')->name('answer.unlike');
 });
 
 Route::get('/questions', 'QuestionController@index');

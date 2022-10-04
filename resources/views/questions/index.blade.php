@@ -11,32 +11,87 @@
     <body>
         <div class="body-inner-of-index container">
             <div class="questions-index row">
-                <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto">
+                <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto rounded">
+                    <div class="dropdown"> 
+                        <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if($order == 'newdesc')
+                                新着順
+                            @else
+                                Goodの多いじゅん
+                            @endif
+                        </button>
+                        <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
+                            <form action="/questions" method="GET">
+                                <input type="hidden" name ="about" value="{{ $about }}">
+                                <button class="dropdown-item" name ="order" type="submit" value="gooddesc">Goodの多い順</a>
+                                <button class="dropdown-item" name ="order" type="submit" value="newdesc">新着順</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown"> 
+                        <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if($about == '1')
+                                日本について
+                            @else
+                                韓国について
+                            @endif
+                        </button>
+                        <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
+                            <form action="/questions" method="GET">
+                                <input type="hidden" name="order" value="{{ $order }}">
+                                <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
+                                <button class="dropdown-item" name ="about" type="submit" value=2>韓国について質問</a>
+                            </form>
+                        </div>
+                    </div>
                     [<a href='/questions/create'>create</a>]
                     <div class='questions'>
-                        @foreach ($questions as $question)
-                            <div class="question card">
-                                <div class='question-inner card-body'>
-                                    <div class="question-header row">
-                                        <h2 class="title card-titile col-7">
-                                            <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
-                                        </h2>
-                                        <div class="question-user col-5">
-                                            <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="40" height="40">{{ $question->user->name }}</a>
+                        <div class="card-wrapper mb-4 mr-2 ml-2 border-top border-success">
+                            @foreach ($questions as $question)
+                                <div class="question row mt-0 border-success border-bottom" id="{{ $i }}">
+                                    <div class="index-user-image col-2 pt-4 pl-3 pr-0">
+                                        <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
+                                    </div>
+                                    <div class='question-inner card-body col-10 pl-0'>
+                                        <div class="question-card-header row">
+                                            <div class="question-user col-6">
+                                                <a class="user-name pl-2 pl-sm-0" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
+                                            </div>
+                                            <div class="created_at col-6 float-right">
+                                                <p>{{ $question->created_at->format('Y/m/d-G:m:s') }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="question-header">
+                                            <h2 class="title card-titile">
+                                                <a class="card-titile" href="/questions/{{ $question->id }}">{{ Str::limit( $question->title, 40) }}</a>
+                                            </h2>
+                                        </div>
+                                        <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                @if($question->is_liked_by_auth_user())
+                                                    <a href="{{ route('question.unlike', ['question_id' => $question->id, 'id' => $i]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $question->likes->count() }}</span></a>
+                                                @else
+                                                    <a href="{{ route('question.like', ['question_id' => $question->id, 'id' => $i]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $question->likes->count() }}</span></a>
+                                                @endif
+                                            </div>
+                                            <p class="col-3"><a class="card-link" href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a></p>
+                                            <p class="col-3"><a class="card-link" href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a></p>
+                                            <div class="answers-count col-3"><p>回答数：{{ $question->answers->count() }}</p></div>
                                         </div>
                                     </div>
-                                    <p class='body card-text'>{{ $question->body }}</p>
-                                    <p>カテゴリー：<a class="card-link" href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a></p>
-                                    <p>about:<a class="card-link" href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a></p>
                                 </div>
-                            </div>
-                        @endforeach
+                                <p style="display:none">{{ $i++ }}</p>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="paginate index-paginate">
                         {{ $questions->appends(request()->input())->links() }}
                     </div>
                 </div>
-                <div class="side-column bg-white col-sm-11 col-md-4 mx-auto">
+                <div class="side-column bg-white col-sm-11 col-md-4 mx-auto rounded">
                 </div>
             </div>
         </div>
