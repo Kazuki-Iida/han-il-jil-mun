@@ -9,6 +9,7 @@ use App\Answer;
 use App\AnswerImage;
 use App\Comment;
 use App\AnswerLike;
+use App\AnswerReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -84,16 +85,16 @@ class AnswerController extends Controller
     * @param $id リプライID
     * @return \Illuminate\Http\RedirectResponse
     */
-    public function like($answer_id,$id)
+    public function like($answer_id)
     {
         AnswerLike::create([
             'answer_id' => $answer_id,
             'user_id' => Auth::id(),
         ]);
         $answer = Answer::where('id', $answer_id)->first();
-        session()->flash('success', 'You Liked the Reply.');
+        session()->flash('success', 'You Liked the Answer.');
         
-        return redirect()->to('/questions/' . $answer->question->id . '#' . $id);
+        return redirect()->back();
     }
     
     /**
@@ -102,14 +103,36 @@ class AnswerController extends Controller
     * @param $id リプライID
     * @return \Illuminate\Http\RedirectResponse
     */
-    public function unlike($answer_id,$id)
+    public function unlike($answer_id)
     {
         $like = AnswerLike::where('answer_id', $answer_id)->where('user_id', Auth::id())->first();
         $like->delete();
         
         $answer = Answer::where('id', $answer_id)->first();       
-        session()->flash('success', 'You Unliked the Reply.');
+        session()->flash('success', 'You Unliked the Answer.');
         
-        return redirect()->to('/questions/' . $answer->question->id . '#' . $id);
+        return redirect()->back();
+    }
+    
+    public function report($answer_id)
+    {
+        AnswerReport::create([
+            'answer_id' => $answer_id,
+            'user_id' => Auth::id(),
+        ]);
+        
+        session()->flash('success', 'You reported the Answer.');
+        
+        return redirect()->back();
+    }
+    
+    public function unreport($answer_id)
+    {
+        $report = AnswerReport::where('answer_id', $answer_id)->where('user_id', Auth::id())->first();
+        $report->delete();
+        
+        session()->flash('success', 'You Unreported the Answer.');
+        
+        return redirect()->back();
     }
 }

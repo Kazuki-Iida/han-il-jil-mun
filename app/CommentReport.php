@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionLike extends Model
+class CommentReport extends Model
 {
-    protected $fillable = ['question_id','user_id'];
+    protected $fillable = ['comment_id','user_id'];
     
-    public function question()
+    public function comment()
     {
-      return $this->belongsTo(Question::class);
+      return $this->belongsTo(Comment::class);
     }
     
     public function user()

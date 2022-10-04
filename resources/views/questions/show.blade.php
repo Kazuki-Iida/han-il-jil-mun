@@ -42,6 +42,13 @@
             <div class="coutry-show">
                 <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>
             </div>
+            <div class="report">
+                @if($question->is_reported_by_auth_user())
+                    <a href="{{ route('question.unreport', ['question_id' => $question->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $question->reports->count() }}</span></a>
+                @else
+                    <a href="{{ route('question.report', ['question_id' => $question->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $question->reports->count() }}</span></a>
+                @endif
+            </div>
         </div>
         <div class="to-answer-page">
             <a href="/answers/{{ $question->id }}/create">回答する</a>
@@ -60,7 +67,7 @@
         @endauth
         <div class="answers">
             @foreach ($answers as $answer)
-                <div class='answer' id="{{ $i }}">
+                <div class='answer'>
                     <h2 class='answerer'>
                         {{ $answer->user->name }}
                     </h2>
@@ -70,12 +77,18 @@
                     @endforeach
                     <div class="answer-good">
                         @if($answer->is_liked_by_auth_user())
-                            <a href="{{ route('answer.unlike', ['answer_id' => $answer->id, 'id' => $i]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
+                            <a href="{{ route('answer.unlike', ['answer_id' => $answer->id]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
                         @else
-                            <a href="{{ route('answer.like', ['answer_id' => $answer->id, 'id' => $i]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
+                            <a href="{{ route('answer.like', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
                         @endif
                     </div>
-                    <p style="display:none">{{ $i++ }}</p>
+                    <div class="report">
+                        @if($answer->is_reported_by_auth_user())
+                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $answer->reports->count() }}</span></a>
+                        @else
+                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $answer->reports->count() }}</span></a>
+                        @endif
+                    </div>
                 </div>
                 @auth
                     @if($answer->user->id == Auth::id())
@@ -100,7 +113,14 @@
                         <p class='body'>{{ $comment->body }}</p>
                         @foreach($comment->comment_images as $comment_image)
                             <img src="{{ $comment_image->image }}" alt="comment images" class="img-fuild" width="150" height="100">
-                        @endforeach  
+                        @endforeach
+                        <div class="report">
+                            @if($comment->is_reported_by_auth_user())
+                                <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $comment->reports->count() }}</span></a>
+                            @else
+                                <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $comment->reports->count() }}</span></a>
+                            @endif
+                        </div>
                     </div>
                     @auth
                         @if($comment->user->id == Auth::id())
