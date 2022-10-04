@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Question;
 use App\QuestionLike;
+use App\QuestionReport;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
@@ -66,6 +67,27 @@ class Question extends Model
         }
         
         if (in_array($id, $likers)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function reports()
+    {
+        return $this->hasMany(QuestionReport::class, 'question_id');
+    }
+    
+    public function is_reported_by_auth_user()
+    {
+        $id = \Auth::id();
+        
+        $reporters = array();
+        foreach($this->reports as $report) {
+            array_push($reporters, $report->user_id);
+        }
+        
+        if (in_array($id, $reporters)) {
             return true;
         } else {
             return false;

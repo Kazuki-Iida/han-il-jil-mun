@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionLike extends Model
+class AnswerReport extends Model
 {
-    protected $fillable = ['question_id','user_id'];
+    protected $fillable = ['answer_id','user_id'];
     
-    public function question()
+    public function answer()
     {
-      return $this->belongsTo(Question::class);
+      return $this->belongsTo(Answer::class);
     }
     
     public function user()

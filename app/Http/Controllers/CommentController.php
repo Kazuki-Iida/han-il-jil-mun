@@ -8,6 +8,7 @@ use App\Question;
 use App\Answer;
 use App\CommentImage;
 use App\Comment;
+use App\CommentReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,5 +65,27 @@ class CommentController extends Controller
         $question_id = $comment->answer->question_id;
         $comment->delete();
         return redirect('/questions/' . $question_id);    
+    }
+    
+    public function report($comment_id)
+    {
+        CommentReport::create([
+            'comment_id' => $comment_id,
+            'user_id' => Auth::id(),
+        ]);
+        
+        session()->flash('success', 'You reported the Comment.');
+        
+        return redirect()->back();
+    }
+    
+    public function unreport($comment_id)
+    {
+        $report = CommentReport::where('comment_id', $comment_id)->where('user_id', Auth::id())->first();
+        $report->delete();
+        
+        session()->flash('success', 'You Unreported the Comment.');
+        
+        return redirect()->back();
     }
 }

@@ -12,6 +12,7 @@ use App\Country;
 use App\QuestionImage;
 use App\Comment;
 use App\QuestionLike;
+use App\QuestionReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,8 +45,6 @@ class QuestionController extends Controller
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }
         
-        $i = 1;
-        
         // if ($search){
         //     $spaceConversion = mb_convert_kana($search, 's');
         //     $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
@@ -58,7 +57,6 @@ class QuestionController extends Controller
         ->with([
             'questions' => $questions,
             'search' => $search,
-            'i' => $i,
             'order' => $order,
             'about' => $about
             ]);
@@ -70,8 +68,7 @@ class QuestionController extends Controller
     
     public function show(Question $question, Answer $answer, Comment $comment)
     {
-        $i = 1;
-        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion(), 'i' => $i]);
+        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
     }
     
     public function create(Category $category, Country $country)
@@ -138,14 +135,14 @@ class QuestionController extends Controller
     * @param $id リプライID
     * @return \Illuminate\Http\RedirectResponse
     */
-    public function like($question_id,$id)
+    public function like($question_id)
     {
         QuestionLike::create([
             'question_id' => $question_id,
             'user_id' => Auth::id(),
         ]);
         
-        session()->flash('success', 'You Liked the Reply.');
+        session()->flash('success', 'You Liked the Question.');
         
         return redirect()->back();
     }
@@ -156,12 +153,34 @@ class QuestionController extends Controller
     * @param $id リプライID
     * @return \Illuminate\Http\RedirectResponse
     */
-    public function unlike($question_id,$id)
+    public function unlike($question_id)
     {
         $like = QuestionLike::where('question_id', $question_id)->where('user_id', Auth::id())->first();
         $like->delete();
         
-        session()->flash('success', 'You Unliked the Reply.');
+        session()->flash('success', 'You Unliked the Question.');
+        
+        return redirect()->back();
+    }
+    
+    public function report($question_id)
+    {
+        QuestionReport::create([
+            'question_id' => $question_id,
+            'user_id' => Auth::id(),
+        ]);
+        
+        session()->flash('success', 'You reported the Question.');
+        
+        return redirect()->back();
+    }
+    
+    public function unreport($question_id)
+    {
+        $report = QuestionReport::where('question_id', $question_id)->where('user_id', Auth::id())->first();
+        $report->delete();
+        
+        session()->flash('success', 'You Unreported the Question.');
         
         return redirect()->back();
     }

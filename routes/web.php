@@ -35,11 +35,20 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('comments/{comment}', 'CommentController@delete');
     
     
-    Route::get('question/like/{question_id}/{id}', 'QuestionController@like')->name('question.like');
-    Route::get('question/unlike/{question_id}{id}', 'QuestionController@unlike')->name('question.unlike');
+    Route::get('question/like/{question_id}', 'QuestionController@like')->name('question.like');
+    Route::get('question/unlike/{question_id}', 'QuestionController@unlike')->name('question.unlike');
     
-    Route::get('answer/like/{answer_id}/{id}', 'AnswerController@like')->name('answer.like');
-    Route::get('answer/unlike/{answer_id}{id}', 'AnswerController@unlike')->name('answer.unlike');
+    Route::get('answer/like/{answer_id}', 'AnswerController@like')->name('answer.like');
+    Route::get('answer/unlike/{answer_id}', 'AnswerController@unlike')->name('answer.unlike');
+    
+    Route::get('question/report/{question_id}', 'QuestionController@report')->name('question.report');
+    Route::get('question/unreport/{question_id}', 'QuestionController@unreport')->name('question.unreport');
+    
+    Route::get('answer/report/{answer_id}', 'AnswerController@report')->name('answer.report');
+    Route::get('answer/unreport/{answer_id}', 'AnswerController@unreport')->name('answer.unreport');
+    
+    Route::get('comment/report/{comment_id}', 'CommentController@report')->name('comment.report');
+    Route::get('comment/unreport/{comment_id}', 'CommentController@unreport')->name('comment.unreport');
 });
 
 Route::get('/questions', 'QuestionController@index');
