@@ -24,11 +24,21 @@ class QuestionController extends Controller
         $search = $request->input('search');
         $order = $request->input('order');
         $about = $request->input('about');
-        // $query = Question::query();
+        $category = $request->input('category');
+        if(!$order){
+            $order = 'gooddesc';
+        }
         if(!$about){
             $about = 1;
         }
-        $query = Question::query()->where('country_id', $about);
+        if(!$category){
+            $query = Question::query()->where('country_id', $about);
+            $category = 0;
+        }elseif($category == 0){
+            $query = Question::query()->where('country_id', $about)->where('category_id', $category);
+        }else{
+            $query = Question::query()->where('country_id', $about)->where('category_id', $category);
+        }
                 
         if($search){
             $spaceConversion = mb_convert_kana($search, 's');
@@ -58,7 +68,8 @@ class QuestionController extends Controller
             'questions' => $questions,
             'search' => $search,
             'order' => $order,
-            'about' => $about
+            'about' => $about,
+            'category' => $category
             ]);
     }
         

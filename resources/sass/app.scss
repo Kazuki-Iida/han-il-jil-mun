@@ -7,6 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+*:focus {
+  outline: none !important;
+  box-shadow:none !important;
+}
+
 a {
   color: #606060;
   text-decoration: none;
@@ -88,8 +93,16 @@ nav {
     .card-body {
       font-size: 1.0rem;
     }
-    .card-link {
+    .category-link {
+      background-color: transparent;
+      color: #606060;
+      font-size: 1rem !important;
       text-decoration:underline;
+      
+      
+      &:hover{
+        color: #aa4cd3;
+      }
     }
     .card-text:hover {
       color:#000 !important;
@@ -100,11 +113,11 @@ nav {
   }
 }
   
-    .index-paginate {
-        .pagination {
-            margin:15px auto;
-            text-align: center;
-        }
+.index-paginate {
+  .pagination {
+      margin:15px auto;
+      text-align: center;
+  }
 }
 
 .header-end {

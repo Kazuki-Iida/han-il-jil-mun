@@ -44,9 +44,9 @@
             </div>
             <div class="report">
                 @if($question->is_reported_by_auth_user())
-                    <a href="{{ route('question.unreport', ['question_id' => $question->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $question->reports->count() }}</span></a>
+                    <a href="{{ route('question.unreport', ['question_id' => $question->id]) }}" class="btn btn-dark btn-sm">通報</a>
                 @else
-                    <a href="{{ route('question.report', ['question_id' => $question->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $question->reports->count() }}</span></a>
+                    <a href="{{ route('question.report', ['question_id' => $question->id]) }}" class="btn btn-secondary btn-sm">通報</a>
                 @endif
             </div>
         </div>
@@ -84,9 +84,9 @@
                     </div>
                     <div class="report">
                         @if($answer->is_reported_by_auth_user())
-                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $answer->reports->count() }}</span></a>
+                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="btn btn-dark btn-sm">通報</a>
                         @else
-                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $answer->reports->count() }}</span></a>
+                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">通報</a>
                         @endif
                     </div>
                 </div>
@@ -116,9 +116,9 @@
                         @endforeach
                         <div class="report">
                             @if($comment->is_reported_by_auth_user())
-                                <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="btn btn-dark btn-sm">通報<span class="badge">{{ $comment->reports->count() }}</span></a>
+                                <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="btn btn-dark btn-sm">通報</a>
                             @else
-                                <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="btn btn-secondary btn-sm">通報<span class="badge">{{ $comment->reports->count() }}</span></a>
+                                <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="btn btn-secondary btn-sm">通報</a>
                             @endif
                         </div>
                     </div>

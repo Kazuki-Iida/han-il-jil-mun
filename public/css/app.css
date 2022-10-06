@@ -10932,6 +10932,11 @@ a.text-dark:focus {
   }
 }
 
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 a {
   color: #606060;
   text-decoration: none;
@@ -11012,8 +11017,15 @@ nav {
   font-size: 1rem;
 }
 
-.body-inner-of-index .question .card-link {
+.body-inner-of-index .question .category-link {
+  background-color: transparent;
+  color: #606060;
+  font-size: 1rem !important;
   text-decoration: underline;
+}
+
+.body-inner-of-index .question .category-link:hover {
+  color: #aa4cd3;
 }
 
 .body-inner-of-index .question .card-text:hover {
