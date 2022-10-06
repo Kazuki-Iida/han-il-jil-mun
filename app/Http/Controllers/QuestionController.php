@@ -24,11 +24,21 @@ class QuestionController extends Controller
         $search = $request->input('search');
         $order = $request->input('order');
         $about = $request->input('about');
-        // $query = Question::query();
+        $question_category = $request->input('question_category');
+        if(!$order){
+            $order = 'gooddesc';
+        }
         if(!$about){
             $about = 1;
         }
-        $query = Question::query()->where('country_id', $about);
+        if(!$question_category){
+            $query = Question::query()->where('country_id', $about);
+            $question_category = 0;
+        }elseif($question_category == 0){
+            $query = Question::query()->where('country_id', $about)->where('category_id', $question_category);
+        }else{
+            $query = Question::query()->where('country_id', $about)->where('category_id', $question_category);
+        }
                 
         if($search){
             $spaceConversion = mb_convert_kana($search, 's');
@@ -45,20 +55,17 @@ class QuestionController extends Controller
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }
         
-        // if ($search){
-        //     $spaceConversion = mb_convert_kana($search, 's');
-        //     $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
-        //     foreach($wordArraySearched as $value) {
-        //         $query->where('body', 'like', '%'.$value.'%');
-        //     }
-        //     $questions = $query->orderBy('created_at', 'desc')->paginate(10);
-        // }
+        
+        $category = Category::query()->withCount('questions')->orderBy('questions_count', 'desc')->orderBy('created_at');
+        
         return view('questions/index')
         ->with([
             'questions' => $questions,
             'search' => $search,
             'order' => $order,
-            'about' => $about
+            'about' => $about,
+            'question_category' => $question_category,
+            'categories' => $category->get()
             ]);
     }
         

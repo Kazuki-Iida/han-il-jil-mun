@@ -7,6 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+*:focus {
+  outline: none !important;
+  box-shadow:none !important;
+}
+
 a {
   color: #606060;
   text-decoration: none;
@@ -88,8 +93,16 @@ nav {
     .card-body {
       font-size: 1.0rem;
     }
-    .card-link {
+    .category-link {
+      background-color: transparent;
+      color: #606060;
+      font-size: 1rem !important;
       text-decoration:underline;
+      
+      
+      &:hover{
+        color: #aa4cd3;
+      }
     }
     .card-text:hover {
       color:#000 !important;
@@ -98,13 +111,35 @@ nav {
       font-size: 1.2rem;
     }
   }
+  
+  .side-column {
+    .category-index-title {
+      border-bottom-width: 2px !important;
+    }
+    
+    .category-index-btn {
+      background-color: transparent !important;
+      color: #606060 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      
+      &:hover{
+        background-color: #ebebeb !important;
+        color: #aa4cd3 !important;
+      }
+    }
+    
+    .category-index-link {
+      border-color: #e3e3e3 !important;
+    }
+  }
 }
   
-    .index-paginate {
-        .pagination {
-            margin:15px auto;
-            text-align: center;
-        }
+.index-paginate {
+  .pagination {
+      margin:15px auto;
+      text-align: center;
+  }
 }
 
 .header-end {
