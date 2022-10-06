@@ -111,6 +111,28 @@ nav {
       font-size: 1.2rem;
     }
   }
+  
+  .side-column {
+    .category-index-title {
+      border-bottom-width: 2px !important;
+    }
+    
+    .category-index-btn {
+      background-color: transparent !important;
+      color: #606060 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      
+      &:hover{
+        background-color: #ebebeb !important;
+        color: #aa4cd3 !important;
+      }
+    }
+    
+    .category-index-link {
+      border-color: #e3e3e3 !important;
+    }
+  }
 }
   
 .index-paginate {

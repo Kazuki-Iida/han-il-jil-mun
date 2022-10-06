@@ -24,7 +24,7 @@
                         <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                             <form action="/questions" method="GET">
                                 <input type="hidden" name ="about" value="{{ $about }}">
-                                <input type="hidden" name="category" value="{{ $category }}">
+                                <input type="hidden" name="question_category" value="{{ $question_category }}">
                                 <button class="dropdown-item" name ="order" type="submit" value="gooddesc">Goodの多い順</a>
                                 <button class="dropdown-item" name ="order" type="submit" value="newdesc">新着順</a>
                             </form>
@@ -42,7 +42,7 @@
                         <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                             <form action="/questions" method="GET">
                                 <input type="hidden" name="order" value="{{ $order }}">
-                                <input type="hidden" name="category" value="{{ $category }}">
+                                <input type="hidden" name="question_category" value="{{ $question_category }}">
                                 <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
                                 <button class="dropdown-item" name ="about" type="submit" value=2>韓国について質問</a>
                             </form>
@@ -83,7 +83,7 @@
                                                 <form action="/questions" method="GET">
                                                     <input type="hidden" name="order" value="{{ $order }}">
                                                     <input type="hidden" name="about" value="{{ $about }}">
-                                                    <button class="btn py-0 mb-3 category-link" name ="category" type="submit" value={{ $question->category->id }}>{{ $question->category->name }}</a>
+                                                    <button class="btn py-0 mb-3 category-link" name ="question_category" type="submit" value={{ $question->category->id }}>{{ $question->category->name }}</a>
                                                 </form>
                                             </div>
                                             <p class="col-3">{{ $question->country->name }}について</p>
@@ -98,7 +98,32 @@
                         {{ $questions->appends(request()->input())->links() }}
                     </div>
                 </div>
-                <div class="side-column bg-white col-sm-11 col-md-4 mx-auto rounded">
+                <div class="side-column bg-white col-sm-11 col-md-4 mt-4 mt-sm-0 mx-auto rounded">
+                    <div class="category-index">
+                        <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
+                        <ul>
+                            <li>
+                                <div class="category-index-link border-bottom mr-2">
+                                    <form action="/questions" method="GET">
+                                        <input type="hidden" name="order" value="{{ $order }}">
+                                        <input type="hidden" name="about" value="{{ $about }}">
+                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value=0>全てのカテゴリー</a>
+                                    </form>
+                                </div>
+                            </li>
+                            @foreach($categories as $category)
+                            <li>
+                                <div class="category-index-link border-bottom mr-2">
+                                    <form action="/questions" method="GET">
+                                        <input type="hidden" name="order" value="{{ $order }}">
+                                        <input type="hidden" name="about" value="{{ $about }}">
+                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value={{ $category->id }}>{{ $category->name }}</a>
+                                    </form>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

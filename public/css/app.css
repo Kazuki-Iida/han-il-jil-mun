@@ -11036,6 +11036,26 @@ nav {
   font-size: 1.2rem;
 }
 
+.body-inner-of-index .side-column .category-index-title {
+  border-bottom-width: 2px !important;
+}
+
+.body-inner-of-index .side-column .category-index-btn {
+  background-color: transparent !important;
+  color: #606060 !important;
+  font-size: 1.1rem !important;
+  text-decoration: none !important;
+}
+
+.body-inner-of-index .side-column .category-index-btn:hover {
+  background-color: #ebebeb !important;
+  color: #aa4cd3 !important;
+}
+
+.body-inner-of-index .side-column .category-index-link {
+  border-color: #e3e3e3 !important;
+}
+
 .index-paginate .pagination {
   margin: 15px auto;
   text-align: center;
