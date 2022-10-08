@@ -48,6 +48,47 @@ nav {
     padding-top: 10px;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #9e43cc;
+  border-color: #9e43cc;
+}
+
+.btn-success:focus,
+.btn-success.focus {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+  box-shadow: 0 0 0 0.2rem rgba(170, 76, 211, 0.5);
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #aa4cd3;
+  border-color: #aa4cd3;
+}
+
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(170, 76, 211, 0.5);
+}
+
 .btn-outline-success {
   color: #aa4cd3;
   border-color: #aa4cd3;
@@ -135,6 +176,12 @@ nav {
   }
 }
   
+.header-end {
+  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+  height: 5px;
+  width: 100%;
+}
+
 .index-paginate {
   .pagination {
       margin:15px auto;
@@ -142,11 +189,35 @@ nav {
   }
 }
 
-.header-end {
-  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
-  height: 5px;
-  width: 100%;
+.user-show {
+  .profile-image {
+    height: auto;
+    width: 100%;
+  }
+  
+  .profile-image-wrapper {
+    padding: 1.5rem 20%;
+  }
+  
+  .user-profile {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    
+    &:after {
+      background: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+      background-color: black;
+      border-radius: 23px;
+      content: '';
+      position: absolute;
+      top: -5px; bottom: -5px;
+      left: -5px; right: -5px;
+      z-index: -1;
+    }
+  }
 }
+
 
 .navbar {
   

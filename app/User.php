@@ -10,10 +10,6 @@ class User extends Authenticatable
 {
     use Notifiable;
     
-    public function interests()
-    {
-        return $this->belongsToMany('App\Interest');
-    }
     /**
      * The attributes that are mass assignable.
      *
@@ -58,6 +54,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+    
+    public function interests()
+    {
+        return $this->belongsToMany('App\Interest');
     }
     
     public function followers()
