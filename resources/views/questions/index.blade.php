@@ -18,7 +18,7 @@
                             @if($order == 'newdesc')
                                 新着順
                             @else
-                                Goodの多いじゅん
+                                Goodの多い順
                             @endif
                         </button>
                         <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="side-column bg-white col-sm-11 col-md-4 mt-4 mt-sm-0 mx-auto rounded">
-                    <div class="category-index">
+                    <div class="category-index pb-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
                         <ul>
                             <li>
@@ -121,6 +121,48 @@
                                     </form>
                                 </div>
                             </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="question-ranking">
+                        <h2 class="category-index-title mt-3 border-bottom border-success">質問Goodランキング(月間)</h2>
+                        <ul>
+                            <?php $i = 0; $j = $question_good_ranking_counts[$question_good_ranking_users[1]->id]; ?>
+                            @foreach($question_good_ranking_users as $question_good_ranking_user)
+                                @if($question_good_ranking_counts[$question_good_ranking_user->id] != $j)
+                                    <?php $i++; ?>
+                                @endif
+                                <li>
+                                    <div class="question-good-ranking-link border-bottom mr-2">
+                                        <a href="/users/{{ $question_good_ranking_user->id }}" class="good-ranking-btn btn my-0 py-2 w-100 h-auto text-left">
+                                            <span>{{ $i }}位 &emsp;</span>
+                                            {{ Str::limit($question_good_ranking_user->name, 30) }}
+                                            <span class="ranking-count float-right">{{ $question_good_ranking_counts[$question_good_ranking_user->id] }}Good!!</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <?php $j =  $question_good_ranking_counts[$question_good_ranking_user->id] ; ?>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="answer-ranking pt-2">
+                        <h2 class="category-index-title mt-3 border-bottom border-success">回答Goodランキング(月間)</h2>
+                        <ul>
+                            <?php $i = 0; $j = $question_good_ranking_counts[$question_good_ranking_users[1]->id]; ?>
+                            @foreach($answer_good_ranking_users as $answer_good_ranking_user)
+                            @if($answer_good_ranking_counts[$answer_good_ranking_user->id] != $j)
+                                <?php $i++; ?>
+                            @endif
+                            <li>
+                                <div class="answer-good-ranking-link border-bottom mr-2">
+                                    <a href="/users/{{ $answer_good_ranking_user->id }}" class="good-ranking-btn btn my-0 py-2 w-100 h-auto text-left">
+                                        <span>{{ $i }}位 &emsp;</span>
+                                        {{ Str::limit($answer_good_ranking_user->name, 30) }}
+                                        <span class="ranking-count float-right">{{ $answer_good_ranking_counts[$question_good_ranking_user->id] }}Good!!</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <?php $j =  $question_good_ranking_counts[$question_good_ranking_user->id] ; ?>
                             @endforeach
                         </ul>
                     </div>

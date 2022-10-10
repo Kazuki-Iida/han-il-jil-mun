@@ -49,7 +49,7 @@ class Question extends Model
     
     public function likes()
     {
-        return $this->hasMany(QuestionLike::class, 'question_id');
+        return $this->hasMany('App\QuestionLike');
     }
     
     public function is_liked_by_auth_user()

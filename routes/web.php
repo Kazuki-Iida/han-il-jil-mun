@@ -55,7 +55,6 @@ Route::get('/questions', 'QuestionController@index');
 Route::get('/', 'QuestionController@index');
 Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::get('/categories/{category}', 'CategoryController@index');
-Route::get('/users/{user}', 'UserController@show');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::resource('user', 'UserController');
 Route::get('/countries/{country}', 'CountryController@index');

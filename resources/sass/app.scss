@@ -173,6 +173,17 @@ nav {
     .category-index-link {
       border-color: #e3e3e3 !important;
     }
+    
+    .good-ranking-btn {
+      color: #606060;
+      font-size: 17.6px;
+      --font-family-sans-serif: "Nunito", sans-serif;
+      
+      &:hover{
+        background-color: #ebebeb !important;
+        color: #aa4cd3 !important;
+      }
+    }
   }
 }
   
