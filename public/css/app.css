@@ -11119,6 +11119,26 @@ nav {
   text-align: center;
 }
 
+.modal .modal-user-btn {
+  color: #606060;
+  font-size: 17.6px;
+  --font-family-sans-serif: "Nunito", sans-serif;
+}
+
+.modal .modal-user-btn:hover {
+  background-color: #ebebeb !important;
+  color: #aa4cd3 !important;
+}
+
+.user-show .modal-open-btn {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .user-show .profile-image {
   height: auto;
   width: 100%;

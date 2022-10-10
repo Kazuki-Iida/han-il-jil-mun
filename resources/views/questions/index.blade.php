@@ -11,7 +11,7 @@
     <body>
         <div class="body-inner-of-index container">
             <div class="questions-index row">
-                <div class="question-index-inner bg-white col-sm-11 col-md-7 mx-auto rounded">
+                <div class="question-index-inner bg-white col-11 col-lg-7 mx-auto rounded">
                     <div class="dropdown"> 
                         <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,7 +98,7 @@
                         {{ $questions->appends(request()->input())->links() }}
                     </div>
                 </div>
-                <div class="side-column bg-white col-sm-11 col-md-4 mt-4 mt-sm-0 mx-auto rounded">
+                <div class="side-column bg-white col-11 col-lg-4 mt-4 mt-lg-0 mx-auto px-3 rounded">
                     <div class="category-index pb-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
                         <ul>

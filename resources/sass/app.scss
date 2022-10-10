@@ -186,6 +186,8 @@ nav {
     }
   }
 }
+
+
   
 .header-end {
   background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
@@ -200,7 +202,42 @@ nav {
   }
 }
 
+.modal {
+    .modal-body {
+      
+    }
+    
+    .modal-footer {
+      
+    }
+  
+    .modal-header {
+      
+    }
+  
+    .modal-user-btn {
+      color: #606060;
+      font-size: 17.6px;
+      --font-family-sans-serif: "Nunito", sans-serif;
+      
+      &:hover{
+        background-color: #ebebeb !important;
+        color: #aa4cd3 !important;
+      }
+    }
+  }
+  
+
 .user-show {
+  .modal-open-btn {
+    background: none;
+  	border: none;
+  	outline: none;
+  	-webkit-appearance: none;
+  	-moz-appearance: none;
+  	appearance: none;
+  }
+  
   .profile-image {
     height: auto;
     width: 100%;
