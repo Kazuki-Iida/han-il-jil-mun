@@ -10968,11 +10968,6 @@ body {
   background-color: #FBF0FF;
 }
 
-nav {
-  margin-top: -23px;
-  padding-top: 10px;
-}
-
 .btn-success {
   color: #fff;
   background-color: #aa4cd3;
@@ -11054,6 +11049,40 @@ nav {
   border-color: #aa4cd3 !important;
 }
 
+#app nav {
+  margin-top: -23px !important;
+  padding-top: 10px;
+}
+
+#app .header-end {
+  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+  height: 5px;
+  width: 100%;
+}
+
+.auth-page {
+  height: 90vh;
+}
+
+.auth-page .auth-page-link {
+  background-color: transparent;
+  color: #606060;
+  font-size: 0.8rem !important;
+  text-decoration: underline;
+}
+
+.auth-page .auth-page-link:hover {
+  color: #aa4cd3;
+}
+
+.auth-page .auth-page-logo {
+  margin-top: 5vh;
+}
+
+.auth-page .card {
+  margin-top: 5vh;
+}
+
 .body-inner-of-index .question .card-body {
   font-size: 1rem;
 }
@@ -11071,6 +11100,11 @@ nav {
 
 .body-inner-of-index .question .card-text:hover {
   color: #000 !important;
+}
+
+.body-inner-of-index .question .index-paginate .pagination {
+  margin: 15px auto;
+  text-align: center;
 }
 
 .body-inner-of-index .question .user-name {
@@ -11106,17 +11140,6 @@ nav {
 .body-inner-of-index .side-column .good-ranking-btn:hover {
   background-color: #ebebeb !important;
   color: #aa4cd3 !important;
-}
-
-.header-end {
-  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
-  height: 5px;
-  width: 100%;
-}
-
-.index-paginate .pagination {
-  margin: 15px auto;
-  text-align: center;
 }
 
 .modal .modal-user-btn {

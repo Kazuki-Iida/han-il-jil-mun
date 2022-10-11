@@ -43,10 +43,6 @@ body {
   background-color:#FBF0FF;
 }
 
-nav {
-    margin-top: -23px;
-    padding-top: 10px;
-}
 
 .btn-success {
   color: #fff;
@@ -129,6 +125,46 @@ nav {
   border-color: #aa4cd3 !important;
 }
 
+
+
+
+#app {
+  
+  nav {
+      margin-top: -23px !important;
+      padding-top: 10px;
+  }
+  
+  .header-end {
+    background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+    height: 5px;
+    width: 100%;
+  }
+}
+
+.auth-page {
+  height: 90vh;
+  
+  .auth-page-link {
+    background-color: transparent;
+    color: #606060;
+    font-size: 0.8rem !important;
+    text-decoration:underline;
+    
+    &:hover{
+      color: #aa4cd3;
+    }
+  }
+  
+  .auth-page-logo {
+    margin-top: 5vh;
+  }
+  
+  .card {
+    margin-top: 5vh;
+  }
+}
+
 .body-inner-of-index {
   .question{
     .card-body {
@@ -140,14 +176,22 @@ nav {
       font-size: 1rem !important;
       text-decoration:underline;
       
-      
       &:hover{
         color: #aa4cd3;
       }
     }
+    
     .card-text:hover {
       color:#000 !important;
     }
+    
+    .index-paginate {
+      .pagination {
+          margin:15px auto;
+          text-align: center;
+      }
+    }
+    
     .user-name {
       font-size: 1.2rem;
     }
@@ -188,19 +232,8 @@ nav {
 }
 
 
-  
-.header-end {
-  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
-  height: 5px;
-  width: 100%;
-}
 
-.index-paginate {
-  .pagination {
-      margin:15px auto;
-      text-align: center;
-  }
-}
+
 
 .modal {
     .modal-body {

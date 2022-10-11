@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container register-page auth-page">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="auth-page-logo text-center">
+                <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
+            </div>
+            <div class="card h-auto">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -66,10 +69,16 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                @if (Route::has('login'))
+                                    <a class="btn btn-link" href="{{ route('login') }}">{{ __('Login') }}ページ</a>
+                                @endif
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="text-center mt-3">
+                <a class="auth-page-link" href="/">トップページへ</a>
             </div>
         </div>
     </div>
