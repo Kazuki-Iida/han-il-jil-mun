@@ -11065,6 +11065,12 @@ body {
   color: #aa4cd3 !important;
 }
 
+#app .footer-start {
+  background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+  height: 5px;
+  width: 100%;
+}
+
 #app .header-end {
   background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
   height: 5px;
