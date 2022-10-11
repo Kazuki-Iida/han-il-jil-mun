@@ -45,13 +45,6 @@
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
-                                <form action="/questions" method="GET">
-                                    <div class="input-group">
-                                        <input type="search" placeholder="キーワードを入力" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
-                                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>検索</button>
-                                        <button href="/" class="btn btn-outline-secondary">クリア</button>
-                                    </div>
-                                </form>
                                 @guest
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -64,17 +57,20 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                            メニュー <span class="caret"></span>
                                         </a>
         
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item profile-edit-button" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
+                                                プロフィールを表示
+                                            </a>
+                                            <a class="dropdown-item profile-edit-button" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
+                                                プロフィールを編集
+                                            </a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                 ログアウト
-                                            </a>
-                                            <a class="dropdown-item profile-edit-button" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
-                                                プロフィールを編集
                                             </a>
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

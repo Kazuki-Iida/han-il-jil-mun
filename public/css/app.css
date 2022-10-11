@@ -11102,6 +11102,10 @@ body {
   color: #000 !important;
 }
 
+.body-inner-of-index .question .good-btn {
+  font-size: 1rem !important;
+}
+
 .body-inner-of-index .question .index-paginate .pagination {
   margin: 15px auto;
   text-align: center;
@@ -11140,6 +11144,43 @@ body {
 .body-inner-of-index .side-column .good-ranking-btn:hover {
   background-color: #ebebeb !important;
   color: #aa4cd3 !important;
+}
+
+.body-inner-of-index #page_top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #aa4cd3;
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.body-inner-of-index #page_top a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+.body-inner-of-index #page_top a::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\F102";
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -3px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .modal .modal-user-btn {
