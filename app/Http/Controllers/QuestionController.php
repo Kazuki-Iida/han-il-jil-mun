@@ -12,6 +12,7 @@ use App\Country;
 use App\QuestionImage;
 use App\Comment;
 use App\QuestionLike;
+use App\AnswerLike;
 use App\QuestionReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -21,16 +22,20 @@ class QuestionController extends Controller
 {
     public function index(Request $request)
     {
+        // 以下並べ替えに関するコード
         $search = $request->input('search');
         $order = $request->input('order');
         $about = $request->input('about');
         $question_category = $request->input('question_category');
+        
         if(!$order){
             $order = 'gooddesc';
         }
+        
         if(!$about){
             $about = 1;
         }
+        
         if(!$question_category){
             $query = Question::query()->where('country_id', $about);
             $question_category = 0;
@@ -55,8 +60,55 @@ class QuestionController extends Controller
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }
         
-        
         $category = Category::query()->withCount('questions')->orderBy('questions_count', 'desc')->orderBy('created_at');
+        
+        
+        // 以下ユーザーのgoodランキングに関するコード
+        $dt_from = new \Carbon\Carbon();
+		$dt_from->startOfMonth();
+
+		$dt_to = new \Carbon\Carbon();
+		$dt_to->endOfMonth();
+		
+        $question_likes = QuestionLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
+        
+        foreach($question_likes as $question_like){
+            $question_user = $question_like->question->user_id;
+            $ranking[] = $question_user;
+        }
+        
+        $question_good_ranking_counts = array_count_values($ranking);
+        $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
+        
+        $i = 1;
+        foreach($question_good_ranking_users_numbers as $question_good_ranking_users_number){
+            $question_good_ranking_users[] = User::where('id', $question_good_ranking_users_number)->first();
+            $i++;
+            if($i == 8){
+                break;
+            }
+        }
+
+        
+        $answer_likes = AnswerLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
+        
+        foreach($answer_likes as $answer_like){
+            $answer_user = $answer_like->answer->user_id;
+            $ranking[] = $answer_user;
+        }
+        $answer_good_ranking_counts = array_count_values($ranking);
+        $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
+        
+        $j = 1;
+        foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
+            $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
+            
+            $j++;
+            if($j ==  8){
+                break;
+            }
+        }
+        
         
         return view('questions/index')
         ->with([
@@ -65,7 +117,11 @@ class QuestionController extends Controller
             'order' => $order,
             'about' => $about,
             'question_category' => $question_category,
-            'categories' => $category->get()
+            'categories' => $category->get(),
+            'question_good_ranking_users' => $question_good_ranking_users,
+            'question_good_ranking_counts' => $question_good_ranking_counts,
+            'answer_good_ranking_users' => $answer_good_ranking_users,
+            'answer_good_ranking_counts' => $answer_good_ranking_counts
             ]);
     }
         
@@ -136,12 +192,6 @@ class QuestionController extends Controller
         return redirect('/');
     }
     
-    /**
-    * 引数のIDに紐づくリプライにLIKEする
-    *
-    * @param $id リプライID
-    * @return \Illuminate\Http\RedirectResponse
-    */
     public function like($question_id)
     {
         QuestionLike::create([
@@ -154,12 +204,6 @@ class QuestionController extends Controller
         return redirect()->back();
     }
     
-    /**
-    * 引数のIDに紐づくリプライにUNLIKEする
-    *
-    * @param $id リプライID
-    * @return \Illuminate\Http\RedirectResponse
-    */
     public function unlike($question_id)
     {
         $like = QuestionLike::where('question_id', $question_id)->where('user_id', Auth::id())->first();

@@ -24,5 +24,9 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'profile' => $faker->text,
+        'profile_image' => 'https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/profile_image/6maKcilITPkIifg08XLgQJVnBEljxd8GOwpfE1A1.png',
     ];
 });

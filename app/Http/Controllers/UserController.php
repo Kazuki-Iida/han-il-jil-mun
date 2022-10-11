@@ -15,8 +15,14 @@ class UserController extends Controller
     public function show(User $user, Follower $follower)
     {
         $login_user = auth()->user();
-        $is_following = $login_user->isFollowing($user->id);
-        $is_followed = $login_user->isFollowed($user->id);
+        if (Auth::check()){
+            $is_following = $login_user->isFollowing($user->id);
+            $is_followed = $login_user->isFollowed($user->id);
+        }else{
+            $is_following = false;
+            $is_followed = false;
+        }
+        
         $follow_count = $follower->getFollowCount($user->id);
         $follower_count = $follower->getFollowerCount($user->id);
          return view('users.show', [
