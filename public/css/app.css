@@ -11054,6 +11054,17 @@ body {
   padding-top: 10px;
 }
 
+#app nav .nav-menu-link {
+  background-color: transparent !important;
+  color: #606060 !important;
+  font-size: 1.1rem !important;
+  text-decoration: none !important;
+}
+
+#app nav .nav-menu-link:hover {
+  color: #aa4cd3 !important;
+}
+
 #app .header-end {
   background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
   height: 5px;

@@ -133,6 +133,17 @@ body {
   nav {
       margin-top: -23px !important;
       padding-top: 10px;
+      
+      .nav-menu-link {
+        background-color: transparent !important;
+        color: #606060 !important;
+        font-size: 1.1rem !important;
+        text-decoration: none !important;
+        
+        &:hover{
+          color: #aa4cd3 !important;
+        }
+      }
   }
   
   .header-end {
