@@ -49,7 +49,7 @@
 <!--</div>-->
         <div class="container">
             <div class="row">
-                <div class="question-show-inner col-12 col-lg-7 bg-white mx-auto rounded">
+                <div class="question-show-inner col-12 col-lg-7 bg-white mx-auto border-bottom  border-secondary rounded">
                     <div class="question row mt-0 border-success border-bottom">
                         <div class="index-user-image col-2 pt-4 pl-3 pr-0">
                             <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
@@ -96,8 +96,8 @@
                                 <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
                                 <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
                                     @foreach($question->question_images as $question_image)
-                                        <a href="{{ $question_image->image }}" data-lightbox="a" data-alt="質問に関する画像" class="col-6 p-0">
-                                            <img src="{{ $question_image->image }}" alt="question images" class="image img-fuild pr-1 mb-1 w-100">
+                                        <a href="{{ $question_image->image }}" data-lightbox="a" data-alt="質問に関する画像" class="col-6 p-0 pr-1">
+                                            <img src="{{ $question_image->image }}" alt="question images" class="image img-fuild mb-1 w-100 rounded">
                                         </a>
                                     @endforeach
                                 </div>
@@ -172,8 +172,8 @@
                                         <p class='body card-text mt-3 mb-4'>{{ $answer->body }}</p>
                                         <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
                                             @foreach($answer->answer_images as $answer_image)
-                                                <a href="{{ $answer_image->image }}" data-lightbox="{{ $j }}" data-alt="回答に関する画像" class="col-6 p-0">
-                                                    <img src="{{ $answer_image->image }}" alt="answer images" class="image img-fuild pr-1 mb-1 w-100">
+                                                <a href="{{ $answer_image->image }}" data-lightbox="{{ $j }}" data-alt="回答に関する画像" class="col-6 p-0 pr-1">
+                                                    <img src="{{ $answer_image->image }}" alt="answer images" class="image img-fuild mb-1 w-100 rounded">
                                                 </a>
                                             @endforeach
                                         </div>
@@ -248,8 +248,8 @@
                                             <p class='body card-text mt-3 mb-4'>{{ $comment->body }}</p>
                                              <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
                                                 @foreach($comment->comment_images as $comment_image)
-                                                    <a href="{{ $comment_image->image }}" data-lightbox="{{ $k }}" data-alt="コメントに関する画像" class="col-6 p-0">
-                                                        <img src="{{ $comment_image->image }}" alt="comment images" class="image img-fuild pr-1 mb-1 w-100">
+                                                    <a href="{{ $comment_image->image }}" data-lightbox="{{ $k }}" data-alt="コメントに関する画像" class="col-6 p-0 pr-1">
+                                                        <img src="{{ $comment_image->image }}" alt="comment images" class="image img-fuild mb-1 w-100 rounded">
                                                     </a>
                                                 @endforeach
                                             </div>
@@ -279,222 +279,11 @@
                             @endforeach
                         @endforeach
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div class="answers">
-                        @foreach ($answers as $answer)
-                            <div class='answer'>
-                                <h2 class='answerer'>
-                                    {{ $answer->user->name }}
-                                </h2>
-                                <p class='body'>{{ $answer->body }}</p>
-                                @foreach($answer->answer_images as $answer_image)
-                                    <img src="{{ $answer_image->image }}" alt="answer images" class="img-fuild" width="150" height="100">
-                                @endforeach
-                                <div class="answer-good">
-                                    @if($answer->is_liked_by_auth_user())
-                                        <a href="{{ route('answer.unlike', ['answer_id' => $answer->id]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
-                                    @else
-                                        <a href="{{ route('answer.like', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
-                                    @endif
-                                </div>
-                                <div class="report">
-                                    @if($answer->is_reported_by_auth_user())
-                                        <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="btn btn-dark btn-sm">通報</a>
-                                    @else
-                                        <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">通報</a>
-                                    @endif
-                                </div>
-                            </div>
-                            @auth
-                                @if($answer->user->id == Auth::id())
-                                    <div class="to-answer-edit-page">
-                                        <a href="/answers/{{ $answer->id }}/edit">編集する</a>
-                                    </div>
-                                    <form action="/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post" onSubmit="return check()">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit">削除する</button> 
-                                    </form>
-                                @endif
-                            @endauth
-                            <div class="to-comment-page">
-                                <a href="/comments/{{ $answer->id }}/create">コメントする</a>
-                            </div>
-                            @foreach ($answer->comments as $comment)
-                                <div class='comment'>
-                                    <h2 class='commenter'>
-                                        {{ $comment->user->name }}
-                                    </h2>
-                                    <p class='body'>{{ $comment->body }}</p>
-                                    @foreach($comment->comment_images as $comment_image)
-                                        <img src="{{ $comment_image->image }}" alt="comment images" class="img-fuild" width="150" height="100">
-                                    @endforeach
-                                    <div class="report">
-                                        @if($comment->is_reported_by_auth_user())
-                                            <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="btn btn-dark btn-sm">通報</a>
-                                        @else
-                                            <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="btn btn-secondary btn-sm">通報</a>
-                                        @endif
-                                    </div>
-                                </div>
-                                @auth
-                                    @if($comment->user->id == Auth::id())
-                                        <div class="to-comment-edit-page">
-                                            <a href="/comments/{{ $comment->id }}/edit">編集する</a>
-                                        </div>
-                                        <form action="/comments/{{ $comment->id }}" id="form_{{ $comment->id }}" method="post" onSubmit="return check()">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit">削除する</button> 
-                                        </form>
-                                    @endif
-                                @endauth
-                            @endforeach
-                        @endforeach
-                    </div>
-                    <div class="footer">
-                        <a href="/">戻る</a>
+                    <div class="footer py-3">
+                        <a href="/" class="btn btn-secondary rounded">ホームへ戻る&ensp;<i class="fas fa-home"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <h1 class="title">
-            {{ $question->title }}
-        </h1>
-        <div class="user">
-            <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width="60" height="60">{{ $question->user->name }}</a>
-        </div>
-        <div class="content">
-            <div class="content__question">
-                <h3>本文</h3>
-                <p>{{ $question->body }}</p>
-                @foreach($question->question_images as $question_image)
-                    <img src="{{ $question_image->image }}" alt="question images" class="img-fuild" width="150" height="100">
-                @endforeach  
-            </div>
-            <div class="category-show">
-                <a href="/categories/{{ $question->category->id }}">{{ $question->category->name }}</a>
-            </div>
-            <div class="coutry-show">
-                <a href="/countries/{{ $question->country->id }}">{{ $question->country->name }}</a>
-            </div>
-            <div class="report">
-                @if($question->is_reported_by_auth_user())
-                    <a href="{{ route('question.unreport', ['question_id' => $question->id]) }}" class="btn btn-dark btn-sm">通報</a>
-                @else
-                    <a href="{{ route('question.report', ['question_id' => $question->id]) }}" class="btn btn-secondary btn-sm">通報</a>
-                @endif
-            </div>
-        </div>
-        
-        
-        
-        <div class="to-answer-page">
-            <a href="/answers/{{ $question->id }}/create">回答する</a>
-        </div>
-        @auth
-            @if($question->user->id == Auth::id())
-                <div class="to-question-edit-page">
-                    <a href="/questions/{{ $question->id }}/edit">編集する</a>
-                </div>
-                <form action="/questions/{{ $question->id }}" id="form_{{ $question->id }}" method="post" onSubmit="return check()">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">削除する</button> 
-                </form>
-            @endif
-        @endauth
-        <div class="answers">
-            @foreach ($answers as $answer)
-                <div class='answer'>
-                    <h2 class='answerer'>
-                        {{ $answer->user->name }}
-                    </h2>
-                    <p class='body'>{{ $answer->body }}</p>
-                    @foreach($answer->answer_images as $answer_image)
-                        <img src="{{ $answer_image->image }}" alt="answer images" class="img-fuild" width="150" height="100">
-                    @endforeach
-                    <div class="answer-good">
-                        @if($answer->is_liked_by_auth_user())
-                            <a href="{{ route('answer.unlike', ['answer_id' => $answer->id]) }}" class="btn btn-success btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
-                        @else
-                            <a href="{{ route('answer.like', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">Good<span class="badge">{{ $answer->likes->count() }}</span></a>
-                        @endif
-                    </div>
-                    <div class="report">
-                        @if($answer->is_reported_by_auth_user())
-                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="btn btn-dark btn-sm">通報</a>
-                        @else
-                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="btn btn-secondary btn-sm">通報</a>
-                        @endif
-                    </div>
-                </div>
-                @auth
-                    @if($answer->user->id == Auth::id())
-                        <div class="to-answer-edit-page">
-                            <a href="/answers/{{ $answer->id }}/edit">編集する</a>
-                        </div>
-                        <form action="/answers/{{ $answer->id }}" id="form_{{ $answer->id }}" method="post" onSubmit="return check()">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">削除する</button> 
-                        </form>
-                    @endif
-                @endauth
-                <div class="to-comment-page">
-                    <a href="/comments/{{ $answer->id }}/create">コメントする</a>
-                </div>
-                @foreach ($answer->comments as $comment)
-                    <div class='comment'>
-                        <h2 class='commenter'>
-                            {{ $comment->user->name }}
-                        </h2>
-                        <p class='body'>{{ $comment->body }}</p>
-                        @foreach($comment->comment_images as $comment_image)
-                            <img src="{{ $comment_image->image }}" alt="comment images" class="img-fuild" width="150" height="100">
-                        @endforeach
-                        <div class="report">
-                            @if($comment->is_reported_by_auth_user())
-                                <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="btn btn-dark btn-sm">通報</a>
-                            @else
-                                <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="btn btn-secondary btn-sm">通報</a>
-                            @endif
-                        </div>
-                    </div>
-                    @auth
-                        @if($comment->user->id == Auth::id())
-                            <div class="to-comment-edit-page">
-                                <a href="/comments/{{ $comment->id }}/edit">編集する</a>
-                            </div>
-                            <form action="/comments/{{ $comment->id }}" id="form_{{ $comment->id }}" method="post" onSubmit="return check()">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">削除する</button> 
-                            </form>
-                        @endif
-                    @endauth
-                @endforeach
-            @endforeach
-        </div>
-        <div class="footer">
-            <a href="/">戻る</a>
         </div>
     </body>
 </html>

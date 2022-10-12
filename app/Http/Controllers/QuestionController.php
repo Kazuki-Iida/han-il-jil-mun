@@ -76,7 +76,6 @@ class QuestionController extends Controller
             $question_user = $question_like->question->user_id;
             $ranking[] = $question_user;
         }
-        
         $question_good_ranking_counts = array_count_values($ranking);
         $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
         
@@ -102,7 +101,6 @@ class QuestionController extends Controller
         $j = 1;
         foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
             $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
-            
             $j++;
             if($j ==  8){
                 break;
@@ -129,9 +127,10 @@ class QuestionController extends Controller
         // return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
     // }
     
-    public function show(Question $question, Answer $answer, Comment $comment)
+    public function show(Question $question)
     {
-        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
+        $answers = Answer::query()->where('question_id', $question->id)->withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->get();
+        return view('questions/show')->with(['question' => $question, 'answers' => $answers]);
     }
     
     public function create(Category $category, Country $country)

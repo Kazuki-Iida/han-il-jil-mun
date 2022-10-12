@@ -92,8 +92,8 @@
                                             <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
                                             <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
                                                 @foreach($question->question_images as $question_image)
-                                                    <a href="{{ $question_image->image }}" data-lightbox="{{ $k }}" data-alt="質問に関する画像" class="col-6 p-0">
-                                                        <img src="{{ $question_image->image }}" alt="question images" class="image img-fuild pr-1 mb-1 w-100">
+                                                    <a href="{{ $question_image->image }}" data-lightbox="{{ $k }}" data-alt="質問に関する画像" class="col-6 p-0 pr-1">
+                                                        <img src="{{ $question_image->image }}" alt="question images" class="image img-fuild mb-1 w-100 rounded">
                                                     </a>
                                                 @endforeach
                                                 <?php $k++; ?>
@@ -162,7 +162,7 @@
                     <div class="question-ranking">
                         <h2 class="category-index-title mt-3 border-bottom border-success">質問Goodランキング(月間)</h2>
                         <ul>
-                            <?php $i = 0; $j = $question_good_ranking_counts[$question_good_ranking_users[1]->id]; ?>
+                            <?php $i = 0; $j = null; ?>
                             @foreach($question_good_ranking_users as $question_good_ranking_user)
                                 @if($question_good_ranking_counts[$question_good_ranking_user->id] != $j)
                                     <?php $i++; ?>
@@ -176,28 +176,28 @@
                                         </a>
                                     </div>
                                 </li>
-                                <?php $j =  $question_good_ranking_counts[$question_good_ranking_user->id] ; ?>
+                                <?php $j = $question_good_ranking_counts[$question_good_ranking_user->id] ; ?>
                             @endforeach
                         </ul>
                     </div>
                     <div class="answer-ranking pt-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">回答Goodランキング(月間)</h2>
                         <ul>
-                            <?php $i = 0; $j = $question_good_ranking_counts[$question_good_ranking_users[1]->id]; ?>
+                            <?php $i = 0; $j = null; ?>
                             @foreach($answer_good_ranking_users as $answer_good_ranking_user)
-                            @if($answer_good_ranking_counts[$answer_good_ranking_user->id] != $j)
-                                <?php $i++; ?>
-                            @endif
-                            <li>
-                                <div class="answer-good-ranking-link border-bottom mr-2">
-                                    <a href="/users/{{ $answer_good_ranking_user->id }}" class="good-ranking-btn btn my-0 py-2 w-100 h-auto text-left">
-                                        <span>{{ $i }}位 &emsp;</span>
-                                        {{ Str::limit($answer_good_ranking_user->name, 30) }}
-                                        <span class="ranking-count float-right">{{ $answer_good_ranking_counts[$question_good_ranking_user->id] }}Good!!</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <?php $j =  $question_good_ranking_counts[$question_good_ranking_user->id] ; ?>
+                                @if($answer_good_ranking_counts[$answer_good_ranking_user->id] != $j)
+                                    <?php $i++; ?>
+                                @endif
+                                <li>
+                                    <div class="answer-good-ranking-link border-bottom mr-2">
+                                        <a href="/users/{{ $answer_good_ranking_user->id }}" class="good-ranking-btn btn my-0 py-2 w-100 h-auto text-left">
+                                            <span>{{ $i }}位 &emsp;</span>
+                                            {{ Str::limit($answer_good_ranking_user->name, 30) }}
+                                            <span class="ranking-count float-right">{{ $answer_good_ranking_counts[$answer_good_ranking_user->id] }}Good!!</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <?php $j = $answer_good_ranking_counts[$answer_good_ranking_user->id] ; ?>
                             @endforeach
                         </ul>
                     </div>
