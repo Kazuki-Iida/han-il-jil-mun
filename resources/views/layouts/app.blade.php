@@ -95,8 +95,8 @@
             <div class="footer-start"></div>
             <div class="footer bg-white">
                 <div class="footer-container px-5 pt-4 pb-2">
-                    <div class="footer-logo ml-5">
-                        <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
+                    <div class="footer-logo ml-sm-5">
+                        <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo footer-logo-img">
                     </div>
                     <div class="copy-right text-center">
                         <small>Copyright © 2022 Iida-K All Rights Reserved.</small>

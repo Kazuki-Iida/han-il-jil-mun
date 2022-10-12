@@ -11071,6 +11071,24 @@ body {
   color: #aa4cd3 !important;
 }
 
+@media screen and (max-width: 576px) {
+  #app .footer-logo {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+#app .footer-logo .footer-logo-img {
+  width: 250px;
+}
+
+@media screen and (max-width: 576px) {
+  #app .footer-logo .footer-logo-img {
+    margin-bottom: 30px;
+    width: 100px;
+  }
+}
+
 #app .footer-start {
   background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
   height: 5px;

@@ -104,14 +104,14 @@
                                         </div>
                                         
                                         <div class="row question-card-footer">
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 @if($question->is_liked_by_auth_user())
                                                     <a href="{{ route('question.unlike', ['question_id' => $question->id]) }}" class="good-btn btn btn-success btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
                                                 @else
                                                     <a href="{{ route('question.like', ['question_id' => $question->id]) }}" class="good-btn btn btn-secondary btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
                                                 @endif
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <form action="/questions" method="GET">
                                                     @csrf
                                                     <input type="hidden" name="order" value="{{ $order }}">

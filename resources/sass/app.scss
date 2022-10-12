@@ -149,6 +149,23 @@ body {
       }
   }
   
+  .footer-logo {
+    
+    @media screen and (max-width: 576px) {
+      text-align: center;
+      width: 100%;
+    }
+    
+    .footer-logo-img {
+      width: 250px;
+      
+      @media screen and (max-width: 576px) {
+        margin-bottom: 30px;
+        width: 100px;
+      }
+    }
+  }
+  
   .footer-start {
     background-image: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
     height: 5px;
