@@ -212,7 +212,7 @@ body {
     
     .index-paginate {
       .pagination {
-          margin:15px auto;
+          margin: 15px auto;
           text-align: center;
       }
     }
@@ -321,7 +321,7 @@ body {
     }
   }
   
-  .answer{
+  .answers {
     .card-body {
       font-size: 1.0rem;
     }
@@ -348,6 +348,37 @@ body {
     
     .user-name {
       font-size: 1.2rem;
+    }
+    
+    .comment {
+      
+    }
+    
+    // もっと見る機能
+    .list-item{
+      opacity: 1;
+    }
+    .list-item.is-hidden {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+    }
+    .list-btn {
+      margin-top: 20px;
+    }
+    .list-btn.is-btn-hidden{
+      display:none;
+    }
+    .list-btn button {
+      background-color: #333;
+      color:#fff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      height: 32px;
+      line-height: 32px;
+      width: 120px;
     }
   }
 }
@@ -426,5 +457,16 @@ body {
         margin: auto;
         text-align: center;
       }
+    }
+  }
+  
+  
+  // 各ページ画像表示用
+  .image {
+    height: 120px;
+    object-fit: cover;
+    
+    @media screen and (max-width: 576px) {
+      height: 90px;
     }
   }

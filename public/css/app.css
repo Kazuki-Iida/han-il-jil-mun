@@ -11216,11 +11216,11 @@ body {
   font-size: 1.2rem;
 }
 
-.question-show-inner .answer .card-body {
+.question-show-inner .answers .card-body {
   font-size: 1rem;
 }
 
-.question-show-inner .answer .detail-btn {
+.question-show-inner .answers .detail-btn {
   background: none;
   border: none;
   outline: none;
@@ -11229,17 +11229,47 @@ body {
   appearance: none;
 }
 
-.question-show-inner .answer .good-btn {
+.question-show-inner .answers .good-btn {
   font-size: 1.1rem !important;
 }
 
-.question-show-inner .answer .index-paginate .pagination {
+.question-show-inner .answers .index-paginate .pagination {
   margin: 15px auto;
   text-align: center;
 }
 
-.question-show-inner .answer .user-name {
+.question-show-inner .answers .user-name {
   font-size: 1.2rem;
+}
+
+.question-show-inner .answers .list-item {
+  opacity: 1;
+}
+
+.question-show-inner .answers .list-item.is-hidden {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.question-show-inner .answers .list-btn {
+  margin-top: 20px;
+}
+
+.question-show-inner .answers .list-btn.is-btn-hidden {
+  display: none;
+}
+
+.question-show-inner .answers .list-btn button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  width: 120px;
 }
 
 .user-show .modal-open-btn {
@@ -11315,5 +11345,17 @@ body {
   left: 0;
   margin: auto;
   text-align: center;
+}
+
+.image {
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 576px) {
+  .image {
+    height: 90px;
+  }
 }
 

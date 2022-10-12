@@ -70,6 +70,8 @@
                     </div>
                     <div class='questions'>
                         <div class="card-wrapper mb-4 mr-2 ml-2 border-top border-success">
+                            <!--画像表示用-->
+                            <?php $k=1; ?>
                             @foreach ($questions as $question)
                                 <div class="question row mt-0 border-success border-bottom">
                                     <div class="index-user-image col-2 pt-4 pl-3 pr-0">
@@ -88,6 +90,14 @@
                                         </div>
                                         <div class="question-body">
                                             <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
+                                            <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
+                                                @foreach($question->question_images as $question_image)
+                                                    <a href="{{ $question_image->image }}" data-lightbox="{{ $k }}" data-alt="質問に関する画像" class="col-6 p-0">
+                                                        <img src="{{ $question_image->image }}" alt="question images" class="image img-fuild pr-1 mb-1 w-100">
+                                                    </a>
+                                                @endforeach
+                                                <?php $k++; ?>
+                                            </div>
                                         </div>
                                         <div class="created_at text-right">
                                             <p>({{ $question->created_at->format('Y/m/d-G:m:s') }})</p>
