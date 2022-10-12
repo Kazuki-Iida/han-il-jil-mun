@@ -51,8 +51,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('comment/unreport/{comment_id}', 'CommentController@unreport')->name('comment.unreport');
 });
 
-Route::get('/questions', 'QuestionController@index');
-Route::get('/', 'QuestionController@index');
+Route::get('/questions', 'QuestionController@index')->name('home');
+Route::get('/', 'QuestionController@index')->name('home');
 Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('users/{user}', 'UserController@show')->name('users.show');

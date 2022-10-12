@@ -15,6 +15,7 @@
                 <div class="question-index-inner bg-white col-11 col-lg-7 mx-auto rounded">
                     <div class="serch-wrapper pt-3 pr-3 pl-3">
                         <form action="/questions" method="GET">
+                            @csrf
                             <div class="input-group">
                                 <input type="search" placeholder="質問を検索" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
                                 <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>検索</button>
@@ -25,7 +26,7 @@
                     <div class="index-btn-wrapper row py-4 px-2">
                         <div class="dropdown-wrapper col-6 text-center">
                             <div class="dropdown"> 
-                                <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle mt-1"  
+                                <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle w-100 w-sm-75 mt-1"  
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if($about == '1')
                                         日本について
@@ -35,6 +36,7 @@
                                 </button>
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                                     <form action="/questions" method="GET">
+                                        @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="question_category" value="{{ $question_category }}">
                                         <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
@@ -43,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="dropdown"> 
-                                <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle mt-1"  
+                                <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle w-100 w-sm-75 mt-1"  
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if($order == 'newdesc')
                                         新着順
@@ -53,6 +55,7 @@
                                 </button>
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                                     <form action="/questions" method="GET">
+                                        @csrf
                                         <input type="hidden" name ="about" value="{{ $about }}">
                                         <input type="hidden" name="question_category" value="{{ $question_category }}">
                                         <button class="dropdown-item" name ="order" type="submit" value="gooddesc">Goodの多い順</a>
@@ -61,8 +64,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="create-btn col-6 text-center d-flex align-items-center">
-                            <a class="btn btn-success btn-lg rounded-pill text-nowrap" href='/questions/create'>質問を投稿&ensp;<i class="fas fa-pencil-alt"></i></a>
+                        <div class="create-btn col-6 text-center d-flex align-items-center text-nowrap">
+                            <a class="btn btn-success btn-lg rounded-pill text-nowrap m-auto" href='/questions/create'>質問を投稿&ensp;<i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                     <div class='questions'>
@@ -100,6 +103,7 @@
                                             </div>
                                             <div class="col-3">
                                                 <form action="/questions" method="GET">
+                                                    @csrf
                                                     <input type="hidden" name="order" value="{{ $order }}">
                                                     <input type="hidden" name="about" value="{{ $about }}">
                                                     <button class="btn py-0 mb-3 category-link" name ="question_category" type="submit" value={{ $question->category->id }}>{{ $question->category->name }}</a>
@@ -124,6 +128,7 @@
                             <li>
                                 <div class="category-index-link border-bottom mr-2">
                                     <form action="/questions" method="GET">
+                                        @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="about" value="{{ $about }}">
                                         <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value=0>全てのカテゴリー</a>
@@ -134,6 +139,7 @@
                             <li>
                                 <div class="category-index-link border-bottom mr-2">
                                     <form action="/questions" method="GET">
+                                        @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="about" value="{{ $about }}">
                                         <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value={{ $category->id }}>{{ $category->name }}</a>

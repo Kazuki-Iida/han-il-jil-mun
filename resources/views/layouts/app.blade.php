@@ -56,17 +56,17 @@
                                     @endif
                                 @else
                                     <li class="nav-item">
-                                        <a class="nav-menu-link profile-show-button pr-4" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
+                                        <a class="nav-menu-link profile-show-button pr-4 text-nowrap" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
                                             プロフィールを表示&thinsp;<i class="far fa-user"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-menu-link profile-edit-button pr-4" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
+                                        <a class="nav-menu-link profile-edit-button pr-4 text-nowrap" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
                                             プロフィールを編集&thinsp;<i class="fas fa-user-edit"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class=nav-menu-link href="{{ route('logout') }}"
+                                        <a class="nav-menu-link text-nowrap" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                             ログアウト<i class="fas fa-door-open"></i>
@@ -84,23 +84,21 @@
                 <div class="header-end"></div>
             @endif
         @endif
-        <main class="py-5">
+        <main class="py-sm-5">
             @yield('content')
         </main>
-        @if(!\Route::is('login'))
-            @if(!\Route::is('register'))
-                <div class="footer-start"></div>
-                <div class="footer bg-white">
-                    <div class="footer-container px-5 pt-4 pb-2">
-                        <div class="footer-logo ml-5">
-                            <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
-                        </div>
-                        <div class="copy-right text-center">
-                            <small>Copyright © 2022 Iida-K All Rights Reserved.</small>
-                        </div>
+        @if(\Route::is('home'))
+            <div class="footer-start"></div>
+            <div class="footer bg-white">
+                <div class="footer-container px-5 pt-4 pb-2">
+                    <div class="footer-logo ml-5">
+                        <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
+                    </div>
+                    <div class="copy-right text-center">
+                        <small>Copyright © 2022 Iida-K All Rights Reserved.</small>
                     </div>
                 </div>
-            @endif
+            </div>
         @endif
     </div>
 </body>
