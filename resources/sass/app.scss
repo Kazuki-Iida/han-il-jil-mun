@@ -320,6 +320,36 @@ body {
       font-size: 1.2rem;
     }
   }
+  
+  .answer{
+    .card-body {
+      font-size: 1.0rem;
+    }
+    
+    .detail-btn {
+      background: none;
+    	border: none;
+    	outline: none;
+    	-webkit-appearance: none;
+    	-moz-appearance: none;
+    	appearance: none;
+    }
+    
+    .good-btn {
+      font-size: 1.1rem !important;
+    }
+    
+    .index-paginate {
+      .pagination {
+          margin:15px auto;
+          text-align: center;
+      }
+    }
+    
+    .user-name {
+      font-size: 1.2rem;
+    }
+  }
 }
   
 

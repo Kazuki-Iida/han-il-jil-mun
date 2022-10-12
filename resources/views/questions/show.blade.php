@@ -95,6 +95,78 @@
                             </div>
                         </div>
                     </div>
+                    <div class="answers">
+                        @foreach ($answers as $answer)
+                            <div class="answer row mt-0 border-secondary border-bottom">
+                                <div class="index-user-image col-2 pt-4 pl-3 pr-0">
+                                    <a href="/users/{{ $answer->user_id }}"><img src="{{ $answer->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
+                                </div>
+                                <div class='answer-inner card-body col-10 pl-0 pb-2'>
+                                    <div class="answer-card-header">
+                                        @auth
+                                            <div class="dropdown float-right"> 
+                                                <button id="btnOpenMenu" class="detail-btn"  
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </button>
+                                                <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
+                                                    @if($answer->user->id == Auth::user()->id)
+                                                        <form action="/answers/{{ $answer->id }}/edit" method="GET">
+                                                            @csrf
+                                                            <button class="dropdown-item" type="submit">回答を編集する</button>
+                                                        </form>
+                                                        <form action="/answers/{{ $answer->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="dropdown-item" type="submit">回答を削除する</button>
+                                                        </form>
+                                                    @else
+                                                        @if($answer->is_reported_by_auth_user())
+                                                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報済み</a>
+                                                        @else
+                                                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報する</a>
+                                                        @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endauth
+                                        <div class="answer-user pt-2 pl-sm-0 pl-3">
+                                            <a class="user-name pl-2 pl-sm-0" href="/users/{{ $answer->user_id }}">{{ Str::limit( $answer->user->name,40) }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="answer-body">
+                                        <p class='body card-text mt-3 mb-4'>{{ $answer->body }}</p>
+                                    </div>
+                                    <div class="row mb-1 ml-0">
+                                        <div class="col-space col-4 m-0 p-0 text-left text-nowrap">
+                                        </div>
+                                        <div class="created_at col-8 p-0 pr-3 text-right text-nowrap">
+                                            <p class="mb-0">({{ $answer->created_at->format('Y/m/d-G:m:s') }})</p>
+                                        </div>
+                                    </div>
+                                    <div class="row answer-card-footer w-100 pt-0 px-2 pb-2">
+                                        <div class="col-3 pl-0 d-flex align-items-center">
+                                            @if($answer->is_liked_by_auth_user())
+                                                <a href="{{ route('answer.unlike', ['answer_id' => $answer->id]) }}" class="good-btn btn btn-success btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $answer->likes->count() }}</span></a>
+                                            @else
+                                                <a href="{{ route('answer.like', ['answer_id' => $answer->id]) }}" class="good-btn btn btn-secondary btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $answer->likes->count() }}</span></a>
+                                            @endif
+                                        </div>
+                                        <div class="col-space col-3 d-flex align-items-center">
+                                        </div>
+                                        <div class="to-comment-page col-6 text-nowrap text-center d-flex align-items-center">
+                                            <a class="btn btn-success btn-lg rounded-pill text-nowrap m-auto py-1" href="/comments/{{ $answer->id }}/create">コメントする&ensp;<i class="far fa-comments"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    
+                    
+                    
+                    
+                    
                     
                     <div class="answers">
                         @foreach ($answers as $answer)

@@ -11216,6 +11216,32 @@ body {
   font-size: 1.2rem;
 }
 
+.question-show-inner .answer .card-body {
+  font-size: 1rem;
+}
+
+.question-show-inner .answer .detail-btn {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.question-show-inner .answer .good-btn {
+  font-size: 1.1rem !important;
+}
+
+.question-show-inner .answer .index-paginate .pagination {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.question-show-inner .answer .user-name {
+  font-size: 1.2rem;
+}
+
 .user-show .modal-open-btn {
   background: none;
   border: none;
