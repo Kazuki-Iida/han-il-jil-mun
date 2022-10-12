@@ -11198,6 +11198,10 @@ body {
   color: #aa4cd3 !important;
 }
 
+.question-show-inner .question {
+  border: thick solid rgb(170, 76, 211) !important;
+}
+
 .question-show-inner .question .card-body {
   font-size: 1rem;
 }
@@ -11234,6 +11238,12 @@ body {
   font-size: 1.2rem;
 }
 
+.question-show-inner .answers .answer {
+  border-top: thick solid rgba(170, 76, 211, 0.6) !important;
+  border-left: thick solid rgba(170, 76, 211, 0.6) !important;
+  border-right: thick solid rgba(170, 76, 211, 0.6) !important;
+}
+
 .question-show-inner .answers .card-body {
   font-size: 1rem;
 }
@@ -11258,6 +11268,11 @@ body {
 
 .question-show-inner .answers .user-name {
   font-size: 1.2rem;
+}
+
+.question-show-inner .answers .comment {
+  border-left: thick dashed rgba(96, 96, 96, 0.6) !important;
+  border-right: thick dashed rgba(96, 96, 96, 0.6) !important;
 }
 
 .question-show-inner .answers .list-item {
