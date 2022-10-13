@@ -45,11 +45,6 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user])->with(['interests' => $interests, 'checked' => $checked]);
     }
     
-    // public function update(User $user)
-    // {
-    //     return view('users/show')->with(['user' => $user]);  
-    // }
-    
     public function update(UserRequest $request, $user)
     {
 

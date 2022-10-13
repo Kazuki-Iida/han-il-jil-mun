@@ -13,7 +13,7 @@
                     <h2>回答を編集&ensp;<i class="far fa-comment-dots"></i></h2>
                 </div>
                 <div class="form-body">
-                    <form id="create" action="/answers/{{ $answer->id }}" method="POST">
+                    <form id="edit" action="/answers/{{ $answer->id }}" method="POST">
                         @csrf
                         @method('PATCH')
                         

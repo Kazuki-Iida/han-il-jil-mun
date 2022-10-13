@@ -18,7 +18,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/questions/{question}', 'QuestionController@delete');
     
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
-    Route::patch('users/{user}/update', 'UserController@update')->name('users.update');
+    Route::patch('users/{user}', 'UserController@update')->name('users.update');
     Route::post('users/{user}/follow', 'UserController@follow')->name('follow');
     Route::delete('users/{user}/unfollow', 'UserController@unfollow')->name('unfollow');
     

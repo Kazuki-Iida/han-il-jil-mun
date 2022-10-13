@@ -13,7 +13,7 @@
                     <h2>質問を編集&ensp;<i class="fas fa-pencil-alt"></i></h2>
                 </div>
                 <div class="form-body">
-                    <form id="create" action="/questions/{{ $question->id }}" method="POST">
+                    <form id="edit" action="/questions/{{ $question->id }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <input type="text" name="question[title]" placeholder="タイトル" value="{{ old('question.title', $question->title) }}"/>

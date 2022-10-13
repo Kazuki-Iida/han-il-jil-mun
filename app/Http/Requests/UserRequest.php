@@ -11,10 +11,10 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
+    // public function authorize()
+    // {
+    //     return false;
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +24,20 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user.name' => 'required|string|max:50',
+            'user.profile' => 'max:200',
+            'user.*.profile_image' => 'image|mimes:jpeg,bmp,png,jpg',
+        ];
+    }
+    
+    
+    public function messages()
+    {
+        return [
+            'user.name.required' => 'ユーザーネームを入力してください',
+            'user.name.max' => 'ユーザーネームは50文字以内で入力してください',
+            'user.profile.string' => 'プロフィールは文字列で入力してください',
+            'user.profile.max' => 'プロフィールは200文字以内で入力してください',
         ];
     }
 }

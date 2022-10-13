@@ -10,10 +10,10 @@
         <div class="create-edit-page p-md-0 px-2 py-4">
             <div class="form-container">
                 <div class="form-head bg-success">
-                    <h2>コメントを編集&ensp;<i class="far fa-comment-dots"></i></h2>
+                    <h2>コメントを編集&ensp;<i class="far fa-comments"></i></h2>
                 </div>
                 <div class="form-body">
-                    <form id="create" action="/comments/{{ $comment->id }}" method="POST">
+                    <form id="edit" action="/comments/{{ $comment->id }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <textarea name="comment[body]" placeholder="コメント内容" style="height:250px">{{ old('comment.body', $comment->body) }}</textarea>

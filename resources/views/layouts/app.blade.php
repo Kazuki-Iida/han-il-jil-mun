@@ -61,7 +61,7 @@
                                 @else
                                     <li class="nav-item">
                                         <a class="nav-menu-link profile-show-button pr-4 text-nowrap" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
-                                            プロフィールを表示&thinsp;<i class="far fa-user"></i>
+                                            {{ Str::limit( Auth::user()->name, 20) }}&thinsp;<i class="far fa-user"></i>
                                         </a>
                                     </li>
                                     <li class="nav-item">

@@ -11510,23 +11510,23 @@ body {
   }
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-label {
+.create-edit-page .form-container .form-body .radio-label {
   display: flex;
   cursor: pointer;
   width: 100%;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-input {
+.create-edit-page .form-container .form-body .radio-input {
   margin: 0;
   width: 0;
   opacity: 0;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-input:checked + .radio-fake-span {
+.create-edit-page .form-container .form-body .radio-input:checked + .radio-fake-span {
   background: #aa4cd3;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-input:checked + .radio-fake-span::before {
+.create-edit-page .form-container .form-body .radio-input:checked + .radio-fake-span::before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -11540,7 +11540,7 @@ body {
   background: #FFFFFF;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-input:checked + .radio-fake-span::after {
+.create-edit-page .form-container .form-body .radio-input:checked + .radio-fake-span::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -11554,7 +11554,7 @@ body {
   background: #FFFFFF;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-fake-span {
+.create-edit-page .form-container .form-body .radio-fake-span {
   position: relative;
   top: 0;
   left: 0;
@@ -11566,7 +11566,7 @@ body {
   border-radius: 4px;
 }
 
-.create-edit-page .form-container .form-body .category-select-wrapper .radio-span {
+.create-edit-page .form-container .form-body .radio-span {
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
