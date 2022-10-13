@@ -300,7 +300,7 @@ body {
   
 .question-show-inner {
   .question{
-    border: thick solid rgba(170, 76, 211, 1.0) !important;
+    border-bottom: 15px solid #FBF0FF !important;
     
     .card-body {
       font-size: 1.0rem;
@@ -341,14 +341,20 @@ body {
   }
   
   .answers {
-    .answer{
-      border-top: thick solid rgba(170, 76, 211, 0.6) !important;
-      border-left: thick solid rgba(170, 76, 211, 0.6) !important;
-      border-right: thick solid rgba(170, 76, 211, 0.6) !important;
-    }
-    
+      
     .card-body {
       font-size: 1.0rem;
+    }
+    
+    .comment-flow-line {
+      background-color: rgba(170, 76, 211, 0.5);
+      display: block;
+      flex-grow: 1;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 4px;
+      width: 2px;
+      -webkit-box-flex: 1;
     }
     
     .detail-btn {
@@ -376,8 +382,8 @@ body {
     }
     
     .comment {
-      border-left: thick dashed rgba(96, 96, 96, 0.6) !important;
-      border-right: thick dashed rgba(96, 96, 96, 0.6) !important;
+      // border-left: thick dashed rgba(96, 96, 96, 0.6) !important;
+      // border-right: thick dashed rgba(96, 96, 96, 0.6) !important;
     }
     
     // もっと見る機能
@@ -496,3 +502,4 @@ body {
       height: 90px;
     }
   }
+  
