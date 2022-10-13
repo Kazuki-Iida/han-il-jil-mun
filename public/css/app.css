@@ -11223,10 +11223,6 @@ body {
   font-size: 1rem !important;
 }
 
-.question-show-inner .question .card-text:hover {
-  color: #000 !important;
-}
-
 .question-show-inner .question .detail-btn {
   background: none;
   border: none;

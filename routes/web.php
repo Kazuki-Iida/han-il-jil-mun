@@ -54,12 +54,7 @@ Route::group(['middleware' => ['auth']], function(){
 Route::get('/questions', 'QuestionController@index')->name('home');
 Route::get('/', 'QuestionController@index')->name('home');
 Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
-Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
-Route::resource('user', 'UserController');
-Route::get('/countries/{country}', 'CountryController@index');
-//Route::get('/questions/{question}/edit', 'QuestionController@edit');
+// Route::resource('user', 'UserController');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
