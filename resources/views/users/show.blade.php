@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css">
     </head>
-    <body>
+    <body class="user-show-body">
         <!--モーダル-->
         <div class="modal fade" id="followingShowModal" tabindex="-1" role="dialog" aria-labelledby="followingsShowModalLabel">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -80,7 +80,7 @@
           
         <div class="container">
             <div class="user-show">
-                <div class="user-profile bg-white">
+                <div class="user-profile bg-white m-sm-0 m-3">
                     <div class="profile-content row">
                         <div class="profile-left mb-3 col-sm-6 col-11　col-offset-1">
                             <div class="profile-image-wrapper pb-sm-2 pb-0">
@@ -94,13 +94,13 @@
                                     <div class="follow-count col-sm-3 col-5 text-center">
                                         <button class="modal-open-btn" data-toggle="modal" data-target="#followingShowModal">
                                             <p class="text-center mb-0">{{ $follow_count }}</p>
-                                            <p class="text-center">フォロー</p>
+                                            <p class="text-center text-nowrap">フォロー</p>
                                         </button>
                                     </div>
                                     <div class="followed-count col-sm-3 col-5 text-center">
                                         <button class="modal-open-btn" data-toggle="modal" data-target="#followerShowModal">
                                             <p class="text-center mb-0">{{ $follower_count }}</p>
-                                            <p class="text-center">フォロワー</p>
+                                            <p class="text-center text-nowrap">フォロワー</p>
                                         </button>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="back-btn w-100 text-center">
+                    <div class="back-btn w-100 text-center mt-sm-0 mt-5">
                         <button class="btn btn-success w-25" type="button" onClick="history.back()">戻る</a>
                     </div>
                 </div>
