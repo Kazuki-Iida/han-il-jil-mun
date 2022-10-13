@@ -39,7 +39,7 @@ class Answer extends Model
     
     public function likes()
     {
-        return $this->hasMany(AnswerLike::class, 'answer_id');
+        return $this->hasMany('App\AnswerLike');
     }
     
     /**

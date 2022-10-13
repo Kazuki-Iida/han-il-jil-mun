@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AnswerLike extends Model
 {
-    
     protected $fillable = ['answer_id','user_id'];
     
     public function answer()

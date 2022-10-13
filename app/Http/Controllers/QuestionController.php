@@ -73,10 +73,10 @@ class QuestionController extends Controller
         $question_likes = QuestionLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
         foreach($question_likes as $question_like){
-            $question_user = $question_like->question->user_id;
-            $ranking[] = $question_user;
+            $ranking[] = $question_like->question->user_id;
         }
         $question_good_ranking_counts = array_count_values($ranking);
+        arsort($question_good_ranking_counts);
         $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
         
         $i = 1;
@@ -91,11 +91,12 @@ class QuestionController extends Controller
         
         $answer_likes = AnswerLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
+        $ranking = [];
         foreach($answer_likes as $answer_like){
-            $answer_user = $answer_like->answer->user_id;
-            $ranking[] = $answer_user;
+            $ranking[] = $answer_like->answer->user_id;
         }
         $answer_good_ranking_counts = array_count_values($ranking);
+        arsort($answer_good_ranking_counts);
         $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
         
         $j = 1;

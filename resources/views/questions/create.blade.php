@@ -49,8 +49,8 @@
                     
                     <div class="country-select-wrapper mt-4">
                         <group class="inline-radio">
-                            <div><input type="radio" name="question[country_id]"　value="japan"><label>日本について</label></div>
-                            <div><input type="radio" name="question[country_id]" value="corea" checked><label>韓国について</label></div>
+                            <div><input type="radio" name="question[country_id]"　value=1><label>日本について</label></div>
+                            <div><input type="radio" name="question[country_id]" value=2><label>韓国について</label></div>
                         </group>
                         <p class="country_id__error" style="color:red">{{ $errors->first('question.country_id') }}</p>
                     </div>
