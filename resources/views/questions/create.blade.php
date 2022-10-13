@@ -7,6 +7,14 @@
         <title>日韓質問｜質問を投稿する</title>
     </head>
     <body class="create-edit-body">
+        
+        
+        <style>
+           
+        </style>
+        
+        
+        
         <div class="create-edit-page p-md-0 px-2 py-4">
             <form id="create" action="/questions" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -38,14 +46,17 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <p class="category_id__error" style="color:red">{{ $errors->first('question.category_id') }}</p>
                         </div>
                     </div>
                     
                     <div class="country">
                         <h2>Country</h2>
-                            @foreach($countries as $country)
-                                <input type="radio" name="question[country_id]" value="{{ $country->id }}">{{ $country->name }}
-                            @endforeach
+                        
+                            <group class="inline-radio">
+                                <div><input type="radio" name="question[country_id]"　value="japan"><label>日本について</label></div>
+                                <div><input type="radio" name="question[country_id]" value="corea" checked><label>韓国について</label></div>
+                            </group>
                             <p class="country_id__error" style="color:red">{{ $errors->first('question.country_id') }}</p>
                     </div>
                     

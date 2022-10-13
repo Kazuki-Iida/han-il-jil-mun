@@ -26,6 +26,7 @@ class QuestionRequest extends FormRequest
         return [
             'question.title' => 'required|string|max:50',
             'question.body' => 'required|string|max:1000',
+            'question.category_id' => 'required',
             'question.country_id' => 'required',
             'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg',
             'images_array' => 'array|max:4',
@@ -41,6 +42,7 @@ class QuestionRequest extends FormRequest
             'question.body.required' => '質問内容を入力してください',
             'question.body.string' => '質問内容は文字列で入力してください',
             'question.body.max' => '質問内容は1000文字以内で入力してください',
+            'question.category_id.required' => 'カテゴリーを選択してください',
             'question.country_id.required' => 'どの国に関する質問か選んでください',
             'images_array.max' => '画像は4つまで添付することができます',
         ];

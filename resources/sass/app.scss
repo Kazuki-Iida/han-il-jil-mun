@@ -474,6 +474,11 @@ body {
 
 
 .create-edit-page {
+  .country {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  
   .form-container {
     max-width:600px;
     margin:0 auto;
@@ -638,6 +643,49 @@ body {
     padding-bottom: 10px;
     margin-left: 3px;
   }
+  
+  
+  // ラジオボタン用
+  .inline-radio {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #aa4cd3;
+    
+    
+    div {
+      position: relative;
+      flex: 1;
+    }
+    
+    input {
+      width: 100%;
+      height: 60px;
+      opacity: 0;
+    }
+    
+    label {
+      position: absolute;
+      top: 0; left: 0;
+      color: #969696;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      border-right: 1px solid #b6b6b6;
+    }
+    
+    div:last-child label {
+      border-right: 0;
+    }
+    
+    input:checked + label {
+      background: #aa4cd3;
+      font-weight: 500;
+      color: #fff;
+    }
+  }
 }
-
-
