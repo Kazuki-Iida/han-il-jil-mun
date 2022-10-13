@@ -10974,6 +10974,16 @@ body {
   }
 }
 
+@media screen and (max-width: 576px) {
+  .create-edit-body {
+    background-color: #FBF0FF !important;
+  }
+}
+
+.bg-success {
+  background-color: #aa4cd3 !important;
+}
+
 .btn-success {
   color: #fff;
   background-color: #aa4cd3;
@@ -11275,36 +11285,6 @@ body {
   font-size: 1.2rem;
 }
 
-.question-show-inner .answers .list-item {
-  opacity: 1;
-}
-
-.question-show-inner .answers .list-item.is-hidden {
-  opacity: 0;
-  height: 0;
-  margin: 0;
-}
-
-.question-show-inner .answers .list-btn {
-  margin-top: 20px;
-}
-
-.question-show-inner .answers .list-btn.is-btn-hidden {
-  display: none;
-}
-
-.question-show-inner .answers .list-btn button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  height: 32px;
-  line-height: 32px;
-  width: 120px;
-}
-
 .user-show .modal-open-btn {
   background: none;
   border: none;
@@ -11390,5 +11370,184 @@ body {
   .image {
     height: 90px;
   }
+}
+
+.create-edit-page {
+  /* media queries */
+}
+
+.create-edit-page .form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 6px;
+  background-color: #FAFAFA;
+}
+
+.create-edit-page .form-head {
+  border-radius: 6px 6px 0px 0px;
+  color: #FAFAFA;
+}
+
+.create-edit-page h2 {
+  text-align: center;
+  padding: 18px 0 18px 0;
+  font-size: 1.4em;
+}
+
+.create-edit-page input {
+  margin-bottom: 10px;
+}
+
+.create-edit-page input[type=text]:focus {
+  outline: 2px solid rgba(170, 76, 211, 0.7) !important;
+}
+
+.create-edit-page textarea:focus {
+  outline: 2px solid rgba(170, 76, 211, 0.7) !important;
+}
+
+.create-edit-page textarea {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.create-edit-page input:first-of-type {
+  margin-top: 35px;
+}
+
+.create-edit-page input[type=text],
+.create-edit-page textarea {
+  font-size: 1em;
+  padding: 15px 10px 10px;
+  font-family: "Source Sans Pro", arial, sans-serif;
+  border: 1px solid #cecece;
+  background: #d7d7d7;
+  color: #FAFAFA;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 600px;
+}
+
+.create-edit-page ::-webkit-input-placeholder {
+  color: #FAFAFA;
+}
+
+.create-edit-page :-moz-placeholder {
+  color: #FAFAFA;
+}
+
+.create-edit-page ::-moz-placeholder {
+  color: #FAFAFA;
+}
+
+.create-edit-page :-ms-input-placeholder {
+  color: #FAFAFA;
+}
+
+.create-edit-page button {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: #2ABCA7;
+  padding: 12px 45px;
+  border-radius: 5px;
+  border: 1px solid #2ABCA7;
+  transition: 0.5s;
+  display: inline-block;
+  cursor: pointer;
+  width: 30%;
+  color: #fff;
+}
+
+.create-edit-page button:hover,
+.create-edit-page .button:hover {
+  background: #19a08c;
+}
+
+@media (max-width: 700px) {
+  .create-edit-page label.error {
+    width: 90%;
+  }
+
+  .create-edit-page input[type=text],
+  .create-edit-page textarea {
+    width: 90%;
+  }
+
+  .create-edit-page button {
+    width: 90%;
+  }
+
+  .create-edit-page body {
+    padding-top: 10px;
+  }
+}
+
+.create-edit-page .checkbox-label {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+}
+
+.create-edit-page .checkbox-input {
+  margin: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.create-edit-page .checkbox-input:checked + .checkbox-front-span {
+  background: #aa4cd3;
+}
+
+.create-edit-page .checkbox-input:checked + .checkbox-front-span::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 40%;
+  height: 4px;
+  border-radius: 2px;
+  transform: translate(-6px, 5px) rotateZ(-135deg);
+  transform-origin: 2px 2px;
+  background: #FFFFFF;
+}
+
+.create-edit-page .checkbox-input:checked + .checkbox-front-span::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 76%;
+  height: 4px;
+  border-radius: 2px;
+  transform: translate(-6px, 5px) rotateZ(-45deg);
+  transform-origin: 2px 2px;
+  background: #FFFFFF;
+}
+
+.create-edit-page .checkbox-front-span {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: solid 2px transparent;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.create-edit-page .checkbox-span {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-left: 3px;
 }
 
