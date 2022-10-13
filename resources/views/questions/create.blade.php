@@ -25,7 +25,7 @@
                         <label class="image-label rounded">
                             <input type="file" id="imageInput" name="images_array[]" multiple="multiple">画像ファイルを選択&ensp;<i class="far fa-images"></i>（4枚まで）
                         </label>
-                        <p id="fileSelected">選択されていません</p>
+                        <p id="fileSelected">（jpeg,bmp,png,jpgのみ）</p>
                         <p class="images__error" style="color:red">{{ $errors->first('images_array') }}</p>
                     </div>
                     
