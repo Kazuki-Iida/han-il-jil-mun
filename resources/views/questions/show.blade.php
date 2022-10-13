@@ -22,31 +22,6 @@
             	}
             }
         </script>
-{{--        <ul class="list">
-    <li class="list-item">item1</li>
-    <li class="list-item">item2</li>
-    <li class="list-item">item3</li>
-    <li class="list-item">item4</li>
-    <li class="list-item">item5</li>
-    <li class="list-item">item6</li>
-    <li class="list-item">item7</li>
-    <li class="list-item">item8</li>
-    <li class="list-item">item9</li>
-    <li class="list-item">item10</li>
-    <li class="list-item">item11</li>
-    <li class="list-item">item12</li>
-    <li class="list-item">item13</li>
-    <li class="list-item">item14</li>
-    <li class="list-item">item15</li>
-    <li class="list-item">item16</li>
-    <li class="list-item">item17</li>
-    <li class="list-item">item18</li>
-    <li class="list-item">item19</li>
-    <li class="list-item">item20</li>
-</ul>
-<div class="list-btn">
-    <button>もっと見る</button>
-</div>  --}}
         <div class="container">
             <div class="row">
                 <div class="question-show-inner col-12 col-lg-7 bg-white mx-auto border-bottom  border-secondary rounded">
