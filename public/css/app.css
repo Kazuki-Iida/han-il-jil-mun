@@ -11369,6 +11369,11 @@ body {
   }
 }
 
+.lb-image {
+  max-width: 100px;
+  height: auto;
+}
+
 .create-edit-page .country {
   margin-right: 15px;
   margin-left: 15px;

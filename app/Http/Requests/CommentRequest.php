@@ -15,7 +15,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'comment.body' => 'required|string|max:1000',
-            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg',
+            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg|max:10240',
             'images_array' => 'array|max:4',
         ];
     }

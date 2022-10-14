@@ -28,7 +28,7 @@ class QuestionRequest extends FormRequest
             'question.body' => 'required|string|max:1000',
             'question.category_id' => 'required',
             'question.country_id' => 'required',
-            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg',
+            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg|max:10240',
             'images_array' => 'array|max:4',
         ];
     }

@@ -25,7 +25,7 @@ class AnswerRequest extends FormRequest
     {
         return [
             'answer.body' => 'required|string|max:1000',
-            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg',
+            'images_array.*.image' => 'image|mimes:jpeg,bmp,png,jpg|max:10240',
             'images_array' => 'array|max:4',
         ];
     }
