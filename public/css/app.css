@@ -11474,6 +11474,12 @@ body {
   border-bottom: 15px solid #FBF0FF !important;
 }
 
+@media screen and (max-width: 576px) {
+  .question-show-inner .question {
+    border-bottom: none !important;
+  }
+}
+
 .question-show-inner .question .card-body {
   font-size: 1rem;
 }

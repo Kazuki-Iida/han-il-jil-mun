@@ -37450,6 +37450,16 @@ $(function () {
   });
 });
 
+// 削除確認アラート
+$('.delete-btn').on('click', function check() {
+  if (window.confirm('削除してよろしいですか？')) {
+    return true;
+  } else {
+    window.alert('キャンセルされました');
+    return false;
+  }
+});
+
 /***/ }),
 
 /***/ "./resources/sass/app.scss":

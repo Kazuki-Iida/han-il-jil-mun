@@ -11,17 +11,6 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <script type="text/javascript"> 
-            function check(){
-            	if(window.confirm('削除してよろしいですか？')){
-            		return true;
-            	}
-                else{ 
-            		window.alert('キャンセルされました');
-            		return false;
-            	}
-            }
-        </script>
         <div class="container">
             <div class="row">
                 <div class="question-show-inner col-12 col-lg-7 bg-white mx-auto border-bottom  border-secondary rounded">
@@ -46,7 +35,7 @@
                                                 <form action="/questions/{{ $question->id }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item" type="submit">質問を削除する</button>
+                                                    <button class="dropdown-item delete-btn" type="submit">質問を削除する</button>
                                                 </form>
                                             @else
                                                 @if($question->is_reported_by_auth_user())
@@ -145,7 +134,7 @@
                                                         <form action="/answers/{{ $answer->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="dropdown-item" type="submit">回答を削除する</button>
+                                                            <button class="dropdown-item delete-btn" type="submit">回答を削除する</button>
                                                         </form>
                                                     @else
                                                         @if($answer->is_reported_by_auth_user())
@@ -240,7 +229,7 @@
                                                                 <form action="/comments/{{ $comment->id }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button class="dropdown-item" type="submit">コメントを削除する</button>
+                                                                    <button class="dropdown-item delete-btn" type="submit">コメントを削除する</button>
                                                                 </form>
                                                             @else
                                                                 @if($comment->is_reported_by_auth_user())
@@ -292,7 +281,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="footer py-3">
+                    <div class="footer py-3 text-center">
                         <a href="/" class="btn btn-secondary rounded">ホームへ戻る&ensp;<i class="fas fa-home"></i></a>
                     </div>
                 </div>

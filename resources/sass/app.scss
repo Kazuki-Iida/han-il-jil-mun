@@ -580,6 +580,10 @@ body {
   .question{
     border-bottom: 15px solid #FBF0FF !important;
     
+    @media screen and (max-width: 576px) {
+      border-bottom: none !important;
+    }
+    
     .card-body {
       font-size: 1.0rem;
     }

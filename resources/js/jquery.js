@@ -13,6 +13,7 @@ $('#imageInput').on('change', function () {
     $('#fileSelected').html(file);
 });
 
+
 // 質問のいいね
 $(function () {
   let questionLike = $('.question-like-toggle');
@@ -72,4 +73,16 @@ $(function () {
       console.log('fail');
     });
   });
+});
+
+
+// 削除確認アラート
+$('.delete-btn').on('click', function check(){
+	if(window.confirm('削除してよろしいですか？')){
+		return true;
+	}
+    else{ 
+		window.alert('キャンセルされました');
+		return false;
+	}
 });
