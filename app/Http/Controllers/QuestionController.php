@@ -72,20 +72,26 @@ class QuestionController extends Controller
 		
         $question_likes = QuestionLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
+        $ranking = [];
         foreach($question_likes as $question_like){
             $ranking[] = $question_like->question->user_id;
         }
-        $question_good_ranking_counts = array_count_values($ranking);
-        arsort($question_good_ranking_counts);
-        $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
-        
-        $i = 1;
-        foreach($question_good_ranking_users_numbers as $question_good_ranking_users_number){
-            $question_good_ranking_users[] = User::where('id', $question_good_ranking_users_number)->first();
-            $i++;
-            if($i == 8){
-                break;
+        if($ranking){
+            $question_good_ranking_counts = array_count_values($ranking);
+            arsort($question_good_ranking_counts);
+            $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
+            
+            $i = 1;
+            foreach($question_good_ranking_users_numbers as $question_good_ranking_users_number){
+                $question_good_ranking_users[] = User::where('id', $question_good_ranking_users_number)->first();
+                $i++;
+                if($i == 8){
+                    break;
+                }
             }
+        }else{
+            $question_good_ranking_users = [];
+            $question_good_ranking_counts = [];
         }
 
         
@@ -95,18 +101,24 @@ class QuestionController extends Controller
         foreach($answer_likes as $answer_like){
             $ranking[] = $answer_like->answer->user_id;
         }
-        $answer_good_ranking_counts = array_count_values($ranking);
-        arsort($answer_good_ranking_counts);
-        $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
-        
-        $j = 1;
-        foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
-            $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
-            $j++;
-            if($j ==  8){
-                break;
+        if($ranking){
+            $answer_good_ranking_counts = array_count_values($ranking);
+            arsort($answer_good_ranking_counts);
+            $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
+            
+            $j = 1;
+            foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
+                $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
+                $j++;
+                if($j ==  8){
+                    break;
+                }
             }
+        }else{
+            $answer_good_ranking_users = [];
+            $answer_good_ranking_counts = [];
         }
+
         
         
         return view('questions/index')
