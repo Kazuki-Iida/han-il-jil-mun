@@ -190,6 +190,16 @@ class QuestionController extends Controller
     
     public function delete(Question $question)
     {
+        if(isset($question->likes)){
+            QuestionLike::where('question_id', $question->id)->delete();
+        }
+        
+        foreach($question->answers as $answer){
+            if(isset($answer->likes)){
+                AnswerLike::where('answer_id', $answer->id)->delete();
+            }
+        }
+        
         if(isset($question->answers)){
             foreach($question->answers as $answer){
                 if(isset($answer->comments)){

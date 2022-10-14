@@ -11636,6 +11636,7 @@ body {
 
 .like-btn {
   color: #8c8c8c;
+  cursor: pointer;
   font-size: 23px;
 }
 

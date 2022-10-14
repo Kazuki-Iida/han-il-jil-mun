@@ -69,6 +69,10 @@ class AnswerController extends Controller
     
     public function delete(Answer $answer)
     {
+        if(isset($answer->likes)){
+            AnswerLike::where('answer_id', $answer->id)->delete();
+        }
+        
         $question_id = $answer->question_id;
         if(isset($answer->comments)){
             foreach($answer->comments as $comment){
