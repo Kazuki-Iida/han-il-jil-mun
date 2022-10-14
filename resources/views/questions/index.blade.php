@@ -7,6 +7,7 @@
         <title>日韓質問</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        
     </head>
     <body>
         <div class="body-inner-of-index container">
@@ -104,14 +105,29 @@
                                         </div>
                                         
                                         <div class="row question-card-footer">
-                                            <div class="col-2">
-                                                @if($question->is_liked_by_auth_user())
-                                                    <a href="{{ route('question.unlike', ['question_id' => $question->id]) }}" class="good-btn btn btn-success btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
-                                                @else
-                                                    <a href="{{ route('question.like', ['question_id' => $question->id]) }}" class="good-btn btn btn-secondary btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
-                                                @endif
+                                            <div class="col-sm-2 col-6 text-nowrap">
+                                                @auth
+                                                    @if(!$question->is_liked_by_auth_user())
+                                                        <span class="likes">
+                                                            <i class="fas fa-thumbs-up like-btn question-like-toggle" data-question-id="{{ $question->id }}"></i>
+                                                            <span class="like-counter">{{ $question->likes->count() }}</span>
+                                                        </span>
+                                                    @else
+                                                        <span class="likes">
+                                                            <i class="fas fa-thumbs-up like-btn question-like-toggle liked" data-question-id="{{ $question->id }}"></i>
+                                                            <span class="like-counter">{{ $question->likes->count() }}</span>
+                                                        </span>
+                                                    @endif
+                                                @endauth
+                                                @guest
+                                                    <span class="likes">
+                                                        <a href="/login"><i class="fas fa-thumbs-up like-btn"></i></a>
+                                                        <span class="like-counter">{{ $question->likes->count() }}</span>
+                                                    </span>
+                                                @endguest
                                             </div>
-                                            <div class="col-4">
+                                            
+                                            <div class="col-sm-4 col-6">
                                                 <form action="/questions" method="GET">
                                                     @csrf
                                                     <input type="hidden" name="order" value="{{ $order }}">
@@ -119,8 +135,8 @@
                                                     <button class="btn py-0 mb-3 category-link" name ="question_category" type="submit" value={{ $question->category->id }}>{{ $question->category->name }}</a>
                                                 </form>
                                             </div>
-                                            <p class="col-3">{{ $question->country->name }}について</p>
-                                            <div class="answers-count col-3"><p>回答数：{{ $question->answers->count() }}</p></div>
+                                            <p class="col-sm-3 col-6">{{ $question->country->name }}について</p>
+                                            <div class="answers-count col-sm-3 col-6"><p>回答数：{{ $question->answers->count() }}</p></div>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +176,7 @@
                         </ul>
                     </div>
                     <div class="question-ranking">
-                        <h2 class="category-index-title mt-3 border-bottom border-success">質問Goodランキング(月間)</h2>
+                        <h2 class="category-index-title mt-3 border-bottom border-success">質問&thinsp;<i class="fas fa-thumbs-up"></i>&thinsp;ランキング(月間)</h2>
                         <ul>
                             <?php $i = 0; $j = null; ?>
                             @foreach($question_good_ranking_users as $question_good_ranking_user)
@@ -181,7 +197,7 @@
                         </ul>
                     </div>
                     <div class="answer-ranking pt-2">
-                        <h2 class="category-index-title mt-3 border-bottom border-success">回答Goodランキング(月間)</h2>
+                        <h2 class="category-index-title mt-3 border-bottom border-success">回答&thinsp;<i class="fas fa-arrow-alt-circle-up"></i>&thinsp;ランキング(月間)</h2>
                         <ul>
                             <?php $i = 0; $j = null; ?>
                             @foreach($answer_good_ranking_users as $answer_good_ranking_user)

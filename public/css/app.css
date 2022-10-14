@@ -11198,182 +11198,6 @@ body {
   color: #aa4cd3 !important;
 }
 
-.modal .modal-user-btn {
-  color: #606060;
-  font-size: 17.6px;
-  --font-family-sans-serif: "Nunito", sans-serif;
-}
-
-.modal .modal-user-btn:hover {
-  background-color: #ebebeb !important;
-  color: #aa4cd3 !important;
-}
-
-.question-show-inner .question {
-  border-bottom: 15px solid #FBF0FF !important;
-}
-
-.question-show-inner .question .card-body {
-  font-size: 1rem;
-}
-
-.question-show-inner .question .category-link {
-  background-color: transparent;
-  color: #606060;
-  font-size: 1rem !important;
-}
-
-.question-show-inner .question .detail-btn {
-  background: none;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.question-show-inner .question .good-btn {
-  font-size: 1.1rem !important;
-}
-
-.question-show-inner .question .index-paginate .pagination {
-  margin: 15px auto;
-  text-align: center;
-}
-
-.question-show-inner .question .user-name {
-  font-size: 1.2rem;
-}
-
-.question-show-inner .answers .card-body {
-  font-size: 1rem;
-}
-
-.question-show-inner .answers .comment-flow-line {
-  background-color: rgba(170, 76, 211, 0.5);
-  display: block;
-  flex-grow: 1;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4px;
-  width: 2px;
-  -webkit-box-flex: 1;
-}
-
-.question-show-inner .answers .detail-btn {
-  background: none;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.question-show-inner .answers .good-btn {
-  font-size: 1.1rem !important;
-}
-
-.question-show-inner .answers .index-paginate .pagination {
-  margin: 15px auto;
-  text-align: center;
-}
-
-.question-show-inner .answers .user-name {
-  font-size: 1.2rem;
-}
-
-.user-show .modal-open-btn {
-  background: none;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.user-show .profile-image {
-  height: auto;
-  width: 100%;
-}
-
-.user-show .profile-image-wrapper {
-  padding: 1.5rem 20%;
-}
-
-.user-show .user-profile {
-  background: rgb(255, 255, 255);
-  border-radius: 20px;
-  padding: 30px;
-  position: relative;
-}
-
-.user-show .user-profile:after {
-  background: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
-  background-color: black;
-  border-radius: 23px;
-  content: "";
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: -5px;
-  right: -5px;
-  z-index: -1;
-}
-
-#page_top {
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #aa4cd3;
-  opacity: 0.6;
-  border-radius: 50%;
-  z-index: 10;
-}
-
-#page_top a {
-  position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  text-decoration: none;
-}
-
-#page_top a:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\F102";
-  font-size: 25px;
-  color: #fff;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  top: -3px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  text-align: center;
-}
-
-.image {
-  height: 120px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-@media screen and (max-width: 576px) {
-  .image {
-    height: 90px;
-  }
-}
-
-.lb-image {
-  max-width: 100px;
-  height: auto;
-}
-
 .create-edit-page .country {
   margin-right: 15px;
   margin-left: 15px;
@@ -11633,5 +11457,185 @@ body {
   background: #aa4cd3;
   font-weight: 500;
   color: #fff;
+}
+
+.modal .modal-user-btn {
+  color: #606060;
+  font-size: 17.6px;
+  --font-family-sans-serif: "Nunito", sans-serif;
+}
+
+.modal .modal-user-btn:hover {
+  background-color: #ebebeb !important;
+  color: #aa4cd3 !important;
+}
+
+.question-show-inner .question {
+  border-bottom: 15px solid #FBF0FF !important;
+}
+
+.question-show-inner .question .card-body {
+  font-size: 1rem;
+}
+
+.question-show-inner .question .category-link {
+  background-color: transparent;
+  color: #606060;
+  font-size: 1rem !important;
+}
+
+.question-show-inner .question .detail-btn {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.question-show-inner .question .good-btn {
+  font-size: 1.1rem !important;
+}
+
+.question-show-inner .question .index-paginate .pagination {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.question-show-inner .question .user-name {
+  font-size: 1.2rem;
+}
+
+.question-show-inner .answers .card-body {
+  font-size: 1rem;
+}
+
+.question-show-inner .answers .comment-flow-line {
+  background-color: rgba(170, 76, 211, 0.5);
+  display: block;
+  flex-grow: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  width: 2px;
+  -webkit-box-flex: 1;
+}
+
+.question-show-inner .answers .detail-btn {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.question-show-inner .answers .good-btn {
+  font-size: 1.1rem !important;
+}
+
+.question-show-inner .answers .index-paginate .pagination {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.question-show-inner .answers .user-name {
+  font-size: 1.2rem;
+}
+
+.user-show .modal-open-btn {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.user-show .profile-image {
+  height: auto;
+  width: 100%;
+}
+
+.user-show .profile-image-wrapper {
+  padding: 1.5rem 20%;
+}
+
+.user-show .user-profile {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+}
+
+.user-show .user-profile:after {
+  background: repeating-linear-gradient(45deg, #aa4cd3, #aa4cd3 3px, white 3px, rgba(170, 76, 211, 0.7) 6px);
+  background-color: black;
+  border-radius: 23px;
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  z-index: -1;
+}
+
+#page_top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #aa4cd3;
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+#page_top a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+#page_top a:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\F102";
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -3px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.image {
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 576px) {
+  .image {
+    height: 90px;
+  }
+}
+
+.liked {
+  color: #aa4cd3 !important;
+}
+
+.like-btn {
+  color: #8c8c8c;
+  font-size: 23px;
 }
 

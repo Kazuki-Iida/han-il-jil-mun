@@ -192,28 +192,29 @@ class QuestionController extends Controller
         return redirect('/');
     }
     
-    public function like($question_id)
+    public function like(Request $request)
     {
-        QuestionLike::create([
-            'question_id' => $question_id,
-            'user_id' => Auth::id(),
-        ]);
-        
-        session()->flash('success', 'You Liked the Question.');
-        
-        return redirect()->back();
-    }
+        $user_id = Auth::user()->id;
+        $question_id = $request->question_id;
+        $already_liked = QuestionLike::where('user_id', $user_id)->where('question_id', $question_id)->first();
     
-    public function unlike($question_id)
-    {
-        $like = QuestionLike::where('question_id', $question_id)->where('user_id', Auth::id())->first();
-        $like->delete();
+        if (!$already_liked) {
+            $like = new QuestionLike;
+            $like->question_id = $question_id;
+            $like->user_id = $user_id;
+            $like->save();
+        } else {
+            QuestionLike::where('question_id', $question_id)->where('user_id', $user_id)->delete();
+        }
         
-        session()->flash('success', 'You Unliked the Question.');
-        
-        return redirect()->back();
+        $question = Question::where('id', $question_id)->first();
+        $question_likes_count = $question->likes->count();
+        $param = [
+            'question_likes_count' => $question_likes_count,
+        ];
+        return response()->json($param);
     }
-    
+
     public function report($question_id)
     {
         QuestionReport::create([

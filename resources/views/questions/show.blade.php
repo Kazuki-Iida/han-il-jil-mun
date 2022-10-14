@@ -50,9 +50,9 @@
                                                 </form>
                                             @else
                                                 @if($question->is_reported_by_auth_user())
-                                                    <a href="{{ route('question.unreport', ['question_id' => $question->id]) }}" class="dropdown-item">通報済み</a>
+                                                    <a href="{{ route('questions.unreport', ['question_id' => $question->id]) }}" class="dropdown-item">通報済み</a>
                                                 @else
-                                                    <a href="{{ route('question.report', ['question_id' => $question->id]) }}" class="dropdown-item">通報する</a>
+                                                    <a href="{{ route('questions.report', ['question_id' => $question->id]) }}" class="dropdown-item">通報する</a>
                                                 @endif
                                             @endif
                                         </div>
@@ -86,12 +86,26 @@
                                 </div>
                             </div>
                             <div class="row question-card-footer w-100 pt-0 px-2 pb-2">
-                                <div class="col-2 pl-0 d-flex align-items-center">
-                                    @if($question->is_liked_by_auth_user())
-                                        <a href="{{ route('question.unlike', ['question_id' => $question->id]) }}" class="good-btn btn btn-success btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
-                                    @else
-                                        <a href="{{ route('question.like', ['question_id' => $question->id]) }}" class="good-btn btn btn-secondary btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $question->likes->count() }}</span></a>
-                                    @endif
+                                <div class="col-2 pl-0 d-flex align-items-center text-nowrap">
+                                    @auth
+                                        @if(!$question->is_liked_by_auth_user())
+                                            <span class="likes">
+                                                <i class="fas fa-thumbs-up like-btn question-like-toggle" data-question-id="{{ $question->id }}"></i>
+                                                <span class="like-counter">{{ $question->likes->count() }}</span>
+                                            </span>
+                                        @else
+                                            <span class="likes">
+                                                <i class="fas fa-thumbs-up like-btn question-like-toggle liked" data-question-id="{{ $question->id }}"></i>
+                                                <span class="like-counter">{{ $question->likes->count() }}</span>
+                                            </span>
+                                        @endif
+                                    @endauth
+                                    @guest
+                                        <span class="likes">
+                                            <a href="/login"><i class="fas fa-thumbs-up like-btn"></i></a>
+                                            <span class="like-counter">{{ $question->likes->count() }}</span>
+                                        </span>
+                                    @endguest
                                 </div>
                                 <div class="col-4 d-flex align-items-center">
                                     <button class="btn py-0 mb-0 category-link" name ="question_category">{{ $question->category->name }}</a>
@@ -135,9 +149,9 @@
                                                         </form>
                                                     @else
                                                         @if($answer->is_reported_by_auth_user())
-                                                            <a href="{{ route('answer.unreport', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報済み</a>
+                                                            <a href="{{ route('answers.unreport', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報済み</a>
                                                         @else
-                                                            <a href="{{ route('answer.report', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報する</a>
+                                                            <a href="{{ route('answers.report', ['answer_id' => $answer->id]) }}" class="dropdown-item">通報する</a>
                                                         @endif
                                                     @endif
                                                 </div>
@@ -166,12 +180,26 @@
                                         </div>
                                     </div>
                                     <div class="row answer-card-footer w-100 pt-0 px-2 pb-2">
-                                        <div class="col-3 pl-0 d-flex align-items-center">
-                                            @if($answer->is_liked_by_auth_user())
-                                                <a href="{{ route('answer.unlike', ['answer_id' => $answer->id]) }}" class="good-btn btn btn-success btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $answer->likes->count() }}</span></a>
-                                            @else
-                                                <a href="{{ route('answer.like', ['answer_id' => $answer->id]) }}" class="good-btn btn btn-secondary btn-sm text-nowrap"><i class="far fa-thumbs-up"></i><span class="badge">{{ $answer->likes->count() }}</span></a>
-                                            @endif
+                                        <div class="col-3 pl-0 d-flex align-items-center text-nowrap">
+                                            @auth
+                                                @if(!$answer->is_liked_by_auth_user())
+                                                    <span class="likes">
+                                                        <i class="fas fa-arrow-alt-circle-up like-btn answer-like-toggle" data-answer-id="{{ $answer->id }}"></i>
+                                                        <span class="like-counter">{{ $answer->likes->count() }}</span>
+                                                    </span>
+                                                @else
+                                                    <span class="likes">
+                                                        <i class="fas fa-arrow-alt-circle-up like-btn answer-like-toggle liked" data-answer-id="{{ $answer->id }}"></i>
+                                                        <span class="like-counter">{{ $answer->likes->count() }}</span>
+                                                    </span>
+                                                @endif
+                                            @endauth
+                                            @guest
+                                                <span class="likes">
+                                                    <a href="/login"><i class="fas fa-arrow-alt-circle-up like-btn"></i></a>
+                                                    <span class="like-counter">{{ $answer->likes->count() }}</span>
+                                                </span>
+                                            @endguest
                                         </div>
                                         <div class="col-space col-2 d-flex align-items-center">
                                         </div>
@@ -216,9 +244,9 @@
                                                                 </form>
                                                             @else
                                                                 @if($comment->is_reported_by_auth_user())
-                                                                    <a href="{{ route('comment.unreport', ['comment_id' => $comment->id]) }}" class="dropdown-item">通報済み</a>
+                                                                    <a href="{{ route('comments.unreport', ['comment_id' => $comment->id]) }}" class="dropdown-item">通報済み</a>
                                                                 @else
-                                                                    <a href="{{ route('comment.report', ['comment_id' => $comment->id]) }}" class="dropdown-item">通報する</a>
+                                                                    <a href="{{ route('comments.report', ['comment_id' => $comment->id]) }}" class="dropdown-item">通報する</a>
                                                                 @endif
                                                             @endif
                                                         </div>

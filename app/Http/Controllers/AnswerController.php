@@ -79,40 +79,29 @@ class AnswerController extends Controller
         return redirect('/questions/' . $question_id);    
     }
     
-    /**
-    * 引数のIDに紐づくリプライにLIKEする
-    *
-    * @param $id リプライID
-    * @return \Illuminate\Http\RedirectResponse
-    */
-    public function like($answer_id)
+    public function like(Request $request)
     {
-        AnswerLike::create([
-            'answer_id' => $answer_id,
-            'user_id' => Auth::id(),
-        ]);
-        $answer = Answer::where('id', $answer_id)->first();
-        session()->flash('success', 'You Liked the Answer.');
+        $user_id = Auth::user()->id;
+        $answer_id = $request->answer_id;
+        $already_liked = AnswerLike::where('user_id', $user_id)->where('answer_id', $answer_id)->first();
+    
+        if (!$already_liked) {
+            $like = new AnswerLike;
+            $like->answer_id = $answer_id;
+            $like->user_id = $user_id;
+            $like->save();
+        } else {
+            AnswerLike::where('answer_id', $answer_id)->where('user_id', $user_id)->delete();
+        }
         
-        return redirect()->back();
+        $answer = Answer::where('id', $answer_id)->first();
+        $answer_likes_count = $answer->likes->count();
+        $param = [
+            'answer_likes_count' => $answer_likes_count,
+        ];
+        return response()->json($param);
     }
     
-    /**
-    * 引数のIDに紐づくリプライにUNLIKEする
-    *
-    * @param $id リプライID
-    * @return \Illuminate\Http\RedirectResponse
-    */
-    public function unlike($answer_id)
-    {
-        $like = AnswerLike::where('answer_id', $answer_id)->where('user_id', Auth::id())->first();
-        $like->delete();
-        
-        $answer = Answer::where('id', $answer_id)->first();       
-        session()->flash('success', 'You Unliked the Answer.');
-        
-        return redirect()->back();
-    }
     
     public function report($answer_id)
     {
