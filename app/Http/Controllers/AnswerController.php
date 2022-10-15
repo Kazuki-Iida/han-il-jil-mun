@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Storage;
 
 class AnswerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+
     public function index(Answer $answer)
     {
         return view('answers/index')->with(['answers' => $answer->getPaginateByLimit()]);  
