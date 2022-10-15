@@ -12,7 +12,10 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,6 +25,7 @@
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -45,13 +49,6 @@
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
-                                <form action="/questions" method="GET">
-                                    <div class="input-group">
-                                        <input type="search" placeholder="キーワードを入力" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
-                                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>検索</button>
-                                        <button href="/" class="btn btn-outline-secondary">クリア</button>
-                                    </div>
-                                </form>
                                 @guest
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -62,26 +59,27 @@
                                         </li>
                                     @endif
                                 @else
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                    <li class="nav-item">
+                                        <a class="nav-menu-link profile-show-button pr-4 text-nowrap" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
+                                            {{ Str::limit( Auth::user()->name, 20) }}&thinsp;<i class="far fa-user"></i>
                                         </a>
-        
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                                ログアウト
-                                            </a>
-                                            <a class="dropdown-item profile-edit-button" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
-                                                プロフィールを編集
-                                            </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-menu-link profile-edit-button pr-4 text-nowrap" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
+                                            プロフィールを編集&thinsp;<i class="fas fa-user-edit"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-menu-link text-nowrap" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            ログアウト<i class="fas fa-door-open"></i>
+                                        </a>
+                                    </li>
+    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 @endguest
                             </ul>
                         </div>
@@ -90,9 +88,22 @@
                 <div class="header-end"></div>
             @endif
         @endif
-        <main class="py-5">
+        <main class="py-sm-5">
             @yield('content')
         </main>
+        @if(\Route::is('home'))
+            <div class="footer-start"></div>
+            <div class="footer bg-white">
+                <div class="footer-container px-5 pt-4 pb-2">
+                    <div class="footer-logo ml-sm-5">
+                        <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo footer-logo-img">
+                    </div>
+                    <div class="copy-right text-center">
+                        <small>Copyright © 2022 Iida-K All Rights Reserved.</small>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </body>
 </html>

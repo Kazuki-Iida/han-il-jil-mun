@@ -39,14 +39,9 @@ class Answer extends Model
     
     public function likes()
     {
-        return $this->hasMany(AnswerLike::class, 'answer_id');
+        return $this->hasMany('App\AnswerLike');
     }
     
-    /**
-    * リプライにLIKEを付いているかの判定
-    *
-    * @return bool true:Likeがついてる false:Likeがついてない
-    */
     public function is_liked_by_auth_user()
     {
         $id = \Auth::id();

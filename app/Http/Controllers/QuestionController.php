@@ -72,42 +72,53 @@ class QuestionController extends Controller
 		
         $question_likes = QuestionLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
+        $ranking = [];
         foreach($question_likes as $question_like){
-            $question_user = $question_like->question->user_id;
-            $ranking[] = $question_user;
+            $ranking[] = $question_like->question->user_id;
         }
-        
-        $question_good_ranking_counts = array_count_values($ranking);
-        $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
-        
-        $i = 1;
-        foreach($question_good_ranking_users_numbers as $question_good_ranking_users_number){
-            $question_good_ranking_users[] = User::where('id', $question_good_ranking_users_number)->first();
-            $i++;
-            if($i == 8){
-                break;
+        if($ranking){
+            $question_good_ranking_counts = array_count_values($ranking);
+            arsort($question_good_ranking_counts);
+            $question_good_ranking_users_numbers = array_keys($question_good_ranking_counts);
+            
+            $i = 1;
+            foreach($question_good_ranking_users_numbers as $question_good_ranking_users_number){
+                $question_good_ranking_users[] = User::where('id', $question_good_ranking_users_number)->first();
+                $i++;
+                if($i == 8){
+                    break;
+                }
             }
+        }else{
+            $question_good_ranking_users = [];
+            $question_good_ranking_counts = [];
         }
 
         
         $answer_likes = AnswerLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
+        $ranking = [];
         foreach($answer_likes as $answer_like){
-            $answer_user = $answer_like->answer->user_id;
-            $ranking[] = $answer_user;
+            $ranking[] = $answer_like->answer->user_id;
         }
-        $answer_good_ranking_counts = array_count_values($ranking);
-        $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
-        
-        $j = 1;
-        foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
-            $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
+        if($ranking){
+            $answer_good_ranking_counts = array_count_values($ranking);
+            arsort($answer_good_ranking_counts);
+            $answer_good_ranking_users_numbers = array_keys($answer_good_ranking_counts);
             
-            $j++;
-            if($j ==  8){
-                break;
+            $j = 1;
+            foreach($answer_good_ranking_users_numbers as $answer_good_ranking_users_number){
+                $answer_good_ranking_users[] = User::where('id', $answer_good_ranking_users_number)->first();
+                $j++;
+                if($j ==  8){
+                    break;
+                }
             }
+        }else{
+            $answer_good_ranking_users = [];
+            $answer_good_ranking_counts = [];
         }
+
         
         
         return view('questions/index')
@@ -129,9 +140,10 @@ class QuestionController extends Controller
         // return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
     // }
     
-    public function show(Question $question, Answer $answer, Comment $comment)
+    public function show(Question $question)
     {
-        return view('questions/show')->with(['question' => $question, 'answers' => $question->getByQuestion()]);
+        $answers = Answer::query()->where('question_id', $question->id)->withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->get();
+        return view('questions/show')->with(['question' => $question, 'answers' => $answers]);
     }
     
     public function create(Category $category, Country $country)
@@ -178,6 +190,16 @@ class QuestionController extends Controller
     
     public function delete(Question $question)
     {
+        if(isset($question->likes)){
+            QuestionLike::where('question_id', $question->id)->delete();
+        }
+        
+        foreach($question->answers as $answer){
+            if(isset($answer->likes)){
+                AnswerLike::where('answer_id', $answer->id)->delete();
+            }
+        }
+        
         if(isset($question->answers)){
             foreach($question->answers as $answer){
                 if(isset($answer->comments)){
@@ -192,28 +214,29 @@ class QuestionController extends Controller
         return redirect('/');
     }
     
-    public function like($question_id)
+    public function like(Request $request)
     {
-        QuestionLike::create([
-            'question_id' => $question_id,
-            'user_id' => Auth::id(),
-        ]);
-        
-        session()->flash('success', 'You Liked the Question.');
-        
-        return redirect()->back();
-    }
+        $user_id = Auth::user()->id;
+        $question_id = $request->question_id;
+        $already_liked = QuestionLike::where('user_id', $user_id)->where('question_id', $question_id)->first();
     
-    public function unlike($question_id)
-    {
-        $like = QuestionLike::where('question_id', $question_id)->where('user_id', Auth::id())->first();
-        $like->delete();
+        if (!$already_liked) {
+            $like = new QuestionLike;
+            $like->question_id = $question_id;
+            $like->user_id = $user_id;
+            $like->save();
+        } else {
+            QuestionLike::where('question_id', $question_id)->where('user_id', $user_id)->delete();
+        }
         
-        session()->flash('success', 'You Unliked the Question.');
-        
-        return redirect()->back();
+        $question = Question::where('id', $question_id)->first();
+        $question_likes_count = $question->likes->count();
+        $param = [
+            'question_likes_count' => $question_likes_count,
+        ];
+        return response()->json($param);
     }
-    
+
     public function report($question_id)
     {
         QuestionReport::create([

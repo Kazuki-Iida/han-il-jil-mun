@@ -38,17 +38,13 @@ class UserController extends Controller
     public function edit() {
         $user = Auth::user();
         $interests = Interest::with('users')->get();
+        $checked = [];
         foreach($user->interests as $interest){
             $checked[] = $interest->id;
         }
         
         return view('users.edit', ['user' => $user])->with(['interests' => $interests, 'checked' => $checked]);
     }
-    
-    // public function update(User $user)
-    // {
-    //     return view('users/show')->with(['user' => $user]);  
-    // }
     
     public function update(UserRequest $request, $user)
     {
