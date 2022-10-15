@@ -10,6 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', 'QuestionController@index')->name('home');
+Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
+// Route::resource('user', 'UserController');
+
+Auth::routes(['verify' => true]);
+Route::get('/verified', function(){
+    return view('auth.verified');
+})->middleware('verified');
+
 Route::group(['middleware' => ['auth']], function(){
     
     Route::post('/questions/like', 'QuestionController@like')->name('questions.like');
@@ -48,13 +59,3 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/comments/report/{comment_id}', 'CommentController@report')->name('comments.report');
     Route::get('/comments/unreport/{comment_id}', 'CommentController@unreport')->name('comments.unreport');
 });
-
-Route::get('/', 'QuestionController@index')->name('home');
-Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
-Route::get('/users/{user}', 'UserController@show')->name('users.show');
-// Route::resource('user', 'UserController');
-
-Auth::routes(['verify' => true]);
-Route::get('/verified', function(){
-    return view('auth.verified');
-})->middleware('verified');
