@@ -10932,6 +10932,10 @@ a.text-dark:focus {
   }
 }
 
+main {
+  min-height: 600px;
+}
+
 *:focus {
   outline: none !important;
   box-shadow: none !important;
