@@ -49,10 +49,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/comments/unreport/{comment_id}', 'CommentController@unreport')->name('comments.unreport');
 });
 
-Route::get('/questions', 'QuestionController@index')->name('home');
 Route::get('/', 'QuestionController@index')->name('home');
 Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 // Route::resource('user', 'UserController');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+Route::get('/verified', function(){
+    return view('auth.verified');
+})->middleware('verified');

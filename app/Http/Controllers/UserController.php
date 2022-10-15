@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('destroy');
+        $this->middleware('verified')->except(['show', 'destroy']);
+    }
+
+    
     public function show(User $user, Follower $follower)
     {
         $login_user = auth()->user();
