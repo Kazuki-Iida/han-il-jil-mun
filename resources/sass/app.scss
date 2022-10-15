@@ -581,7 +581,7 @@ body {
     border-bottom: 15px solid #FBF0FF !important;
     
     @media screen and (max-width: 576px) {
-      border-bottom: none !important;
+      border-bottom: 3px solid #aa4cd3 !important;
     }
     
     .card-body {
@@ -751,6 +751,16 @@ body {
 }
 
 
+.lb-image {
+  width: 500px !important;
+  height: auto !important;
+  
+  @media screen and (max-width: 576px) {
+    width: 380px !important;
+  }
+}
+
+
 // いいね機能用
 .liked {
   color: #aa4cd3 !important;
@@ -761,3 +771,5 @@ body {
   cursor: pointer;
   font-size: 23px;
 }
+
+

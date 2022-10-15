@@ -74,8 +74,8 @@
                                     <p class="mb-0">({{ $question->created_at->format('Y/m/d-G:m:s') }})</p>
                                 </div>
                             </div>
-                            <div class="row question-card-footer w-100 pt-0 px-2 pb-2">
-                                <div class="col-2 pl-0 d-flex align-items-center text-nowrap">
+                            <div class="row question-card-footer w-100 pt-0 pl-2 mr-0 pb-2">
+                                <div class="col-sm-2 col-5 pl-0 d-flex align-items-center text-nowrap">
                                     @auth
                                         @if(!$question->is_liked_by_auth_user())
                                             <span class="likes">
@@ -96,11 +96,11 @@
                                         </span>
                                     @endguest
                                 </div>
-                                <div class="col-4 d-flex align-items-center">
-                                    <button class="btn py-0 mb-0 category-link" name ="question_category">{{ $question->category->name }}</a>
+                                <div class="col-sm-4 col-6 d-flex align-items-center d-flex align-items-center my-sm-0 mt-2">
+                                    <button class="btn py-0 pl-3 mb-0 category-link" name ="question_category">{{ $question->category->name }}</a>
                                 </div>
-                                <div class="to-answer-page col-6 text-nowrap text-center d-flex align-items-center">
-                                    <a class="btn btn-success btn-lg rounded-pill text-nowrap m-auto py-1" href="/answers/{{ $question->id }}/create">回答する&ensp;<i class="far fa-comment-dots"></i></a>
+                                <div class="to-answer-page col-sm-6 col-12 text-nowrap text-right px-sm-3 px-0 pt-sm-0 pt-2">
+                                    <a class="btn btn-success btn-lg rounded-pill text-nowrap py-1" href="/answers/{{ $question->id }}/create">回答する&ensp;<i class="far fa-comment-dots"></i></a>
                                 </div>
                             </div>
                         </div>

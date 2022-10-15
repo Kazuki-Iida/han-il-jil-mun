@@ -11476,7 +11476,7 @@ body {
 
 @media screen and (max-width: 576px) {
   .question-show-inner .question {
-    border-bottom: none !important;
+    border-bottom: 3px solid #aa4cd3 !important;
   }
 }
 
@@ -11633,6 +11633,17 @@ body {
 @media screen and (max-width: 576px) {
   .image {
     height: 90px;
+  }
+}
+
+.lb-image {
+  width: 500px !important;
+  height: auto !important;
+}
+
+@media screen and (max-width: 576px) {
+  .lb-image {
+    width: 380px !important;
   }
 }
 
