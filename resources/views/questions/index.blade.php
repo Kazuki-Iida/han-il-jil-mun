@@ -15,7 +15,7 @@
             <div class="questions-index row">
                 <div class="question-index-inner bg-white col-11 col-lg-7 mx-auto rounded">
                     <div class="serch-wrapper pt-3 pr-3 pl-3">
-                        <form action="/questions" method="GET">
+                        <form action="/" method="GET">
                             @csrf
                             <div class="input-group">
                                 <input type="search" placeholder="質問を検索" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
@@ -36,7 +36,7 @@
                                     @endif
                                 </button>
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
-                                    <form action="/questions" method="GET">
+                                    <form action="/" method="GET">
                                         @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="question_category" value="{{ $question_category }}">
@@ -55,7 +55,7 @@
                                     @endif
                                 </button>
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
-                                    <form action="/questions" method="GET">
+                                    <form action="/" method="GET">
                                         @csrf
                                         <input type="hidden" name ="about" value="{{ $about }}">
                                         <input type="hidden" name="question_category" value="{{ $question_category }}">
@@ -128,7 +128,7 @@
                                             </div>
                                             
                                             <div class="col-sm-4 col-6">
-                                                <form action="/questions" method="GET">
+                                                <form action="/" method="GET">
                                                     @csrf
                                                     <input type="hidden" name="order" value="{{ $order }}">
                                                     <input type="hidden" name="about" value="{{ $about }}">
@@ -153,7 +153,7 @@
                         <ul>
                             <li>
                                 <div class="category-index-link border-bottom mr-2">
-                                    <form action="/questions" method="GET">
+                                    <form action="/" method="GET">
                                         @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="about" value="{{ $about }}">
@@ -164,7 +164,7 @@
                             @foreach($categories as $category)
                             <li>
                                 <div class="category-index-link border-bottom mr-2">
-                                    <form action="/questions" method="GET">
+                                    <form action="/" method="GET">
                                         @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="about" value="{{ $about }}">
