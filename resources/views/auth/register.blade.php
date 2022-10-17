@@ -73,7 +73,7 @@
                                     <a class="btn btn-link" href="{{ route('login') }}">{{ __('Login') }}ページ</a>
                                 @endif
                             </div>
-                            <p class="text-center">※送信後、本登録用のメールをご確認ください。</p>
+                            <p class="text-center col-12 mx-auto">※送信後、本登録用のメールをご確認ください。</p>
                         </div>
                     </form>
                 </div>
