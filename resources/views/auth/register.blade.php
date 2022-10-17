@@ -8,7 +8,7 @@
                 <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
             </div>
             <div class="card h-auto">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{-- __('Register') --}}ユーザー仮登録</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
