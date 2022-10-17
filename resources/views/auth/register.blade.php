@@ -67,12 +67,13 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{-- __('Register') --}}仮登録
                                 </button>
                                 @if (Route::has('login'))
                                     <a class="btn btn-link" href="{{ route('login') }}">{{ __('Login') }}ページ</a>
                                 @endif
                             </div>
+                            <p>※送信後、本登録用のメールをご確認ください。</p>
                         </div>
                     </form>
                 </div>
