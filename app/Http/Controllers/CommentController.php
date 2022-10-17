@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('verified');
-    // }
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
 
     
     

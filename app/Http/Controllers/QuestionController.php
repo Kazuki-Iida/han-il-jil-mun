@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('verified')->except(['index', 'show']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('verified')->except(['index', 'show']);
+    }
 
     
     

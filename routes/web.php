@@ -54,8 +54,7 @@ Route::get('/questions/{question}', 'QuestionController@show')->name('questions.
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 // Route::resource('user', 'UserController');
 
-Auth::routes();
-// Auth::routes(['verify' => true]);
-// Route::get('/verified', function(){
-//     return view('auth.verified');
-// })->middleware('verified');
+Route::get('/verified', function(){
+    return view('auth.verified');
+})->middleware('verified');
+Auth::routes(['verify' => true]);
