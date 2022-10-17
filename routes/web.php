@@ -58,3 +58,7 @@ Route::get('/verified', function(){
     return view('auth.verified');
 })->middleware('verified');
 Auth::routes(['verify' => true]);
+
+//googleアカウントでのログイン
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');

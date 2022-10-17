@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                     {{ __('Let\'s get started.') }}&ensp;&ensp;
-                    <a href="/" class="">トップページへ&ensp;<i class="fas fa-home"></i></a>
+                    <a href="/" class="btn btn-link text-nowrap">トップページへ&ensp;<i class="fas fa-home"></i></a>
                 </div>
             </div>
         </div>
