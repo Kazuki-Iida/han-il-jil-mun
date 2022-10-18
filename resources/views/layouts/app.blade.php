@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+        <meta name="description" content="日韓の相互に対するQ＆Aサイト。韓国について気になることや日本について気になることを質問してみましょう。">
+        <meta name="keywords" content="日韓,韓国,質問">
+        
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     
