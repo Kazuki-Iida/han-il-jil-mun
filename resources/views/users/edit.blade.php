@@ -57,7 +57,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <p class="category_id__error" style="color:red">{{-- $errors->first('question.category_id') --}}</p>
+                            <p class="category_id__error" style="color:red">{{ $errors->first('question.category_id') }}</p>
                         </div>
                         
                         <button class="btn btn-success w-50 my-3" type="submit">

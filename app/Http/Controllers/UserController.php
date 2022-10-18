@@ -81,8 +81,11 @@ class UserController extends Controller
 
         $user = User::where('id', $user)->first();
         $user_request = $request["user"];
-        $interest_request = $request->interests_array;
-
+        if(!is_null($request->interests_array)){
+            $interest_request = $request->interests_array;
+            $user->interests()->sync($interest_request);
+        }
+        
         // プロフィール画像保存準備
         if (isset($user_request['profile_image'])) {
             $profile_image = $request->file('profile_image');
@@ -93,7 +96,7 @@ class UserController extends Controller
         // 保存
         $user->fill($user_request)->save();
         $user = User::find(1);
-        $user->interests()->sync($interest_request);
+        
     
         return redirect()->route('users.show', ["user" => $user->id]);
     }
