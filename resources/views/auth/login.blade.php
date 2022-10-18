@@ -59,9 +59,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                <a href="/login/google" class="btn btn-secondary" role="button">
-                                    Google Login
-                                </a>
+                                <!--<a href="/login/google" class="btn btn-secondary" role="button">-->
+                                <!--    Google Login-->
+                                <!--</a>-->
 
                                 
                             </div>
