@@ -79,11 +79,11 @@ class UserController extends Controller
     public function update(UserRequest $request, $user)
     {
 
-        $user = User::where('id', $user)->first();
+        $edit_user = User::where('id', $user)->first();
         $user_request = $request["user"];
         if(!is_null($request->interests_array)){
             $interest_request = $request->interests_array;
-            $user->interests()->sync($interest_request);
+            $edit_user->interests()->sync($interest_request);
         }
         
         // プロフィール画像保存準備
@@ -94,11 +94,10 @@ class UserController extends Controller
         }
         
         // 保存
-        $user->fill($user_request)->save();
-        $user = User::find(1);
+        $edit_user->fill($user_request)->save();
         
     
-        return redirect()->route('users.show', ["user" => $user->id]);
+        return redirect()->route('users.show', ["user" => $user]);
     }
     
     // フォロー機能
