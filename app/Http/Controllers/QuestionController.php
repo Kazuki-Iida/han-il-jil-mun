@@ -56,7 +56,7 @@ class QuestionController extends Controller
             $spaceConversion = mb_convert_kana($search, 's');
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($wordArraySearched as $value) {
-                $query->where('body', 'like', '%'.$value.'%');
+                $query->where('title', 'like', '%'.$value.'%')->orwhere('body', 'like', '%'.$value.'%');
             }
             $questions = $query->orderBy('created_at', 'desc')->paginate(10);
         }elseif($order == 'newdesc'){

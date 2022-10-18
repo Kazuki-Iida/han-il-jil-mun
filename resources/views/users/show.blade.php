@@ -331,12 +331,12 @@
                                         </form>
                                     @endauth
                                 </div>
-                                <div class="liked-question-button-wrapper text-center mt-3">
+                                <div class="liked-question-button-wrapper text-center mt-2">
                                     <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#likedQuestionShowModal" style="width:160">
-                                        Goodした質問&thinsp;<i class="fas fa-thumbs-up like-btn text-white"></i>
+                                        Goodした質問&thinsp;<i class="fas fa-thumbs-up like-btn text-white" style="font-size:20px"></i>
                                     </button>
                                 </div>
-                                <div class="users-question-button-wrapper text-center mt-3">
+                                <div class="users-question-button-wrapper text-center mt-2">
                                     <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#usersQuestionShowModal" style="width:160">
                                         このユーザーの質問
                                     </button>

@@ -20,7 +20,6 @@
                             <div class="input-group">
                                 <input type="search" placeholder="質問を検索" name="search" class="search-form form-control" value="@if (isset($search)) {{ $search }} @endif">
                                 <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i>検索</button>
-                                <button href="/" class="btn btn-outline-secondary">クリア</button>
                             </div>
                         </form>
                     </div>
