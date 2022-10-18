@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>日韓質問|{{ $user->name }}</title>
+        <title>@section('title', {{ $user->name }})</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css">
@@ -103,17 +103,20 @@
                                             <div class="index-user-image col-2 pt-4 pl-3 pr-0">
                                                 <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
                                             </div>
+                                            
                                             <div class='question-inner card-body col-10 pl-0'>
                                                 <div class="question-card-header">
                                                     <div class="question-user pt-2 pl-sm-0 pl-3">
                                                         <a class="user-name pl-2 pl-sm-0" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="question-header">
                                                     <h2 class="title card-titile pl-sm-0 pl-3">
                                                         <a class="card-titile" href="/questions/{{ $question->id }}">{{ Str::limit( $question->title, 40) }}</a>
                                                     </h2>
                                                 </div>
+                                                
                                                 <div class="question-body">
                                                     <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
                                                     <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
@@ -125,6 +128,7 @@
                                                         <?php $k++; ?>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="created_at text-right">
                                                     <p>({{ $question->created_at->format('Y/m/d-G:m:s') }})</p>
                                                 </div>

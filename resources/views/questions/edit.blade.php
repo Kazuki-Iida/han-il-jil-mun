@@ -4,7 +4,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>日韓質問｜質問を編集する</title>
+        <title>@section('title', '質問を編集する')</title>
     </head>
     <body class="create-edit-body">
         <div class="create-edit-page p-md-0 px-2 py-4">
