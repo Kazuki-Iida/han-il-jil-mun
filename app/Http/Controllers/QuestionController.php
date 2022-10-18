@@ -161,10 +161,12 @@ class QuestionController extends Controller
     public function store(Question $question, QuestionRequest $request) 
     {
         $question->user_id = Auth::id();
-        $input = $request['question'];
+        $input = $request['question'] + ['ip_address' => $request->ip()];
+        
         $images = $request->file('images_array');
         
         $question->fill($input)->save();
+        
         if(isset($images)){
             foreach ( $images as $image) {
                 $upload_info = Storage::disk('s3')->putFile('question_image', $image, 'public');

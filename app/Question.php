@@ -96,5 +96,6 @@ class Question extends Model
         'category_id',
         'country_id',
         'images_array',
+        'ip_address',
     ];
 }
