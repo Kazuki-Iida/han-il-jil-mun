@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>日韓質問|{{ $question->title }}</title>
+        <title>日韓質問|プライバシーポリシー</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css">
@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="question-show-inner col-12 col-lg-7 bg-white mx-auto border-bottom  border-secondary rounded">
+                <div class="privacy-policy-inner col-12 col-lg-7 bg-white mx-auto rounded">
                     <p>日韓質問 ha-il-jil-mun（以下、「当サイト」と言います。）では、お客様からお預かりする個人情報の重要性を強く認識しており、個人情報の保護に関する法律、その他の関係法令を遵守すると共に、以下に定めるプライバシーポリシーに従って、個人情報を安全かつ適切に取り扱うことを宣言します。</p>
 
                     <h3>１．個人情報の定義</h3>
