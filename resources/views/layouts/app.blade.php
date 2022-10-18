@@ -99,7 +99,7 @@
                         <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo footer-logo-img">
                     </div>
                     <div class="privacy copy-right text-center">
-                        <a href="/privacy">プライバシーポリシー・面積事項</a></br>
+                        <a href="/privacy">プライバシーポリシー・免責事項</a></br>
                         <small>Copyright © 2022 Iida-K All Rights Reserved.</small>
                     </div>
                 </div>
