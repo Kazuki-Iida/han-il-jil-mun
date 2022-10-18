@@ -10,11 +10,6 @@ class Comment extends Model
 {
     use SoftDeletes;
     
-    public function getPaginateByLimit(int $limit_count = 10)
-    {
-        return $this->orderBy('updated_at', 'ASC')->paginate($limit_count);
-    }
-    
     public function comment_images()
     {
         return $this->hasMany('App\CommentImage');
@@ -35,6 +30,7 @@ class Comment extends Model
         return $this->hasMany(CommentReport::class, 'comment_id');
     }
     
+    // 通報されているか
     public function is_reported_by_auth_user()
     {
         $id = \Auth::id();

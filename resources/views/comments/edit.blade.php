@@ -12,6 +12,7 @@
                 <div class="form-head bg-success">
                     <h2>コメントを編集&ensp;<i class="far fa-comments"></i></h2>
                 </div>
+                
                 <div class="form-body">
                     <form id="edit" action="/comments/{{ $comment->id }}" method="POST">
                         @csrf

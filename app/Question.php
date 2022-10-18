@@ -12,15 +12,6 @@ class Question extends Model
 {
     use SoftDeletes;
     
-    public function getPaginateByLimit(int $limit_count = 10)
-    {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
-    
-    public function getByQuestion(int $limit_count = 10)
-    {
-        return $this->answers()->with('question')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
     
     public function question_images()
     {
@@ -52,6 +43,7 @@ class Question extends Model
         return $this->hasMany('App\QuestionLike');
     }
     
+    // Goodされているか
     public function is_liked_by_auth_user()
     {
         $id = \Auth::id();
@@ -73,6 +65,7 @@ class Question extends Model
         return $this->hasMany(QuestionReport::class, 'question_id');
     }
     
+    // 通報されているか
     public function is_reported_by_auth_user()
     {
         $id = \Auth::id();
@@ -89,10 +82,6 @@ class Question extends Model
         }
     }
     
-    public function getLikedQuestion(Int $user_id)
-    {
-        return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->get();
-    }
     
     protected $fillable = [
         'title',

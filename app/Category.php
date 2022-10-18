@@ -12,8 +12,4 @@ class Category extends Model
         return $this->hasMany('App\Question');  
     }
     
-    public function getByCategory(int $limit_count = 10)
-    {
-        return $this->questions()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
 }

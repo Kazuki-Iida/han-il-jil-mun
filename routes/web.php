@@ -55,7 +55,6 @@ Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/privacy', function () {
                 return view('privacy');
             });
-// Route::resource('user', 'UserController');
 
 Route::get('/verified', function(){
     return view('auth.verified');

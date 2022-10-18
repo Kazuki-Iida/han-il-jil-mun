@@ -144,7 +144,8 @@ body {
 
 
 
-
+// 以下基本アルファベット順
+// 一番下に様々なviewに対するstyle指定
 #app {
   
   nav {
@@ -706,6 +707,7 @@ body {
 }
 
 
+// ここから様々なviewに対するstyle指定
 // トップへ戻るボタン
 #page_top{
   width: 50px;

@@ -19,16 +19,6 @@ class AnswerController extends Controller
     {
         $this->middleware('verified');
     }
-
-    public function index(Answer $answer)
-    {
-        return view('answers/index')->with(['answers' => $answer->getPaginateByLimit()]);  
-    }
-    
-    public function show(Answer $answer)
-    {
-        return view('answers/show')->with(['answer' => $answer]);
-    }
     
     public function create(Answer $answer, Question $question)
     {
@@ -44,6 +34,7 @@ class AnswerController extends Controller
         $images = $request->file('images_array');
         $answer->fill($input)->save();
         
+        // 画像保存
         if(isset($images)){
             foreach ($images as $image) {
                 $upload_info = Storage::disk('s3')->putFile('answer_image', $image, 'public');
@@ -74,10 +65,12 @@ class AnswerController extends Controller
     
     public function delete(Answer $answer)
     {
+        // 削除する回答についているgoodも削除
         if(isset($answer->likes)){
             AnswerLike::where('answer_id', $answer->id)->delete();
         }
         
+        // 回答を削除
         $question_id = $answer->question_id;
         if(isset($answer->comments)){
             foreach($answer->comments as $comment){
@@ -88,6 +81,7 @@ class AnswerController extends Controller
         return redirect('/questions/' . $question_id);    
     }
     
+    // Ajaxによるgood機能
     public function like(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -111,7 +105,7 @@ class AnswerController extends Controller
         return response()->json($param);
     }
     
-    
+    // 通報機能
     public function report($answer_id)
     {
         AnswerReport::create([
@@ -124,6 +118,7 @@ class AnswerController extends Controller
         return redirect()->back();
     }
     
+    // 通報解除
     public function unreport($answer_id)
     {
         $report = AnswerReport::where('answer_id', $answer_id)->where('user_id', Auth::id())->first();

@@ -21,6 +21,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     <div class="modal-body">
                         <div class="following-list">
                             <ul>
@@ -38,12 +39,14 @@
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">閉じる</button>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="modal fade" id="followerShowModal" tabindex="-1" role="dialog" aria-labelledby="followerShowModalLabel">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -53,6 +56,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     <div class="modal-body">
                         <div class="follower-list">
                             <ul>
@@ -70,12 +74,14 @@
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">閉じる</button>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="modal fade" id="likedQuestionShowModal" tabindex="-1" role="dialog" aria-labelledby="followerShowModalLabel">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -85,6 +91,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     <div class="modal-body">
                         <div class='questions'>
                             @if($liked_questions)
@@ -306,18 +313,18 @@
                                 <div class="profile-button-wrapper text-center">
                                     @auth
                                         @if ($user->id === Auth::user()->id)
-                                            <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary pt-2" style="width:160">プロフィールを編集する</a>
+                                            <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary pt-2 text-nowrap" style="width:175">プロフィールを編集する</a>
                                         @else
                                             @if ($is_following)
                                                 <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger pt-2" style="width:160">フォロー解除</button>
+                                                    <button type="submit" class="btn btn-danger pt-2" style="width:175">フォロー解除</button>
                                                 </form>
                                             @else
                                                 <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
                                                     {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-primary pt-2" style="width:160">フォローする</button>
+                                                    <button type="submit" class="btn btn-primary pt-2" style="width:175">フォローする</button>
                                                 </form>
                                             @endif
                                             @if ($is_followed)
@@ -327,17 +334,17 @@
                                     @else
                                         <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
                                             {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-primary pt-2" style="width:150">フォローする</button>
+                                            <button type="submit" class="btn btn-primary pt-2" style="width:175">フォローする</button>
                                         </form>
                                     @endauth
                                 </div>
                                 <div class="liked-question-button-wrapper text-center mt-2">
-                                    <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#likedQuestionShowModal" style="width:160">
+                                    <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#likedQuestionShowModal" style="width:175">
                                         Goodした質問&thinsp;<i class="fas fa-thumbs-up like-btn text-white" style="font-size:20px"></i>
                                     </button>
                                 </div>
                                 <div class="users-question-button-wrapper text-center mt-2">
-                                    <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#usersQuestionShowModal" style="width:160">
+                                    <button class="text-white btn btn-success text-nowrap" data-toggle="modal" data-target="#usersQuestionShowModal" style="width:175">
                                         このユーザーの質問
                                     </button>
                                 </div>

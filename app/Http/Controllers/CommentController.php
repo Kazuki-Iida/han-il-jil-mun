@@ -20,12 +20,6 @@ class CommentController extends Controller
     }
 
     
-    
-    public function index(Comment $comment)
-    {
-        return view('comments/index')->with(['comments' => $comment->getPaginateByLimit()]);  
-    }
-    
     public function create(Comment $comment, Answer $answer)
     {
         $user = Auth::user();
@@ -39,6 +33,8 @@ class CommentController extends Controller
         $input = $request['comment'];
         $images = $request->file('images_array');
         $comment->fill($input)->save();
+        
+        // 画像保存
         if(isset($images)){
             foreach ($images as $image) {
                 $upload_info = Storage::disk('s3')->putFile('comment_image', $image, 'public');
@@ -74,6 +70,7 @@ class CommentController extends Controller
         return redirect('/questions/' . $question_id);    
     }
     
+    // 通報機能
     public function report($comment_id)
     {
         CommentReport::create([
@@ -86,6 +83,7 @@ class CommentController extends Controller
         return redirect()->back();
     }
     
+    // 通報解除
     public function unreport($comment_id)
     {
         $report = CommentReport::where('comment_id', $comment_id)->where('user_id', Auth::id())->first();

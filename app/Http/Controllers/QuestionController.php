@@ -26,7 +26,6 @@ class QuestionController extends Controller
     }
 
     
-    
     public function index(Request $request)
     {
         // 以下並べ替えに関するコード
@@ -143,13 +142,14 @@ class QuestionController extends Controller
             ]);
     }
         
-        
-        // return view('questions/index')->with(['questions' => $question->getPaginateByLimit()]);  
-    // }
-    
     public function show(Question $question)
     {
-        $answers = Answer::query()->where('question_id', $question->id)->withCount('likes')->orderBy('likes_count', 'desc')->orderBy('created_at', 'desc')->get();
+        $answers = Answer::query()->where('question_id', $question->id)
+                                    ->withCount('likes')
+                                    ->orderBy('likes_count', 'desc')
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
+                                    
         return view('questions/show')->with(['question' => $question, 'answers' => $answers]);
     }
     
@@ -168,6 +168,7 @@ class QuestionController extends Controller
         
         $question->fill($input)->save();
         
+        // 画像保存
         if(isset($images)){
             foreach ( $images as $image) {
                 $upload_info = Storage::disk('s3')->putFile('question_image', $image, 'public');
@@ -177,14 +178,17 @@ class QuestionController extends Controller
                 $question_image->save();
             }
         }
+        
         return redirect('/questions/' . $question->id);
     }
     
     public function edit($question, Category $category, Country $country)
     {
         $question = Question::where('id', $question)->first();
+        
         $category_checked = $question->category_id;
         $country_checked = $question->country_id;
+        
         return view('questions.edit', ['question' => $question->id])->with(['question' => $question, 'categories' => $category->get(), 'countries' => $country->get(), 'category_checked' => $category_checked, 'country_checked' => $country_checked]);;
     }
     
@@ -200,6 +204,7 @@ class QuestionController extends Controller
     
     public function delete(Question $question)
     {
+        // 削除する質問についている回答、コメント及びそれらに対するgoodも削除
         if(isset($question->likes)){
             QuestionLike::where('question_id', $question->id)->delete();
         }
@@ -224,6 +229,7 @@ class QuestionController extends Controller
         return redirect('/');
     }
     
+    // AjaxによるGood機能
     public function like(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -246,7 +252,8 @@ class QuestionController extends Controller
         ];
         return response()->json($param);
     }
-
+    
+    // 通報機能
     public function report($question_id)
     {
         QuestionReport::create([
@@ -259,6 +266,8 @@ class QuestionController extends Controller
         return redirect()->back();
     }
     
+    
+    // 通報解除
     public function unreport($question_id)
     {
         $report = QuestionReport::where('question_id', $question_id)->where('user_id', Auth::id())->first();

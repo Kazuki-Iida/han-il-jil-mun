@@ -83,13 +83,14 @@ class UserController extends Controller
         $user_request = $request["user"];
         $interest_request = $request->interests_array;
 
+        // プロフィール画像保存準備
         if (isset($user_request['profile_image'])) {
             $profile_image = $request->file('profile_image');
             $upload_info = Storage::disk('s3')->putFile('profile_image', $user_request["profile_image"], 'public');
             $user_request['profile_image'] = Storage::disk('s3')->url($upload_info);
         }
         
-
+        // 保存
         $user->fill($user_request)->save();
         $user = User::find(1);
         $user->interests()->sync($interest_request);
@@ -97,6 +98,7 @@ class UserController extends Controller
         return redirect()->route('users.show', ["user" => $user->id]);
     }
     
+    // フォロー機能
     public function follow(User $user)
     {
         $follower = auth()->user();
@@ -109,6 +111,7 @@ class UserController extends Controller
         }
     }
 
+    // フォロー解除機能
     public function unfollow(User $user)
     {
         $follower = auth()->user();

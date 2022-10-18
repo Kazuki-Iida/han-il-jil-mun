@@ -12,6 +12,7 @@
                 <div class="form-head bg-success">
                     <h2>プロフィールを編集&ensp;<i class="fas fa-user-edit"></i></h2>
                 </div>
+                
                 <div class="form-body">
                     <form id="edit" action="/users/{{ $user->id }}" method="POST"  enctype="multipart/form-data">
                         @csrf
@@ -21,11 +22,13 @@
                             <input class="mt-0" type='text' name='user[name]' value="{{ $user->name }}">
                             <p class="user_name__error" style="color:red">{{ $errors->first('user.name') }}</p>
                         </div>
+                        
                         <div class='user__profile'>
                             <h5 class="text-left pl-sm-5 pl-3">プロフィール</h5>
                             <textarea name='user[profile]' value="{{ $user->profile }}">{{ $user->profile }}</textarea>
                             <p class="user_profile__error" style="color:red">{{ $errors->first('user.profile') }}</p>
                         </div>
+                        
                         <div class='user__profile_image'>
                             <h5 class="text-left pl-sm-5 pl-3">プロフィール画像</h5>
                             <label class="image-label rounded">
@@ -33,7 +36,9 @@
                             </label>
                             <p id="fileSelected">（jpeg,bmp,png,jpgのみ）</p>
                         </div>
+                        
                         <h5 class="text-left pl-sm-5 pl-3">興味・趣味（3つまで表示されます）</h5>
+                        
                         <div class="container">
                             <div class="row w-100 mx-auto">
                                 @foreach($interests as $interest)
@@ -54,9 +59,11 @@
                             </div>
                             <p class="category_id__error" style="color:red">{{-- $errors->first('question.category_id') --}}</p>
                         </div>
+                        
                         <button class="btn btn-success w-50 my-3" type="submit">
                             送信&ensp;<i class="far fa-paper-plane"></i>
                         </button>
+                        
                         <a href="/" class="btn btn-secondary w-50 mb-4 rounded">
                             ホームへ戻る&ensp;<i class="fas fa-home"></i>
                         </a>

@@ -12,6 +12,7 @@
                 <div class="form-head bg-success">
                     <h2>コメントする&ensp;<i class="far fa-comments"></i></h2>
                 </div>
+                
                 <div class="form-body">
                     <form id="create" action="/comments/{{ $answer->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -25,7 +26,6 @@
                             <p id="fileSelected">（jpeg,bmp,png,jpgのみ）</p>
                             <p class="images__error" style="color:red">{{ $errors->first('images_array') }}</p>
                         </div>
-                        
                         <button class="btn btn-success w-50 my-3" type="submit">
                             送信&ensp;<i class="far fa-paper-plane"></i>
                         </button>

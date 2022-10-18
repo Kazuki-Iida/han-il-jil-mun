@@ -7,8 +7,12 @@
             <div class="auth-page-logo text-center">
                 <img src="{{ asset('han-il-jil-mun_logo.PNG') }}" alt="website logo" class="logo" width="250">
             </div>
+            
             <div class="card h-auto">
-                <div class="card-header">{{-- __('Register') --}}ユーザー仮登録</div>
+                <div class="card-header">
+                    {{-- __('Register') --}}
+                    ユーザー仮登録
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -75,6 +79,7 @@
                             </div>
                             <p class="text-center col-12 mx-auto">※送信後、本登録用のメールをご確認ください。</p>
                         </div>
+                        
                         @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
@@ -86,6 +91,7 @@
                     </form>
                 </div>
             </div>
+            
             <div class="text-center mt-3">
                 <a class="auth-page-link" href="/">トップページへ</a>
             </div>

@@ -12,8 +12,4 @@ class Country extends Model
         return $this->hasMany('App\Question');  
     }
     
-    public function getByCountry(int $limit_count = 10)
-    {
-        return $this->questions()->with('country')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
 }

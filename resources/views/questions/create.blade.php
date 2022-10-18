@@ -12,6 +12,7 @@
                 <div class="form-head bg-success">
                     <h2>質問を投稿&ensp;<i class="fas fa-pencil-alt"></i></h2>
                 </div>
+                
                 <div class="form-body">
                     <form id="create" action="/questions" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -54,9 +55,11 @@
                             </group>
                             <p class="country_id__error" style="color:red">{{ $errors->first('question.country_id') }}</p>
                         </div>
+                        
                         <button class="btn btn-success w-50 my-3" type="submit">
                             送信&ensp;<i class="far fa-paper-plane"></i>
                         </button>
+                        
                         <a href="/" class="btn btn-secondary w-50 mb-4 rounded">
                             ホームへ戻る&ensp;<i class="fas fa-home"></i>
                         </a>

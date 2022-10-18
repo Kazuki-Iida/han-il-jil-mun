@@ -11,7 +11,10 @@
     </head>
     <body>
         <div class="body-inner-of-index container">
-            <div id="page_top"><a href="#"></a></div>
+            <div id="page_top">
+                <a href="#"></a>
+            </div>
+            
             <div class="questions-index row">
                 <div class="question-index-inner bg-white col-11 col-lg-7 mx-auto rounded">
                     <div class="serch-wrapper pt-3 pr-3 pl-3">
@@ -23,6 +26,7 @@
                             </div>
                         </form>
                     </div>
+                    
                     <div class="index-btn-wrapper row py-4 px-2">
                         <div class="dropdown-wrapper col-6 text-center">
                             <div class="dropdown"> 
@@ -34,6 +38,7 @@
                                         韓国について
                                     @endif
                                 </button>
+                                
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                                     <form action="/" method="GET">
                                         @csrf
@@ -44,6 +49,7 @@
                                     </form>
                                 </div>
                             </div>
+                            
                             <div class="dropdown"> 
                                 <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle w-100 w-sm-75 mt-1"  
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +59,7 @@
                                         Goodの多い順
                                     @endif
                                 </button>
+                                
                                 <div class="dropdown-menu pb-0" aria-labelledby="btnOpenMenu">
                                     <form action="/" method="GET">
                                         @csrf
@@ -64,10 +71,12 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="create-btn col-6 text-center d-flex align-items-center text-nowrap">
                             <a class="btn btn-success btn-lg rounded-pill text-nowrap m-auto" href='/questions/create'>質問を投稿&ensp;<i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
+                    
                     <div class='questions'>
                         <div class="card-wrapper mb-4 mr-2 ml-2 border-top border-success">
                             <!--画像表示用-->
@@ -77,17 +86,20 @@
                                     <div class="index-user-image col-2 pt-4 pl-3 pr-0">
                                         <a href="/users/{{ $question->user_id }}"><img src="{{ $question->user->profile_image }}" alt="Contact Person" class="img-fuild rounded-circle" width=50 height=50></a>
                                     </div>
+                                    
                                     <div class='question-inner card-body col-10 pl-0'>
                                         <div class="question-card-header">
                                             <div class="question-user pt-2 pl-sm-0 pl-3">
                                                 <a class="user-name pl-2 pl-sm-0" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>
                                             </div>
                                         </div>
+                                        
                                         <div class="question-header">
                                             <h2 class="title card-titile pl-sm-0 pl-3">
                                                 <a class="card-titile" href="/questions/{{ $question->id }}">{{ Str::limit( $question->title, 40) }}</a>
                                             </h2>
                                         </div>
+                                        
                                         <div class="question-body">
                                             <a href="/questions/{{ $question->id }}"><p class='body card-text mt-3 mb-4'>{{ $question->body }}</p></a>
                                             <div class="images row px-3 pl-sm-3 pl-3 pr-sm-5 pr-3">
@@ -99,6 +111,7 @@
                                                 <?php $k++; ?>
                                             </div>
                                         </div>
+                                        
                                         <div class="created_at text-right">
                                             <p>({{ $question->created_at->format('Y/m/d-G:m:s') }})</p>
                                         </div>
@@ -140,17 +153,22 @@
                                                 </form>
                                             </div>
                                             <p class="col-sm-3 col-6">{{ $question->country->name }}について</p>
-                                            <div class="answers-count col-sm-3 col-6"><p>回答数：{{ $question->answers->count() }}</p></div>
+                                            
+                                            <div class="answers-count col-sm-3 col-6">
+                                                <p>回答数：{{ $question->answers->count() }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
+                    
                     <div class="paginate index-paginate">
                         {{ $questions->appends(request()->input())->links() }}
                     </div>
                 </div>
+                
                 <div class="side-column bg-white col-11 col-lg-4 mt-4 mt-lg-0 mx-auto px-3 rounded">
                     <div class="category-index pb-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
@@ -165,6 +183,7 @@
                                     </form>
                                 </div>
                             </li>
+                            
                             @foreach($categories as $category)
                             <li>
                                 <div class="category-index-link border-bottom mr-2">
@@ -179,6 +198,7 @@
                             @endforeach
                         </ul>
                     </div>
+                    
                     <div class="question-ranking">
                         <h2 class="category-index-title mt-3 border-bottom border-success">質問&thinsp;<i class="fas fa-thumbs-up"></i>&thinsp;ランキング(月間)</h2>
                         <ul>
@@ -200,8 +220,10 @@
                             @endforeach
                         </ul>
                     </div>
+                    
                     <div class="answer-ranking pt-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">回答&thinsp;<i class="fas fa-arrow-alt-circle-up"></i>&thinsp;ランキング(月間)</h2>
+                        
                         <ul>
                             <?php $i = 0; $j = null; ?>
                             @foreach($answer_good_ranking_users as $answer_good_ranking_user)
@@ -220,6 +242,7 @@
                                 <?php $j = $answer_good_ranking_counts[$answer_good_ranking_user->id] ; ?>
                             @endforeach
                         </ul>
+                        
                     </div>
                 </div>
             </div>

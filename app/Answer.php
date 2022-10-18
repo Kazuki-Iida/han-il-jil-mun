@@ -11,11 +11,6 @@ class Answer extends Model
 {
     use SoftDeletes;
     
-    public function getPaginateByLimit(int $limit_count = 10)
-    {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
-    }
-
     
     public function answer_images()
     {
@@ -42,6 +37,7 @@ class Answer extends Model
         return $this->hasMany('App\AnswerLike');
     }
     
+    // いいねされているか確認
     public function is_liked_by_auth_user()
     {
         $id = \Auth::id();
@@ -63,6 +59,7 @@ class Answer extends Model
         return $this->hasMany(AnswerReport::class, 'answer_id');
     }
     
+    // 通報されているか確認
     public function is_reported_by_auth_user()
     {
         $id = \Auth::id();

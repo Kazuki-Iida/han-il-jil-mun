@@ -18,8 +18,4 @@ class QuestionLike extends Model
       return $this->belongsTo(User::class);
     }
     
-    public function getLikedQuestionLikesId(Int $user_id)
-    {
-      return $this->where('users', $user_id)->orderBy('created_at', 'DESC')->get(['id']);
-    }
 }
