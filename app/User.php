@@ -110,5 +110,4 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
     
-    
 }

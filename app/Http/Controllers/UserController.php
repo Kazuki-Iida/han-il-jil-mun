@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Interest;
 use App\Follower;
+use App\Question;
+use App\QuestionLike;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
@@ -30,14 +32,35 @@ class UserController extends Controller
             $is_followed = false;
         }
         
+        // 表示するユーザーがGoodした質問取得
+        $questionLikes = QuestionLike::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+        
+        if(isset($questionLikes[0])){
+            foreach($questionLikes as $questionLike){
+                $liked_questions[] = Question::where('id', $questionLike->question_id)->first();
+            }
+        }else{
+            $liked_questions = [];
+        }
+        
+        
+        // 表示するユーザーの質問
+        $users_questions = Question::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+        if(!isset($users_questions[0])){
+            $users_questions = [];
+        }
+        
         $follow_count = $follower->getFollowCount($user->id);
         $follower_count = $follower->getFollowerCount($user->id);
+        
          return view('users.show', [
             'user'           => $user,
             'is_following'   => $is_following,
             'is_followed'    => $is_followed,
             'follow_count'   => $follow_count,
-            'follower_count' => $follower_count
+            'follower_count' => $follower_count,
+            'liked_questions' => $liked_questions,
+            'users_questions' => $users_questions,
         ]);
     }
 

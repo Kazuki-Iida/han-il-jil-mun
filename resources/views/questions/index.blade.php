@@ -107,7 +107,12 @@
                                         <div class="row question-card-footer">
                                             <div class="col-sm-2 col-6 text-nowrap">
                                                 @auth
-                                                    @if(!$question->is_liked_by_auth_user())
+                                                    @if(!Auth::user()->hasVerifiedEmail())
+                                                        <span class="likes">
+                                                            <a href="/verified"><i class="fas fa-thumbs-up like-btn"></i></a>
+                                                            <span class="like-counter">{{ $question->likes->count() }}</span>
+                                                        </span>
+                                                    @elseif(!$question->is_liked_by_auth_user())
                                                         <span class="likes">
                                                             <i class="fas fa-thumbs-up like-btn question-like-toggle" data-question-id="{{ $question->id }}"></i>
                                                             <span class="like-counter">{{ $question->likes->count() }}</span>

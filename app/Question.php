@@ -89,6 +89,11 @@ class Question extends Model
         }
     }
     
+    public function getLikedQuestion(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->get();
+    }
+    
     protected $fillable = [
         'title',
         'body',
