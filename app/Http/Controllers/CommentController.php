@@ -50,7 +50,12 @@ class CommentController extends Controller
     public function edit($comment)
     {
         $comment = Comment::where('id', $comment)->first();
-        return view('comments.edit')->with(['comment' => $comment]);
+        
+        if($comment->user_id != Auth::user()->id){
+            return redirect('/');
+        }else{
+            return view('comments.edit')->with(['comment' => $comment]);
+        }
     }
     
     public function update($comment, CommentRequest $request) 

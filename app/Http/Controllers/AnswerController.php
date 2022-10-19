@@ -50,7 +50,12 @@ class AnswerController extends Controller
     public function edit($answer)
     {
         $answer = Answer::where('id', $answer)->first();
-        return view('answers.edit')->with(['answer' => $answer]);
+        
+        if($answer->user_id != Auth::user()->id){
+            return redirect('/');
+        }else{
+            return view('answers.edit')->with(['answer' => $answer]);
+        }
     }
     
     public function update($answer, AnswerRequest $request) 

@@ -185,11 +185,15 @@ class QuestionController extends Controller
     public function edit($question, Category $category, Country $country)
     {
         $question = Question::where('id', $question)->first();
+        if($question->user_id != Auth::user()->id){
+            return redirect('/');
+        }else{
         
-        $category_checked = $question->category_id;
-        $country_checked = $question->country_id;
-        
-        return view('questions.edit', ['question' => $question->id])->with(['question' => $question, 'categories' => $category->get(), 'countries' => $country->get(), 'category_checked' => $category_checked, 'country_checked' => $country_checked]);;
+            $category_checked = $question->category_id;
+            $country_checked = $question->country_id;
+            
+            return view('questions.edit', ['question' => $question->id])->with(['question' => $question, 'categories' => $category->get(), 'countries' => $country->get(), 'category_checked' => $category_checked, 'country_checked' => $country_checked]);;
+        }
     }
     
     public function update($question, QuestionRequest $request) 
