@@ -79,5 +79,6 @@ class Answer extends Model
     protected $fillable = [
         'body',
         'user_id',
+        'ip_address',
     ];
 }
