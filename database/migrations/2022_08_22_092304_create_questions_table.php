@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('body', 1000);
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('category_id');
+            $table->unsignedInteger('country_id');
             $table->ipAddress('ip_address')->nullable();
             $table->timestamps();
             $table->softDeletes();

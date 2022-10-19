@@ -15,7 +15,7 @@ class AddProfileColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('profile', 200)->nullable();
-            $table->string('profile_image')->default('default.png');
+            $table->string('profile_image')->default('https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/profile_image/default.png');
         });
     }
 
