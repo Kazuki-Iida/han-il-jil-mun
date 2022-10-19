@@ -76,8 +76,8 @@ class SitemapController extends Controller
         
 
         // 出力
-        return $sitemap->render('xml');
+        return $sitemap->store('xml', 'mysitemap');
+        // $sitemap->render('xml');
         // XMLファイルで出力する場合
-        // $sitemap->store('xml', 'mysitemap');
     }
 }
