@@ -69,7 +69,7 @@ class SitemapController extends Controller
         // 本登録完了画面
         $sitemap->add(URL::to('/verified'), now(), '0.7', 'monthly');
         // 本登録未完了画面
-        $sitemap->add(URL::to('/verify'), now(), '0.7', 'monthly');
+        $sitemap->add(URL::to('email/verify'), now(), '0.7', 'monthly');
         
         // プライバシーポリシー
         $sitemap->add(URL::to('/privacy'), now(), '0.9', 'always');
