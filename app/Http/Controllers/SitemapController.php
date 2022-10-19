@@ -74,10 +74,10 @@ class SitemapController extends Controller
         // プライバシーポリシー
         $sitemap->add(URL::to('/privacy'), now(), '0.9', 'always');
         
+        // XMLファイルで出力する場合
+        $sitemap->store('xml', 'mysitemap');
 
         // 出力
-        return $sitemap->store('xml', 'mysitemap');
-        // $sitemap->render('xml');
-        // XMLファイルで出力する場合
+        return $sitemap->render('xml');
     }
 }
