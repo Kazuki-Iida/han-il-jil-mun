@@ -6,7 +6,7 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::post('/answers/like', 'AnswerController@like')->name('answers.like');
     
-    Route::get('/questions/create', 'QuestionController@create');
+    Route::get('/questions/create', 'QuestionController@create')->name('questions.create');
     Route::post('/questions', 'QuestionController@store');
     Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::patch('/questions/{question}', 'QuestionController@update');
@@ -17,13 +17,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/users/{user}/follow', 'UserController@follow')->name('follow');
     Route::delete('/users/{user}/unfollow', 'UserController@unfollow')->name('unfollow');
     
-    Route::get('/answers/{question}/create', 'AnswerController@create');
+    Route::get('/answers/{question}/create', 'AnswerController@create')->name('answers.create');
     Route::post('/answers/{question}', 'AnswerController@store');
     Route::get('/answers/{answer}/edit', 'AnswerController@edit')->name('answers.edit');
     Route::patch('/answers/{answer}', 'AnswerController@update');
     Route::delete('/answers/{answer}', 'AnswerController@delete');
     
-    Route::get('/comments/{answer}/create', 'CommentController@create');
+    Route::get('/comments/{answer}/create', 'CommentController@create')->name('comments.create');
     Route::post('/comments/{answer}', 'CommentController@store');
     Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('comments.edit');
     Route::patch('/comments/{comment}', 'CommentController@update');
@@ -55,3 +55,6 @@ Auth::routes(['verify' => true]);
 //googleアカウントでのログイン
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+// サイトマップ表示用
+Route::get('/sitemap', 'SitemapController@index')->name('sitemap');
