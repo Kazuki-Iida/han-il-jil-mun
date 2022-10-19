@@ -39,7 +39,7 @@ class QuestionController extends Controller
         }
         
         if(!$about){
-            $about = 1;
+            $about = 2;
         }
         
         if(!$question_category){

@@ -44,8 +44,8 @@
                                         @csrf
                                         <input type="hidden" name="order" value="{{ $order }}">
                                         <input type="hidden" name="question_category" value="{{ $question_category }}">
-                                        <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
                                         <button class="dropdown-item" name ="about" type="submit" value=2>韓国について質問</a>
+                                        <button class="dropdown-item" name ="about" type="submit" value=1>日本について質問</a>
                                     </form>
                                 </div>
                             </div>
