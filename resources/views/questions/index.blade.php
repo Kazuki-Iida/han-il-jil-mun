@@ -192,7 +192,7 @@
                         </ul>
                     </div>
                     
-                    <div class="answer-ranking pt-2">
+                    <div class="answer-ranking pt-2 pb-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">回答&thinsp;<i class="fas fa-arrow-alt-circle-up"></i>&thinsp;ランキング(月間)</h2>
                         
                         <ul>
@@ -214,7 +214,7 @@
                             @endforeach
                         </ul>
                         
-                        <div class="category-index pb-2">
+                        <div class="category-index pb-2 pt-2">
                         <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
                         <ul>
                             <li>
