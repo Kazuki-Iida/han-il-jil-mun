@@ -170,35 +170,6 @@
                 </div>
                 
                 <div class="side-column bg-white col-11 col-lg-4 mt-4 mt-lg-0 mx-auto px-3 rounded">
-                    <div class="category-index pb-2">
-                        <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
-                        <ul>
-                            <li>
-                                <div class="category-index-link border-bottom mr-2">
-                                    <form action="/" method="GET">
-                                        @csrf
-                                        <input type="hidden" name="order" value="{{ $order }}">
-                                        <input type="hidden" name="about" value="{{ $about }}">
-                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value=0>全てのカテゴリー</a>
-                                    </form>
-                                </div>
-                            </li>
-                            
-                            @foreach($categories as $category)
-                            <li>
-                                <div class="category-index-link border-bottom mr-2">
-                                    <form action="/" method="GET">
-                                        @csrf
-                                        <input type="hidden" name="order" value="{{ $order }}">
-                                        <input type="hidden" name="about" value="{{ $about }}">
-                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value={{ $category->id }}>{{ $category->name }}</a>
-                                    </form>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    
                     <div class="question-ranking">
                         <h2 class="category-index-title mt-3 border-bottom border-success">質問&thinsp;<i class="fas fa-thumbs-up"></i>&thinsp;ランキング(月間)</h2>
                         <ul>
@@ -242,6 +213,35 @@
                                 <?php $j = $answer_good_ranking_counts[$answer_good_ranking_user->id] ; ?>
                             @endforeach
                         </ul>
+                        
+                        <div class="category-index pb-2">
+                        <h2 class="category-index-title mt-3 border-bottom border-success">カテゴリー一覧</h2>
+                        <ul>
+                            <li>
+                                <div class="category-index-link border-bottom mr-2">
+                                    <form action="/" method="GET">
+                                        @csrf
+                                        <input type="hidden" name="order" value="{{ $order }}">
+                                        <input type="hidden" name="about" value="{{ $about }}">
+                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value=0>全てのカテゴリー</a>
+                                    </form>
+                                </div>
+                            </li>
+                            
+                            @foreach($categories as $category)
+                            <li>
+                                <div class="category-index-link border-bottom mr-2">
+                                    <form action="/" method="GET">
+                                        @csrf
+                                        <input type="hidden" name="order" value="{{ $order }}">
+                                        <input type="hidden" name="about" value="{{ $about }}">
+                                        <button class="category-index-btn btn my-0 py-2 w-100 h-auto text-left" name ="question_category" type="submit" value={{ $category->id }}>{{ $category->name }}</a>
+                                    </form>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                         
                     </div>
                 </div>

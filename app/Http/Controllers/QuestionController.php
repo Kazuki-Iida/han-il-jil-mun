@@ -126,6 +126,8 @@ class QuestionController extends Controller
         }
 
         
+        // サイドカラムのカテゴリーの順番
+        $categories = Category::withCount('questions')->orderBy('questions_count', 'DESC')->orderBy('id', 'ASC')->get();
         
         return view('questions/index')
         ->with([
@@ -134,7 +136,7 @@ class QuestionController extends Controller
             'order' => $order,
             'about' => $about,
             'question_category' => $question_category,
-            'categories' => $category->get(),
+            'categories' => $categories,
             'question_good_ranking_users' => $question_good_ranking_users,
             'question_good_ranking_counts' => $question_good_ranking_counts,
             'answer_good_ranking_users' => $answer_good_ranking_users,
@@ -146,8 +148,8 @@ class QuestionController extends Controller
     {
         $answers = Answer::query()->where('question_id', $question->id)
                                     ->withCount('likes')
-                                    ->orderBy('likes_count', 'desc')
-                                    ->orderBy('created_at', 'desc')
+                                    ->orderBy('likes_count', 'DESC')
+                                    ->orderBy('created_at', 'DESC')
                                     ->get();
                                     
         return view('questions/show')->with(['question' => $question, 'answers' => $answers]);
