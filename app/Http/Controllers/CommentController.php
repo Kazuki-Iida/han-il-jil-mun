@@ -30,7 +30,7 @@ class CommentController extends Controller
     {
         $comment->user_id = Auth::id();
         $comment->answer_id = $answer->id;
-        $input = $request['comment'];
+        $input = $request['comment'] + ['ip_address' => $request->ip()];
         $images = $request->file('images_array');
         $comment->fill($input)->save();
         

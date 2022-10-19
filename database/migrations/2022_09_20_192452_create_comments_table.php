@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('answer_id');
             $table->string('body', 1000);
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('report_count')->default(0);
+            $table->ipAddress('ip_address')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

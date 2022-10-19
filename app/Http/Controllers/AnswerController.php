@@ -30,7 +30,7 @@ class AnswerController extends Controller
     {
         $answer->user_id = Auth::id();
         $answer->question_id = $question->id;
-        $input = $request['answer'];
+        $input = $request['answer'] + ['ip_address' => $request->ip()];
         $images = $request->file('images_array');
         $answer->fill($input)->save();
         

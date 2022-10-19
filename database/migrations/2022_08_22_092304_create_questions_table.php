@@ -18,9 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->string('title', 50);
             $table->string('body', 1000);
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('category_id')->default(1);
-            $table->unsignedInteger('report_count')->default(0);
-            // $table->ipAddress('ip_address')->nullable();
+            $table->unsignedInteger('category_id');
+            $table->ipAddress('ip_address')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -161,8 +161,7 @@ class QuestionController extends Controller
     public function store(Question $question, QuestionRequest $request) 
     {
         $question->user_id = Auth::id();
-        $input = $request['question'];
-        // $input = $request['question'] + ['ip_address' => $request->ip()];
+        $input = $request['question'] + ['ip_address' => $request->ip()];
         
         $images = $request->file('images_array');
         
