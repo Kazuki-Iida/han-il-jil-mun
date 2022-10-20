@@ -11503,6 +11503,15 @@ body {
   appearance: none;
 }
 
+@media screen and (max-width: 576px) {
+  .question-show-inner .question .dropdown-menu[x-placement^=top],
+  .question-show-inner .question .dropdown-menu[x-placement^=right],
+  .question-show-inner .question .dropdown-menu[x-placement^=bottom],
+  .question-show-inner .question .dropdown-menu[x-placement^=left] {
+    left: -60px !important;
+  }
+}
+
 .question-show-inner .question .good-btn {
   font-size: 1.1rem !important;
 }

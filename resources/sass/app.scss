@@ -608,6 +608,15 @@ body {
     	appearance: none;
     }
     
+    @media screen and (max-width: 576px) {
+      .dropdown-menu[x-placement^=top],
+      .dropdown-menu[x-placement^=right],
+      .dropdown-menu[x-placement^=bottom],
+      .dropdown-menu[x-placement^=left] {
+        left: -60px !important;
+      }
+    }
+    
     .good-btn {
       font-size: 1.1rem !important;
     }
