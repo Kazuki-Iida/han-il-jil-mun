@@ -84,6 +84,8 @@ class UserController extends Controller
         if(!is_null($request->interests_array)){
             $interest_request = $request->interests_array;
             $edit_user->interests()->sync($interest_request);
+        }else{
+            $edit_user->interests()->delete();
         }
         
         // プロフィール画像保存準備
