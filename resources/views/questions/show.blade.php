@@ -49,6 +49,9 @@
                                         </div>
                                     </div>
                                 @endauth
+                                <a class="share-btn float-right mr-2" href="<?php echo 'https://twitter.com/intent/tweet?url=' . url()->current() . '&text=' . $question->title; ?>" >
+                                    <i class="fab fa-twitter"></i>
+                                </a>
                                 
                                 <div class="question-user pt-2 pl-sm-0 pl-3">
                                     <a class="user-name pl-2 pl-sm-0" href="/users/{{ $question->user_id }}">{{ Str::limit( $question->user->name,40) }}</a>

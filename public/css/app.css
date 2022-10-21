@@ -11521,6 +11521,11 @@ body {
   text-align: center;
 }
 
+.question-show-inner .question .share-btn {
+  color: #1DA1F2;
+  font-size: 21px !important;
+}
+
 .question-show-inner .question .user-name {
   font-size: 1.2rem;
 }
