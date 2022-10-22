@@ -31,7 +31,6 @@
         
         <!--twitterシェア時のリンクカード設定 -->
         <meta name="twitter:card" content="summary_large_image" />
-        <!--<meta name="twitter:site" content="(2)Twitterのユーザー名" />-->
         <meta name="twitter:title" content="日韓質問 han-il jil-mun" />
         <meta name="twitter:description" content="日韓相互間におけるQ&Aサイトです。" />
         <meta name="twitter:image" content="https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/twitter-card-logo.png" />
