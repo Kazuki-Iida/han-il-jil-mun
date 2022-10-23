@@ -66,9 +66,9 @@
                                     @if (Route::has('register'))
                                         <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}ページ</a>
                                     @endif
-                                    <!--<a href="/login/google" class="btn btn-secondary" role="button">-->
-                                    <!--    Google Login-->
-                                    <!--</a>-->
+                                    <a href="/login/google" class="btn btn-secondary" role="button">
+                                        Google Login
+                                    </a>
     
                                     
                                 </div>
