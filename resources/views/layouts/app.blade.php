@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="日韓の相互に対するQ＆Aサイト。韓国について気になることや日本について気になることを質問してみましょう。">
         <meta name="keywords" content="日韓,韓国,質問">
-        <!--<meta name="google-site-verification" content="jsZwZZOaMsfQBCeXL72W--mJ65cqIst9PGPVdTl4GCc" />        -->
+        <meta name="google-site-verification" content="5rKIuo6XpiRlbfV9puQaclbGoLgFX0vwWhIfqsM7h6Y" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     
