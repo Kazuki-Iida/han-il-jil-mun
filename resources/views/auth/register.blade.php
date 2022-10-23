@@ -83,8 +83,8 @@
                                 </div>
                                 <p class="text-center col-12 mx-auto">※送信後、本登録用のメールをご確認ください。</p>
                             </div>
-                            <div class="text-center">
-                                <a href="/login/google" class="google-login-btn my-3 text-center " role="button">
+                            <div class="">
+                                <a href="/login/google" class="google-login-btn my-3 mx-auto" role="button">
                                         
                                 </a>
                             </div>

@@ -11142,7 +11142,7 @@ body {
 .auth-page .google-login-btn {
   background-image: url("https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/google_btn/btn_google_signin_dark_normal_web%402x.png");
   background-size: cover;
-  display: inline-block;
+  display: block;
   height: 36.8px;
   width: 152.8px;
 }
