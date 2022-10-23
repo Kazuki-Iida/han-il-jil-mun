@@ -69,8 +69,18 @@
                                     <a href="/login/google" class="google-login-btn mt-3" role="button">
                                         
                                     </a>
-    
                                 </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                                @if (Route::has('register'))
+                                    <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}ページ</a>
+                                @endif
                             </div>
                         </form>
                     </div>

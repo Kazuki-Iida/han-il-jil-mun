@@ -42,6 +42,11 @@ Route::group(['middleware' => ['auth']], function(){
 Route::get('/', 'QuestionController@index')->name('home');
 Route::get('/questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
+
+Route::get('/how-to-use', function(){
+                return view('how-to-use');
+            });
+            
 Route::get('/privacy', function () {
                 return view('privacy');
             });

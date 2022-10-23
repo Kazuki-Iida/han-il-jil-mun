@@ -142,6 +142,10 @@ body {
   border-color: #aa4cd3 !important;
 }
 
+.text-success {
+  color: #aa4cd3 !important;
+}
+
 
 
 // 以下基本アルファベット順
@@ -594,6 +598,31 @@ body {
       color: #aa4cd3 !important;
     }
   }
+}
+
+
+.how-to-use {
+  
+  p {
+    font-size: 18.8px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .explain-img {
+    
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
+  }
+  
+  .how-to-use-index {
+    
+    @media screen and (max-width: 700px) {
+      width: 87% !important;
+    }
+  }
+  
 }
   
   

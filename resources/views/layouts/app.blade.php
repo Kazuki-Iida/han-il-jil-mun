@@ -59,22 +59,31 @@
                                     <!-- Authentication Links -->
                                     @guest
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-menu-link pr-4 text-nowrap" href="/how-to-use">
+                                                このサイトの使い方&thinsp;<i class="far fa-question-circle"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-menu-link pr-4 text-nowrap" href="{{ route('login') }}">
+                                                {{ __('Login') }}
+                                            </a>
                                         </li>
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-menu-link pr-4 text-nowrap" href="{{ route('register') }}">
+                                                    {{ __('Register') }}
+                                                </a>
                                             </li>
                                         @endif
                                     @else
                                         <li class="nav-item">
-                                            <a class="nav-menu-link profile-show-button pr-4 text-nowrap" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
-                                                {{ Str::limit( Auth::user()->name, 20) }}&thinsp;<i class="far fa-user"></i>
+                                            <a class="nav-menu-link profile-edit-button pr-4 text-nowrap" href="/how-to-use">
+                                                このサイトの使い方&thinsp;<i class="far fa-question-circle"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-menu-link profile-edit-button pr-4 text-nowrap" href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">
-                                                プロフィールを編集&thinsp;<i class="fas fa-user-edit"></i>
+                                            <a class="nav-menu-link profile-show-button pr-4 text-nowrap" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
+                                                {{ Str::limit( Auth::user()->name, 20) }}&thinsp;<i class="far fa-user"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
