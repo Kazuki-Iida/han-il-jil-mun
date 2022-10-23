@@ -215,6 +215,22 @@ body {
   .card {
     margin-top: 5vh;
   }
+  
+  .google-login-btn {
+    background-image:url("https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/google_btn/btn_google_signin_dark_normal_web%402x.png");
+    background-size:cover;
+    display: inline-block;
+    height: 36.8px;
+    width: 152.8px;
+    
+    &:focus {
+      background-image:url("https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/google_btn/btn_google_signin_dark_focus_web%402x.png");
+    }
+    
+    &:hover {
+      background-image:url("https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/google_btn/btn_google_signin_dark_pressed_web%402x.png");
+    }
+  }
 }
 
 

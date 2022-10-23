@@ -61,11 +61,10 @@ class LoginController extends Controller
 
     public function createUserByGoogle($gUser)
     {
-        $user = User::create([
-            'name'     => $gUser->name,
-            'email'    => $gUser->email,
+        return User::create([
+            'name' => $gUser->name,
+            'email' => $gUser->email,
             'password' => \Hash::make(uniqid()),
         ]);
-        return $user;
     }
 }

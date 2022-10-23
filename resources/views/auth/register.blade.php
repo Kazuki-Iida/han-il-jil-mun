@@ -83,15 +83,22 @@
                                 </div>
                                 <p class="text-center col-12 mx-auto">※送信後、本登録用のメールをご確認ください。</p>
                             </div>
-                            
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                            <div class="text-center">
+                                <a href="/login/google" class="google-login-btn my-3 text-center " role="button">
+                                        
                                 </a>
-                            @endif
-                            @if (Route::has('register'))
-                                <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}ページ</a>
-                            @endif
+                            </div>
+                            
+                            <div class="text-center">
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                                @if (Route::has('register'))
+                                    <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}ページ</a>
+                                @endif
+                            </div>
                         </form>
                     </div>
                 </div>
