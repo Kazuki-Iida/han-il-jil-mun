@@ -53,8 +53,8 @@ Route::get('/verified', function(){
 Auth::routes(['verify' => true]);
 
 //googleアカウントでのログイン
-Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
-Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
 // サイトマップ表示用
 Route::get('/sitemap', 'SitemapController@index')->name('sitemap');
