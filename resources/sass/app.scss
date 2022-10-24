@@ -156,16 +156,39 @@ body {
       margin-top: -23px !important;
       padding-top: 10px;
       
-      .nav-menu-link {
-        background-color: transparent !important;
-        color: #606060 !important;
-        font-size: 1.1rem !important;
-        text-decoration: none !important;
+      .navbar-nav {
+        @media screen and (max-width: 768px) {
+          border-top: 0.5px solid #6c757d;
+        }
         
-        &:hover{
-          color: #aa4cd3 !important;
+        .nav-item {
+          
+          @media screen and (max-width: 768px) {
+           
+            border-bottom: 0.5px solid #6c757d;
+              
+          }
+          
+          .nav-menu-link {
+            background-color: transparent !important;
+            color: #606060 !important;
+            font-size: 1.1rem !important;
+            text-decoration: none !important;
+            
+            &:hover{
+              color: #aa4cd3 !important;
+            }
+            
+            @media screen and (max-width: 768px) {
+              
+              line-height: 50px;
+              margin: 10px 20px !important;
+            }
+          }
         }
       }
+      
+      
   }
   
   .footer-logo {

@@ -11079,15 +11079,34 @@ body {
   padding-top: 10px;
 }
 
-#app nav .nav-menu-link {
+@media screen and (max-width: 768px) {
+  #app nav .navbar-nav {
+    border-top: 0.5px solid #6c757d;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #app nav .navbar-nav .nav-item {
+    border-bottom: 0.5px solid #6c757d;
+  }
+}
+
+#app nav .navbar-nav .nav-item .nav-menu-link {
   background-color: transparent !important;
   color: #606060 !important;
   font-size: 1.1rem !important;
   text-decoration: none !important;
 }
 
-#app nav .nav-menu-link:hover {
+#app nav .navbar-nav .nav-item .nav-menu-link:hover {
   color: #aa4cd3 !important;
+}
+
+@media screen and (max-width: 768px) {
+  #app nav .navbar-nav .nav-item .nav-menu-link {
+    line-height: 50px;
+    margin: 10px 20px !important;
+  }
 }
 
 @media screen and (max-width: 576px) {
