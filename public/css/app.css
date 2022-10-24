@@ -11634,8 +11634,37 @@ body {
 }
 
 .user-show .profile-image {
-  height: auto;
-  width: 100%;
+  border-radius: 50%;
+  height: 306px;
+  width: 306px;
+}
+
+@media screen and (max-width: 1200px) {
+  .user-show .profile-image {
+    height: 252px;
+    width: 252px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .user-show .profile-image {
+    height: 180px;
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-show .profile-image {
+    height: 126px;
+    width: 126px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .user-show .profile-image {
+    height: 176px;
+    width: 176px;
+  }
 }
 
 .user-show .profile-image-wrapper {

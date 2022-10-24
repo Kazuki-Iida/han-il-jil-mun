@@ -291,7 +291,7 @@
                     <div class="profile-content row">
                         <div class="profile-left mb-3 col-sm-6 col-11　col-offset-1">
                             <div class="profile-image-wrapper pb-sm-2 pb-0">
-                                <img src="{{ $user->profile_image }}" alt="Contact Person" class="profile-image img-fuild rounded-circle">
+                                <img src="{{ $user->profile_image }}" alt="Contact Person" class="profile-image">
                             </div>
                             <h1 class="user-name text-center">
                                 {{ $user->name }}
