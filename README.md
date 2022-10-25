@@ -1,84 +1,86 @@
-<a href="https://han-il-jil-mun.herokuapp.com">https://han-il-jil-mun.herokuapp.com/</a>
-
-
-
-
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+    <a href="https://han-il-jil-mun.herokuapp.com/" target="_blank">
+        <img src="https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/han-il-jil-mun_logo_small.PNG" width="400">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <img src="https://img.shields.io/badge/Laravel-v6.20.44-green.svg" alt="Laravel version">
+    <!-- <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a> -->
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
+<p align="center"><a href="https://han-il-jil-mun.herokuapp.com/">日韓質問 han-il-jil-mun</a></p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 日韓質問 han-il-jil-mun
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### このWebサイトについて
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+　このWebサイトは、日韓相互間のQ&Aサイトです。質問投稿の際に、日本に関する質問か韓国に関する質問かを選択することで、質問表示の際に分類され、回答してもらうことができます。韓国の方にもこのwebサイトを利用してもらいたいと考えているので、日本についての質問という項目も作成しました。
+ 
+ </br>
+ 
+### 制作の背景
 
-## Learning Laravel
+　製作者自身韓国が好きなのですが、韓国に関する質問を気軽にできる場が欲しいなという気持ちでこのWebサイトを作成しました。また、韓国は反日国と言われることも多く、旅行など行く際に躊躇ってしまう方もいるのではないかと感じ、事実以上に怖がる必要がないように、そして、想像と現実とのギャップを少しでも減らして安心できるようにという願いも込めて作りました。私が韓国を好きなのと同じように韓国にも日本を好きでいてくれている方がいると信じているので、そういう方も安心して日本に旅行に来たり、日本のことを知ったりしていただくため、ゆくゆくは韓国から日本に対しての質問もしていただきたいという思いで、日本に関する質問もできるようにいたしました。
+ 
+  </br>
+ 
+### トップページイメージ
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p align="center">
+    <img src="https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/toppage_img.png" width="80%">
+</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ </br>
 
-## Laravel Sponsors
+### このWebサイトの使い方
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<p>このwebサイトの使い方はこちら（ https://han-il-jil-mun.herokuapp.com/how-to-use ）からご覧ください。</p>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+ </br>
 
-## Contributing
+### 制作する上で工夫した点
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+##### ・ページ遷移（ロード、リロード）の回数
 
-## Code of Conduct
+<p>Webサイトの使用者の立場に立った時、ページ遷移の回数は少ない方が楽なのではと考え、ユーザー表示画面における様々な機能使用時にモーダルを用いたり、Good機能呼び出し時にjQueryを用いてAjax通信をするよう実装したりすることで、ページの遷移回数を減らすように作成いたしました。</p>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+##### ・Bootstrapの利用
 
-## Security Vulnerabilities
+<p>今回、初めてBootstrapを使用したのですが、こちらを用いてできることをある程度勉強したことで、違和感のないレスポンシブデザインや一貫性のあるデザインを効率よく作成できたと感じています。</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+##### ・メール認証とGoogle API
 
-## License
+<p>ユーザー登録は仮登録と本登録の二段階で行ってもらえるようにいたしました。仮登録時にユーザーに入力してもらったメールアドレスに本登録用のメールを送信し、メールで送信したリンクをクリックすることで本登録が完了します。存在しないメールアドレスでのユーザー登録や、他人のメールアドレスを用いたユーザー登録を防ぐことができるようになりました。また、APIを用いたGoogleアカウントによるログインもできるようにしたことで、ユーザー登録の利便性を向上させました。</p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##### ・ランキング機能
+
+<p>投稿した質問に対するGoodが多いユーザーと、回答に対するGoodが多いユーザーをそれぞれ8人までトップページのサイドカラムでランキング表示することで、ユーザーに対していい質問やいい回答を心がけることや、また、たくさん回答しようといった行動の動機付けをできたらと考え、ランキングを実装しました。同じGood数のユーザーがランキング内にいた場合は、順位を同率にするよう工夫いたしました。</p>
+
+##### ・トップページの並べ替え、フィルター
+
+<p>トップページの質問一覧画面で、「日本に関する質問」「韓国に関する質問」のフィルターと、カテゴリーによるフィルター、「Good順」と「新着順」による並べ替え、そして検索によるフィルターを同時にできるようにしたことで、ユーザーが求めている質問を見つけやすいようにしています。</p>
+
+<p>これらの他にも、ユーザーフォロー機能や、質問回答コメント投稿者のIPアドレス取得、通報機能、AWSのストレージサービスS3の使用なども工夫した点です。</p>
+
+
+ </br>
+ 
+### 環境
+ 
+ <p>・AWS</p>
+ 
+ <p>・Laravel 6.20.44</p>
+ 
+  </br>
+  
+ ### 制作者情報
+ 
+ <p>作成：飯田一希</p>
+ <p>問い合わせは（ haniljilmun@gmail.com )にお願いいたします。</p>
+ 
+  </br>
+  
+ 
