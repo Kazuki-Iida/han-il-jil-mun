@@ -70,11 +70,18 @@ class QuestionController extends Controller
         
         
         // 以下ユーザーのgoodランキングに関するコード
+//         $dt_from = new \Carbon\Carbon();
+// 		$dt_from->startOfMonth();
+
+// 		$dt_to = new \Carbon\Carbon();
+// 		$dt_to->endOfMonth();
+
+        // 便宜上年
         $dt_from = new \Carbon\Carbon();
-		$dt_from->startOfMonth();
+		$dt_from->startOfYear();
 
 		$dt_to = new \Carbon\Carbon();
-		$dt_to->endOfMonth();
+		$dt_to->endOfYear();
 		
         $question_likes = QuestionLike::whereBetween('created_at', [$dt_from, $dt_to])->get();
         
