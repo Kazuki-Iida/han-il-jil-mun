@@ -76,6 +76,12 @@
  
   </br>
   
+### ER図
+
+<img src="https://han-il-jil-mun.s3.ap-northeast-1.amazonaws.com/ER_img.png" width="90%">
+
+</br>
+  
  ### 制作者情報
  
  <p>作成：飯田一希</p>
