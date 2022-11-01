@@ -85,7 +85,7 @@
  ### 制作者情報
  
  <p>作成：飯田一希</p>
- <p>問い合わせは（ haniljilmun@gmail.com )にお願いいたします。</p>
+ <p>お問い合わせは（ haniljilmun@gmail.com )にお願いいたします。</p>
  
   </br>
   
